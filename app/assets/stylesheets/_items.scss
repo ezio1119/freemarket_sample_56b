@@ -1,0 +1,10 @@
+.header{
+    height: 100px;
+    width: 100vw;
+    background-color: red;
+    &__inner{
+        width: 700px;
+        margin: 0 auto;
+        padding-top: 8px;
+  }
+}
