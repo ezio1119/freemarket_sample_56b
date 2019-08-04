@@ -25,3 +25,4 @@ COPY --from=builder /usr/local/bundle /usr/local/bundle
 
 ENV APP_ROOT /usr/src/app
 WORKDIR $APP_ROOT
+ADD . $APP_ROOT
