@@ -1,0 +1,30 @@
+.header
+  .header__inner
+    .header__inner__top
+      .header__inner__top--logo
+        = link_to "", "https://www.mercari.com/jp/"
+        = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?863303983", alt: "logo", width: 135, height: 40
+      .header__inner__top--search
+        %input{ name: "keyword", placeholder: "何かお探しですか？", class: "header__inner__top--search--input", type: "search" }
+        = fa_icon "search", class: "header__inner__top--search--icon"
+    .header__inner__bottom
+      %ul.header__inner__bottom--left
+        %li.header__inner__bottom--left--nav
+          = fa_icon "list", class: "header__inner__bottom--left--nav--icon"
+          = link_to "カテゴリーから探す", "https://www.mercari.com/jp/category/", class: "header__inner__bottom--left--nav--link"
+        %li.header__inner__bottom--left--nav
+          = fa_icon "tag", class: "header__inner__bottom--left--nav--icon"
+          = link_to "ブランドから探す", "https://www.mercari.com/jp/brand/", class: "header__inner__bottom--left--nav--link"
+
+      .header__inner__bottom--right
+        
+
+.nav
+  %ul
+
+.container
+
+.banner
+
+.footer
+
