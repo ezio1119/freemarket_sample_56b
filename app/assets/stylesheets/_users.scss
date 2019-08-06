@@ -1,46 +1,140 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
-  position: relative;
-}
-
-div {
-  display: block;
-}
-
-.m-container {
+.mypage {
   background-color: #f5f5f5;
-  margin: 40px 0 auto;
-  width: 1020px;
-  &:after{
-    content: "";
-    clear: both;
-    display: block;
+  display: flex;
+  &__left {
+    height: 100%;
+    &__side {
+      margin: 40px 40px 40px 210px;
+      &__list {
+        width: 280px;
+        background-color: #fff;
+        color: #333;
+        &__item {
+          max-height: 48px;
+          &__active {
+            border-top: 1px solid #eee;
+            position: relative;
+            display: block;
+            padding: 16px;
+            background: #fff;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+          }
+          &__icon {
+            position: absolute;
+            right: 16px;
+            color: #ccc;
+            font-weight: lighter;
+          }
+        }
+      }
+      &__head {
+        background-color: #f5f5f5;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 40px 0 0;
+      }
+    }
   }
-  &__content {
-    float: right;
+  &__right {
+    height: 100%;
     width: 700px;
-    &__mypage-user {
-      // height: 200px;
+    &__side {
+      margin: 40px 0;
+      height: 100%;
+      &__user {
+        background-color: rgba(225, 227, 228, 0.89);
+        height: 200px;
+        position: relative;
+        &__icon {
+          color: #333;
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          height: 111px;
+          transform: translate(0, -50%);
+          text-decoration: none;
+          &__figure {
+            background-color: rgb(241, 220, 220);
+            overflow: hidden;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            border-radius: 50%;
+            &__name {
+              position: relative;
+              margin: 8px 0 0;
+              font-size: 14px;
+              text-align: center;
+              line-height: 1.4
+            }
+            &__contents {
+              margin: 8px 0 0;
+              font-size: 0;
+              text-align: center;
+              position: relative;
+              &--value {
+                display: inline-block;
+                font-size: 14px;
+              }
+              &--puts {
+                display: inline-block;
+                font-size: 14px;
+                margin: 0 0 0 16px;
+              }
+            }
+          }
+        }
+      }
+      &__tab {
+        background-color: #eee;
+        height: 310px;
+        margin-bottom: 40px;
+        text-align: center;
+        &__top {
+          color: #333;
+          font-size: 16px;
+          font-weight: bold;
+          line-height: 72px;
+          display: flex;
+          height: 72px;
+          &--left {
+            border-top: 2px solid #ea352d;
+            height: 100%;
+            background-color: #fff;
+            width: 50%;
+          }
+          &--right {
+            height: 100%;
+            width: 50%;
+          }
+        }
+        &--white {
+          background-color: #fff;
+          height: 72px;
+          font-size: 16px;
+          font-weight: bold;
+          line-height: 72px;
+          padding: 0 16px;
+        }
+        &__bottom {
+          background-color: #fff;
+          height: 236px;
+          &__list {
+            display: block;
+            &__content {
+              padding: 160px 0 60px;
+              text-align: center;
+              font-size: 16px;
+              font-weight: 600;
+              color: #ccc;
+            }
+          }
+        }
+      }
     }
-    &__mypage-tab {
-      background-color: #fff;
-    }
-  }
-  &__side {
-    background-color: #b3d4fc;
-    float: left;
-    width: 280px;
-    margin: 0 40px 0 0;
   }
 }
-
-
-

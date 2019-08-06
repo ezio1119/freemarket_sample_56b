@@ -1,9 +1,130 @@
-.m-container
-  .m-container__content
-    .m-container__content__mypage-user
-    .m-container__content__mypage-tab
-  .m-container__side
-    %nav.mypage__nav
-      %ul.mypage__nav__list
-        %li
-          %a.mypage__nav__list__item
+.mypage
+  .mypage__left
+    .mypage__left__side
+      %ul.mypage__left__side__list
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            マイページ
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            お知らせ
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            やることリスト
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            いいね！一覧
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            出品する
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            出品した商品 - 出品中
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            出品した商品 - 取引中
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            出品した商品 - 売却済み
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            購入した商品 - 取引中
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            購入した商品 - 過去の取引
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            ニュース一覧
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            評価一覧
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            ガイド
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            お問い合わせ
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+      .mypage__left__side__head メルペイ
+      %ul.mypage__left__side__list
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            売上・振込申請
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            ポイント
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+      .mypage__left__side__head 設定
+      %ul.mypage__left__side__list
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            プロフィール
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            発送元・お届け先住所変更
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            支払い方法
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            メール/パスワード
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            本人情報
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            電話番号の確認
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+        %li.mypage__left__side__list__item
+          = link_to "#", class: "mypage__left__side__list__item__active" do
+            ログアウト
+            = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
+  .mypage__right
+    .mypage__right__side
+      .mypage__right__side__user
+        .mypage__right__side__user__icon
+          %a{ href: "#", class: "mypage__right__side__user__icon" }
+            .mypage__right__side__user__icon__figure
+              = image_tag "", alt: "user", width: 60, height: 60
+            .mypage__right__side__user__icon__figure__name
+              test
+            .mypage__right__side__user__icon__figure__contents
+              .mypage__right__side__user__icon__figure__contents--value
+                評価 　
+              .mypage__right__side__user__icon__figure__contents--puts
+                出品数 　
+      .mypage__right__side__tab
+        .mypage__right__side__tab__top
+          .mypage__right__side__tab__top--left お知らせ
+          .mypage__right__side__tab__top--right やることリスト
+        .mypage__right__side__tab__bottom
+          %ul.mypage__right__side__tab__bottom__list
+            %li.mypage__right__side__tab__bottom__list__content お知らせの商品はありません
+      .mypage__right__side__tab--white 購入した商品
+      .mypage__right__side__tab
+        .mypage__right__side__tab__top
+          .mypage__right__side__tab__top--left 取引中
+          .mypage__right__side__tab__top--right 過去の取引
+        .mypage__right__side__tab__bottom
+          %ul.mypage__right__side__tab__bottom__list
+            %li.mypage__right__side__tab__bottom__list__content 取引中の商品はありません
+
