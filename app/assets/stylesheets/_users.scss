@@ -1,3 +1,38 @@
+.sub__header {
+  height: 49px;
+  width: 100vw;
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  position: relative;
+  z-index: 1;
+  &__list {
+    display: flex;
+    font-size: 14px;
+    line-height: 1.2;
+    width: 1020px;
+    margin: 0 auto;
+    padding: 16px 0;
+    &__item {
+      color: #333;
+      text-decoration: none;
+      &__active {
+        display: block;
+        color: #333;
+        text-decoration: none;
+      }
+      &__icon {
+        color: #ccc;
+        margin: 0 8px;
+        right: 16px;
+        -webkit-text-stroke: 1px #fff;
+      }
+      &--now {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
 .mypage {
   background-color: #f5f5f5;
   display: flex;
@@ -25,7 +60,16 @@
             position: absolute;
             right: 16px;
             color: #ccc;
-            font-weight: lighter;
+            -webkit-text-stroke: 1px #fff;
+            &--now {
+              position: absolute;
+              right: 16px;
+              -webkit-text-stroke: 1px #fff;
+            }
+          }
+          &--now {
+            font-weight: bold;
+            max-height: 48px;
           }
         }
       }
@@ -44,7 +88,9 @@
       margin: 40px 0;
       height: 100%;
       &__user {
-        background-color: rgba(225, 227, 228, 0.89);
+        background-image: url("https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?1355409");
+        background-repeat: no-repeat;
+        background-size: cover;
         height: 200px;
         position: relative;
         &__icon {
@@ -58,7 +104,6 @@
           transform: translate(0, -50%);
           text-decoration: none;
           &__figure {
-            background-color: rgb(241, 220, 220);
             overflow: hidden;
             width: 60px;
             height: 60px;
@@ -126,6 +171,10 @@
           &__list {
             display: block;
             &__content {
+              background-image: url("https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?1355409");
+              background-position: center 40px;
+              background-repeat: no-repeat;
+              background-size: 78px 85px;
               padding: 160px 0 60px;
               text-align: center;
               font-size: 16px;
