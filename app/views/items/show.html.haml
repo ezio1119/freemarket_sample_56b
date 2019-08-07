@@ -26,9 +26,9 @@
           %th.itempage__box__info--table--th カテゴリー
           %td.itempage__box__info--table--td
             = link_to "美容", "#", class: "itempage__box__info--table--td--link"
-            .itempage__box__info--table--td--link
+            = link_to "", class: "itempage__box__info--table--td--link" do
               = fa_icon "chevron-right", class: "itempage__box__info--table--td--link--sub"
-              = link_to "コスメ", "", class: "itempage__box__info--table--td--link--sub"
+              %span コスメ
         %tr
           %th.itempage__box__info--table--th ブランド
           %td.itempage__box__info--table--td
@@ -61,18 +61,18 @@
       ボーダーの丈が短めの長袖になります⌄̈⃝
     .itempage__box__btn
       .itempage__box__btn--left
-        %button{ name: "like",class: "itempage__box__btn--left--like", type: "button" } 
+        = button_to "", class: "itempage__box__btn--left--like" do
           = fa_icon "heart", class: "itempage__box__btn--left--like--icon"
           .itempage__box__btn--left--like--str いいね!
           .itempage__box__btn--left--like--str 0
-        %button{ name: "flag",class: "itempage__box__btn--left--flag", type: "button" } 
+        = button_to "", class: "itempage__box__btn--left--flag" do
           = fa_icon "flag", class: "itempage__box__btn--left--flag--icon"
           .itempage__box__btn--left--flag--str 不適切な商品の報告
       .itempage__box__btn--right
-        %a{ href: '', class: "itempage__box__btn--right--link" }
+        = link_to "", class: "itempage__box__btn--right--link" do
           = fa_icon "lock", class: "itempage__box__btn--right--link--icon"
           %span あんしん・あんぜんへの取り組み
-  
+    
   .itempage__comment
     %p.itempage__comment__note
       相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
@@ -81,24 +81,24 @@
   
   .itempage__page
     .itempage__page__prev
-      %a{ href: '', class: "itempage__page__prev--link" }
+      = link_to "", class: "itempage__page__prev--link" do
         = fa_icon "chevron-left", class: "itempage__page__prev--link--icon"
         %span Previous
     .itempage__page__next
-      %a{ href: '', class: "itempage__page__next--link" }
+      = link_to "", class: "itempage__page__next--link" do
         %span Next
         = fa_icon "chevron-right", class: "itempage__page__prev--next--icon"
 
   .itempage__media
     %ul.itempage__media__ul
       %li.itempage__media__ul__li
-        %a{ href: 'http://www.facebook.com/share.php?u=https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm18619748585%2F', class: "itempage__media__ul__li--link" }
+        = link_to 'http://www.facebook.com/share.php?u=https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm18619748585%2F', class: "itempage__media__ul__li--link" do
           = fa_icon "facebook-square", class: "itempage__media__ul__li--link--facebook"
       %li.itempage__media__ul__li
-        %a{ href: '', class: "itempage__media__ul__li--link" }
+        = link_to '', class: "itempage__media__ul__li--link" do
           = fa_icon "twitter-square", class: "itempage__media__ul__li--link--twitter"
       %li.itempage__media__ul__li
-        %a{ href: '', class: "itempage__media__ul__li--link" }
+        = link_to '', class: "itempage__media__ul__li--link" do
           = fa_icon "pinterest-square", class: "itempage__media__ul__li--link--pinterest"
   
   .itempage__container
@@ -139,12 +139,4 @@
           = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
           .itempage__container__box--content--items--text
       
-        
-
-
-
-
-
-
-
 = render 'footer'
