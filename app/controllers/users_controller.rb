@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     
   end
 
-  def edit
+  def profile
   end
 
 end
