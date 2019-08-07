@@ -1,0 +1,150 @@
+= render 'header'
+
+.itempage
+  .itempage__box
+    %h1.itempage__box__title
+      ボーダーカットソー
+    .itempage__box__info
+      .itempage__box__info--photo
+        = image_tag "https://static.mercdn.net/item/detail/orig/photos/m14623143038_1.jpg?1565144722", alt: "image", class: "itempage__box__info--photo--main"
+      %table.itempage__box__info--table
+        %tr
+          %th.itempage__box__info--table--th 出品者
+          %td.itempage__box__info--table--td
+            = link_to " フージー", "", class: "itempage__box__info--table--td--name"
+            .itempage__box__info--table--td--rating
+              .itempage__box__info--table--td--rating--grin
+                = fa_icon "smile-o", class: "itempage__box__info--table--td--rating--grin--smile"
+                %span 00
+              .itempage__box__info--table--td--rating--grin
+                = fa_icon "meh-o", class: "itempage__box__info--table--td--rating--grin--meh"
+                %span 00
+              .itempage__box__info--table--td--rating--grin
+                = fa_icon "frown-o", class: "itempage__box__info--table--td--rating--grin--frown"
+                %span 00
+        %tr
+          %th.itempage__box__info--table--th カテゴリー
+          %td.itempage__box__info--table--td
+            = link_to "美容", "#", class: "itempage__box__info--table--td--link"
+            .itempage__box__info--table--td--link
+              = fa_icon "chevron-right", class: "itempage__box__info--table--td--link--sub"
+              = link_to "コスメ", "", class: "itempage__box__info--table--td--link--sub"
+        %tr
+          %th.itempage__box__info--table--th ブランド
+          %td.itempage__box__info--table--td
+            = link_to "ソニー", "#", class: "itempage__box__info--table--td--link"
+        %tr
+          %th.itempage__box__info--table--th 商品の状態
+          %td.itempage__box__info--table--td やや傷や汚れあり
+        %tr
+          %th.itempage__box__info--table--th 配送料の負担	
+          %td.itempage__box__info--table--td 送料込み(出品者負担)
+        %tr
+          %th.itempage__box__info--table--th 配送の方法
+          %td.itempage__box__info--table--td 未定
+        %tr
+          %th.itempage__box__info--table--th 配送元地域	
+          %td.itempage__box__info--table--td
+            = link_to "岩手県", "#", class: "itempage__box__info--table--td--link"
+        %tr
+          %th.itempage__box__info--table--th 発送日の目安
+          %td.itempage__box__info--table--td 2~3日で発送
+    .itempage__box__price
+      .itempage__box__price--num
+        ¥ 900
+      .itempage__box__price--tax
+        (税込)
+      .itempage__box__price--post
+        送料込み
+    = button_to "購入画面に進む", "", class: "itempage__box__buy"
+    .itempage__box__text
+      ボーダーの丈が短めの長袖になります⌄̈⃝
+    .itempage__box__btn
+      .itempage__box__btn--left
+        %button{ name: "like",class: "itempage__box__btn--left--like", type: "button" } 
+          = fa_icon "heart", class: "itempage__box__btn--left--like--icon"
+          .itempage__box__btn--left--like--str いいね!
+          .itempage__box__btn--left--like--str 0
+        %button{ name: "flag",class: "itempage__box__btn--left--flag", type: "button" } 
+          = fa_icon "flag", class: "itempage__box__btn--left--flag--icon"
+          .itempage__box__btn--left--flag--str 不適切な商品の報告
+      .itempage__box__btn--right
+        %a{ href: '', class: "itempage__box__btn--right--link" }
+          = fa_icon "lock", class: "itempage__box__btn--right--link--icon"
+          %span あんしん・あんぜんへの取り組み
+  
+  .itempage__comment
+    %p.itempage__comment__note
+      相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+    %textarea{ name: "text", class: "itempage__comment__text", type: "textarea" }
+    = button_to "コメントする", "", class: "itempage__comment__btn"
+  
+  .itempage__page
+    .itempage__page__prev
+      %a{ href: '', class: "itempage__page__prev--link" }
+        = fa_icon "chevron-left", class: "itempage__page__prev--link--icon"
+        %span Previous
+    .itempage__page__next
+      %a{ href: '', class: "itempage__page__next--link" }
+        %span Next
+        = fa_icon "chevron-right", class: "itempage__page__prev--next--icon"
+
+  .itempage__media
+    %ul.itempage__media__ul
+      %li.itempage__media__ul__li
+        %a{ href: 'http://www.facebook.com/share.php?u=https%3A%2F%2Fitem.mercari.com%2Fjp%2Fm18619748585%2F', class: "itempage__media__ul__li--link" }
+          = fa_icon "facebook-square", class: "itempage__media__ul__li--link--facebook"
+      %li.itempage__media__ul__li
+        %a{ href: '', class: "itempage__media__ul__li--link" }
+          = fa_icon "twitter-square", class: "itempage__media__ul__li--link--twitter"
+      %li.itempage__media__ul__li
+        %a{ href: '', class: "itempage__media__ul__li--link" }
+          = fa_icon "pinterest-square", class: "itempage__media__ul__li--link--pinterest"
+  
+  .itempage__container
+    .itempage__container__box
+      = link_to "**さんの新着アイテム", "", class: "itempage__container__box--title"
+      %ul.itempage__container__box--content
+        %li.itempage__container__box--content--items
+          = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
+          .itempage__container__box--content--items--text
+            .itempage__container__box--content--items--text--name
+              パウダーファンデーション
+            .itempage__container__box--content--items--text--price
+              ¥ 3,999
+        %li.itempage__container__box--content--items
+          = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
+          .itempage__container__box--content--items--text
+        %li.itempage__container__box--content--items
+          = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
+          .itempage__container__box--content--items--text
+        %li.itempage__container__box--content--items
+          = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
+          .itempage__container__box--content--items--text
+
+  .itempage__container
+    .itempage__container__box
+      = link_to "ブリスポイントのガウチョパンツ その他の商品", "", class: "itempage__container__box--title"
+      %ul.itempage__container__box--content
+        %li.itempage__container__box--content--items
+          = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
+          .itempage__container__box--content--items--text
+        %li.itempage__container__box--content--items
+          = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
+          .itempage__container__box--content--items--text
+        %li.itempage__container__box--content--items
+          = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
+          .itempage__container__box--content--items--text
+        %li.itempage__container__box--content--items
+          = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
+          .itempage__container__box--content--items--text
+      
+        
+
+
+
+
+
+
+
+= render 'footer'
