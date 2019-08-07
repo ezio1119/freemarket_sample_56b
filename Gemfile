@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'haml-rails'
 gem 'devise'
 gem "font-awesome-rails"
+gem 'recaptcha', require: "recaptcha/rails"
 
 
 group :development, :test do

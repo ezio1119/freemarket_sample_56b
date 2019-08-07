@@ -4,34 +4,97 @@
       = link_to items_path, class: "user_wrapper__header__contents__link" do
         %img{class: "user_wrapper__header__contents__link__img", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3791839826"}
   .user_wrapper__contents
-    .user_wrapper__contents__form
-      .user_wrapper__contents__form__message
-        %p.user_wrapper__contents__form__body_text
+    .user_wrapper__contents__forms
+      .user_wrapper__contents__forms__message
+        %p
           会員情報入力
-      .user_wrapper__contents__form__body
-        
-
-
-
-
-
-
-
-
-
-
-
+      .user_wrapper__contents__forms__body
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = f.submit "Sign up"
+          .user_wrapper__contents__forms__body__form
+            = f.label :name, "ニックネーム", class: "user_wrapper__contents__forms__body__form__label"
+            %span.user_wrapper__contents__forms__body__form__logo
+              必須
+            = f.text_field :nickname, placeholder: "   例）太郎忍者", class: "user_wrapper__contents__forms__body__form__field"
+          .user_wrapper__contents__forms__body__form
+            = f.label :name, "メールアドレス", class: "user_wrapper__contents__forms__body__form__label"
+            %span.user_wrapper__contents__forms__body__form__logo
+              必須
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "   PC・携帯どちらでも可", class: "user_wrapper__contents__forms__body__form__field"
+          .user_wrapper__contents__forms__body__form
+            = f.label :name, "パスワード", class: "user_wrapper__contents__forms__body__form__label"
+            %span.user_wrapper__contents__forms__body__form__logo
+              必須
+            = f.password_field :password, placeholder: "  ７文字以上", autocomplete: "new-password", class: "user_wrapper__contents__forms__body__form__field"
+          .user_wrapper__contents__forms__body__form
+            = f.label :name, "パスワード(確認)", class: "user_wrapper__contents__forms__body__form__label"
+            %span.user_wrapper__contents__forms__body__form__logo
+              必須
+            = f.password_field :password_confirmation, placeholder: "  ７文字以上", autocomplete: "new-password", class: "user_wrapper__contents__forms__body__form__field"
+          .user_wrapper__contents__forms__body__info
+            %h3.user_wrapper__contents__forms__body__info__message
+              本人確認
+            %p.user_wrapper__contents__forms__body__info__text
+              安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+          .user_wrapper__contents__forms__body__form
+            .user_wrapper__contents__forms__body__form__items
+              = f.label :name, "お名前(全角)", class: "user_wrapper__contents__forms__body__form__items__namelabel"
+              %span.user_wrapper__contents__forms__body__form__items__name-logo
+                必須
+            = f.text_field :first_name, placeholder: "　例）福沢", class: "user_wrapper__contents__forms__body__form__field-name"
+            = f.text_field :last_name, placeholder: "　例　諭吉", class: "user_wrapper__contents__forms__body__form__field-lsname"
+          .user_wrapper__contents__forms__body__form
+            .user_wrapper__contents__forms__body__form__items
+              = f.label :name, "お名前カナ(全角)", class: "user_wrapper__contents__forms__body__form__items__namelabel"
+              %span.user_wrapper__contents__forms__body__form__items__name-logo
+                必須
+            = f.text_field :first_name_ruby, placeholder: "　例）フクザワ", class: "user_wrapper__contents__forms__body__form__field-name"
+            = f.text_field :last_name_ruby, placeholder: "　例　ユキチ", class: "user_wrapper__contents__forms__body__form__field-lsname"
+          .user_wrapper__contents__forms__body__form
+            .user_wrapper__contents__forms__body__form__items
+              = f.label :name, "お名前カナ(全角)", class: "user_wrapper__contents__forms__body__form__items__namelabel"
+              %span.user_wrapper__contents__forms__body__form__items__name-logo
+                必須
+            != sprintf(f.date_select(:birth_date, start_year: 1950, end_year: (Time.now.year), use_month_numbers: true, date_separator: '%s'), '年', '月') + '日'
+          .user_wrapper__contents__forms__body__form
+          .user_wrapper__contents__forms__body__message
+            %p.user_wrapper__contents__forms__body__message__text
+              ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+            = recaptcha_tags
+          .user_wrapper__contents__forms__body__tbox
+            %span.user_wrapper__contents__forms__body__tbox__agree
+              「次へ進む」のボタンを押すことにより、
+            %a{href: "", class: "user_wrapper__contents__forms__body__tbox__link"} 利用規約
+            %span.user_wrapper__contents__forms__body__tbox__agree
+              に同意したものとみなします
+          .user_wrapper__contents__forms__body__buttonbox
+            = link_to "", class: "user_wrapper__contents__forms__body__buttonbox__btn" do
+              %p.user_wrapper__contents__forms__body__buttonbox__btn__next
+                次に進む
+          .user_wrapper__contents__forms__body__infobox
+            %a{href: "", class:"user_wrapper__contents__forms__body__infobox__info"}
+              本人情報の登録について
+            = fa_icon "chevron-right", class: "user_wrapper__contents__forms__body__infobox__icon"
+  .user_wrapper__footer
+    .user_wrapper__footer__info
+      = link_to "プライバシーポリシー", "", class: "user_wrapper__footer__info__links" 
+      = link_to "メルカリ利用規約", "", class: "user_wrapper__footer__info__links" 
+      = link_to "特定商取引に関する表記", "", class: "user_wrapper__footer__info__links" 
+      = link_to items_path, class: "user_wrapper__footer__logo" do
+        %img{class: "user_wrapper__footer__logo__img", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3791839826", alt: "mercari"}
+        %p.user_wrapper__footer__logo__sign-mercari
+          © 2019 Mercari
+            
 -# %h2 Sign up
--# = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
 -#   = render "devise/shared/error_messages", resource: resource
 -#   .field
--#     = f.text_field :nickname, placeholder: "nickname"
+-#     
 -#     = f.text_field :first_name, placeholder: "first_name"
 -#     = f.text_field :last_name, placeholder: "last_name"
--#     = f.text_field :birth_date, placeholder: "date"
+-#     
 -#     = f.label :email
 -#     %br/
--#     = f.email_field :email, autofocus: true, autocomplete: "email"
+-#     
 -#   .field
 -#     = f.label :password
 -#     - if @minimum_password_length
