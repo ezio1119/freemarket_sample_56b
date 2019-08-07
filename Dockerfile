@@ -1,6 +1,7 @@
 FROM ruby:2.6.3-alpine3.10 AS builder
 
 RUN apk add --no-cache alpine-sdk \
+    yarn \
     nodejs \
     tzdata \
     mysql-client \
@@ -15,7 +16,8 @@ RUN bundle install
 
 FROM ruby:2.6.3-alpine3.10
 
-RUN apk --no-cache add alpine-sdk \
+RUN apk add --no-cache alpine-sdk \
+    yarn \
     nodejs \
     tzdata \
     mysql-client \
@@ -23,6 +25,14 @@ RUN apk --no-cache add alpine-sdk \
 
 COPY --from=builder /usr/local/bundle /usr/local/bundle
 
-ENV APP_ROOT /usr/src/app
-WORKDIR $APP_ROOT
-ADD . $APP_ROOT
+WORKDIR /app
+ADD . /app
+RUN mkdir -p /app/tmp/sockets
+RUN RAILS_ENV=production bundle exec rake assets:precompile
+
+ENV RAILS_ENV production
+
+VOLUME /app/public
+VOLUME /app/tmp
+
+CMD /bin/sh -c "bundle exec rails db:create RAILS_ENV=production && bundle exec rails db:migrate RAILS_ENV=production && rm -f tmp/pids/server.pid && bundle exec rails s puma -e production"
