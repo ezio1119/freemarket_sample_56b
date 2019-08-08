@@ -1,0 +1,33 @@
+= render 'items/header'
+
+.sub__header
+  %ul.sub__header__list
+    %li.sub__header__list__item
+      = link_to "https://www.mercari.com/jp/", class: "sub__header__list__item__active" do
+        メルカリ
+        = fa_icon "chevron-right", class: "sub__header__list__item__icon"
+    %li.sub__header__list__item
+      = link_to "https://www.mercari.com/jp/", class: "sub__header__list__item__active" do
+        マイページ
+        = fa_icon "chevron-right", class: "sub__header__list__item__icon"
+    %li.sub__header__list__item--now
+      プロフィール
+
+.mypage
+
+  = render 'sidebar'
+
+  .mypage__right
+    .mypage__right__side
+      %section.mypage__right__side__profile
+        %h2.mypage__right__side__profile__head プロフィール
+        .mypage__right__side__profile__content
+          .mypage__right__side__profile__content__top
+            .mypage__right__side__profile__content__top__icon
+              = image_tag "https://static.mercdn.net/images/member_photo_noimage_thumb.png", alt: "user", width: 60, height: 60
+            %input.mypage__right__side__profile__content__top__text{ placeholder: "例)AYA☆セール中", type: "text"}
+          .mypage__right__side__profile__content__bottom
+            %textarea.mypage__right__side__profile__content__bottom__text{ placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
+            %input.mypage__right__side__profile__content__bottom__btn{ type: "submit", value: "変更する" }
+
+= render 'items/footer'
