@@ -1,4 +1,5 @@
 .newpage
+  = render 'users/shared/header_center'
   .newpage__box
     .newpage__box__title
       商品の情報を入力
@@ -113,6 +114,8 @@
         = button_to "出品する", "", class: "newpage__box__btn__group__submit"
         .newpage__box__btn__group__return
           = button_to "戻る", "", class: "newpage__box__btn__group__return--click"
+
+  = render 'users/shared/footer'
 
 
           
