@@ -35,4 +35,4 @@ ENV RAILS_ENV production
 VOLUME /app/public
 VOLUME /app/tmp
 
-CMD /bin/sh -c "bundle exec rails db:create RAILS_ENV=production && bundle exec rails db:migrate RAILS_ENV=production && rm -f tmp/pids/server.pid && bundle exec rails s puma -e production"
+CMD /bin/sh -c "bundle exec rails db:create RAILS_ENV=production && bundle exec rails db:migrate RAILS_ENV=production && bundle exec rails s puma -e production"
