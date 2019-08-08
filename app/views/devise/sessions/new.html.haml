@@ -1,17 +1,46 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.log_wrapper
+  = render 'users/shared/header_center'
+  .log_wrapper__logcontents
+    .log_wrapper__logcontents__forms
+      .log_wrapper__logcontents__forms__top
+        %p.log_wrapper__logcontents__forms__top__text
+          アカウントをお持ちでない方はこちら
+        = link_to "",class: "log_wrapper__logcontents__forms__top__form" do
+          %p.log_wrapper__logcontents__forms__top__form__btn
+            新規会員登録
+      .log_wrapper__logcontents__forms__contents
+        .log_wrapper__logcontents__forms__contents__btns
+          = link_to "", class: "log_wrapper__logcontents__forms__contents__btns__facebook" do
+            = fa_icon "facebook-square", class: "log_wrapper__logcontents__forms__contents__btns__facebook__face"
+            %span.log_wrapper__logcontents__forms__contents__btns__facebook__text
+              Facebookでログイン
+          = link_to "", class: "log_wrapper__logcontents__forms__contents__btns__google" do
+            %img.log_wrapper__logcontents__forms__contents__btns__google__img(src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png")
+            %span.log_wrapper__logcontents__forms__contents__btns__google__text
+              Googleでログイン
+  = render 'users/shared/footer'
+
+
+
+
+
+
+
+
+-# %h2 Log in
+-# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+-#   .field
+-#     = f.label :email
+-#     %br/
+-#     = f.email_field :email, autofocus: true, autocomplete: "email"
+-#   .field
+-#     = f.label :password
+-#     %br/
+-#     = f.password_field :password, autocomplete: "current-password"
+-#   - if devise_mapping.rememberable?
+-#     .field
+-#       = f.check_box :remember_me
+-#       = f.label :remember_me
+-#   .actions
+-#     = f.submit "Log in"
+-# = render "devise/shared/links"

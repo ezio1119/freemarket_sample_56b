@@ -1,3 +1,4 @@
+//ヘッダー
 .header{
   height: 100px;
   width: 100vw;
@@ -78,54 +79,7 @@
   }
 }
 
-.main{
-  &__slider{
-    height: 400px;
-    width: 100vw;
-    background-color: rgb(202, 212, 182);
-  }
-  &__container{
-    width: 100vw;
-    margin: 24px auto 0;
-    padding-bottom: 40px;
-    text-align: center;
-    &__title{
-      font-size: 28px;
-      font-weight: bold;
-    }
-    &__box{
-      font-size: 22px;
-      width: 1000px;
-      min-width: 800px;
-      margin: 0 auto;
-      &--title{
-        text-decoration: none;
-        color: rgb(0, 153, 232);
-        font-weight: bold; 
-      }
-      &--title:hover{
-        text-decoration: underline;
-      }
-      &--content{
-        display: flex;
-        &--items{
-          width: 213px;
-          margin-left: 10px;
-          background-color: aliceblue;
-          cursor: pointer;
-          &--image{
-            width: 213px;
-            height: 220px;
-          }
-          &--text{
-            height: 110px;
-          }
-        }
-      }
-    }
-  }
-}
-
+//バーナー
 .banner{
   background-image: url("https://www.mercari.com/jp/assets/img/common/jp/top/download_bg_pc.jpg?78373356");
   height: 260px;
@@ -162,6 +116,8 @@
     }
   }
 }
+
+//フッター
 .footer{
   height: 400px;
   background-color: #212121;
