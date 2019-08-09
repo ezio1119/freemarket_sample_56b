@@ -32,7 +32,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    binding.pry
   end
 
   # GET /resource/edit
@@ -62,7 +61,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def user_params
-    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :first_name, :last_name, :first_name_ruby, :last_name_ruby ,:birth_date)
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :first_name, :last_name, :first_name_kana, :last_name_kana ,:birth_date)
   end
 
   def set_user

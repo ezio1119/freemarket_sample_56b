@@ -10,7 +10,7 @@ class User < ApplicationRecord
     with: /[^ -~｡-ﾟ]+/,
     message: "全角のみで入力してください"
   }
-  validates :first_name_ruby, presence: true, format: {
+  validates :first_name_kana, presence: true, format: {
     with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
     message: "全角カタカナのみで入力して下さい"
   }
@@ -18,7 +18,7 @@ class User < ApplicationRecord
     with: /[^ -~｡-ﾟ]+/,
     message: "全角のみで入力してください"
   }
-  validates :last_name_ruby, presence: true, format: {
+  validates :last_name_kana, presence: true, format: {
     with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
     message: "全角カタカナのみで入力して下さい"
   }
