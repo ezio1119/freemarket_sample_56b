@@ -6,6 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :set_user, only: [:address]
   before_action :set_user_params, only: [:address]
 
+
   # GET /resource/sign_up
   def index
     
