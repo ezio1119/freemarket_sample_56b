@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get 'users/profile' => 'users#profile'
   get 'users/identification' => 'users#identification'
-  resources :items, only: [:index, :show, :new]
+  resources :items, only: [:index, :show, :new, :create]
   resources :users, only:[:show, :index]
 
 end
