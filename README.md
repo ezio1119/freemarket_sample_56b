@@ -85,7 +85,6 @@
 - belongs_to :user
 
 
-
 ## Cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
