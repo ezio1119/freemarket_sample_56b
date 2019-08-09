@@ -21,8 +21,8 @@
 - belongs_to :user
 - has_many :comments, dependent: :destroy
 - has_many :attached, dependent: :destroy
-- has_many :item_category
-- has_many :categorys, through: :item_category
+- has_many :item_categories
+- has_many :categories, through: :item_categories
 
 
 ## Categoryテーブル
@@ -34,8 +34,8 @@
 
 ### Association
 
-- has_many :item_category
-- has_many :items, through: :item_category
+- has_many :item_categories
+- has_many :items, through: :item_categories
 
 
 ## Item_Categoryテーブル
