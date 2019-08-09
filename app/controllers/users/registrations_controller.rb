@@ -30,9 +30,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    redirect_to action: 'tell'
+  end
 
   # GET /resource/edit
   # def edit
