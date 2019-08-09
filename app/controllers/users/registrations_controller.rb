@@ -30,7 +30,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    redirect_to action: 'tell'
+    binding.pry
   end
 
   # GET /resource/edit
