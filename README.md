@@ -6,14 +6,14 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|size|string|
+|size|integer|
 |name|text|null: false, index: true|
 |delivery|integer|null: false|
 |region|integer|null: false|
 |days|integer|null: false|
 |price|integer|null: false, CHECK (price >= 300, price <= 9999999)|
 |info|text|null: false, limit: 1000|
-|user|referencess|foreign_key: true|
+|user|references|foreign_key: true|
 |category|references|foreign_key: true|
 
 ### Association
@@ -21,8 +21,8 @@
 - belongs_to :user
 - has_many :comments, dependent: :destroy
 - has_many :attached, dependent: :destroy
-- has_many :item_categories
-- has_many :categories, through: :item_categories
+- has_many :itemcategories
+- has_many :categories, through: :itemcategories
 
 
 ## Categoryテーブル
@@ -30,15 +30,15 @@
 |Column|Type|Options|
 |------|----|-------|
 |class_id|integer|null: false|
-|name|integer|null: false|
+|name|string|null: false|
 
 ### Association
 
-- has_many :item_categories
-- has_many :items, through: :item_categories
+- has_many :itemcategories
+- has_many :items, through: :itemcategories
 
 
-## Item_Categoryテーブル
+## ItemCategoryテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -59,8 +59,8 @@
 |password|string|null: false, length: { in: 7..128 }|
 |first_name|string|null: false|
 |last_name|string|null: false|
-|first_name_ruby|string|null: false|
-|last_name_ruby|string|null: false|
+|first_name_kana|string|null: false|
+|last_name_kana|string|null: false|
 |birth_date|date|null: false|
 |phone_number|integer|
 |phone_number_authentication|boolean|
