@@ -21,6 +21,7 @@
   &__contents {
     height: 70%;
     width: 100%;
+    margin-bottom: 200px;
     &__forms {
       background-color: white;
       width: 700px;
@@ -191,7 +192,6 @@
     }
   }
   &__footer {
-    margin-top: 200px;
     height: 10%;
     width: 100vw;
     &__info {
