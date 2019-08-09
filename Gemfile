@@ -39,6 +39,7 @@ gem 'haml-rails'
 gem 'devise'
 gem "font-awesome-rails"
 gem "aws-sdk-s3", require: false
+gem 'recaptcha', require: "recaptcha/rails"
 
 
 group :development, :test do
