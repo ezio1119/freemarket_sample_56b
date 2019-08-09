@@ -1,0 +1,64 @@
+.mypage__right__side__profile {
+  background-color: #fff;
+  min-height: 568px;
+  width: 700px;
+  &__head {
+    border-bottom: 1px solid #f5f5f5;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 8px 24px;
+    text-align: center;
+  }
+  &__content {
+    min-height: 518px;
+    &__top {
+      background-image: url("https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?1355409");
+      box-sizing: border-box;
+      margin: 0 auto;
+      padding: 72px 16px 24px;
+      text-align: center;
+      &__icon {
+        border-radius: 50%;
+        display: inline-block;
+        height: 60px;
+        overflow: hidden;
+        width: 60px;
+        vertical-align: middle;
+      }
+      &__text {
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        height: 30px;
+        line-height: 1.5;
+        margin: 0 0 0 4px;
+        padding: 10px 16px 8px;
+        vertical-align: middle;
+      }
+    }
+    &__bottom {
+      padding: 40px 16px;
+      &__text {
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        font-size: 16px;
+        line-height: 1.5;
+        max-width: 100%;
+        min-height: 216px;
+        padding: 10px;
+        resize: vertical;
+        width: 100%;
+      }
+      &__btn {
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff;
+        font-size: 14px;
+        line-height: 48px;
+        margin: 16px 0 0;
+        width: 100%;
+      }
+    }
+  }
+}

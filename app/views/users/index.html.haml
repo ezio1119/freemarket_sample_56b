@@ -1,0 +1,34 @@
+.sign-wrapper
+  .sign-wrapper__header
+    .sign-wrapper__header__link
+      = link_to items_path, class: "sign-wrapper__header__link__logo" do
+        %img{class:"sign-wrapper__header__link__logo__image", :alt => "mercari", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?863303983"}
+  .sign-wrapper__contents
+    .sign-wrapper__contents__top
+      %p.sign-wrapper__contents__top__message
+        新規会員登録
+    .sign-wrapper__contents__main
+      .sign-wrapper__contents__main__items
+        = link_to new_user_registration_path ,class: "sign-wrapper__contents__main__items__mail" do
+          = fa_icon "envelope", class: "sign-wrapper__contents__main__items__mail__envelope"
+          %span.sign-wrapper__contents__main__items__mail__text
+            メールアドレスで登録する
+        = link_to "#" ,class: "sign-wrapper__contents__main__items__facebook" do
+          = fa_icon "facebook-square", class: "sign-wrapper__contents__main__items__facebook__faceicon"
+          %span.sign-wrapper__contents__main__items__mail__text
+            Facebookで登録する
+        = link_to "#" ,class: "sign-wrapper__contents__main__items__google" do
+          %img.sign-wrapper__contents__main__items__google__png(src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png")
+          %span.sign-wrapper__contents__main__items__mail__text
+            Googleで登録する
+  .sign-wrapper__footer
+    .sign-wrapper__footer__info
+      = link_to "プライバシーポリシー", "", class: "sign-wrapper__footer__info__links"
+      = link_to "メルカリ利用規約", "", class: "sign-wrapper__footer__info__links"
+      = link_to "特定商取引に関する表記", "", class: "sign-wrapper__footer__info__links"
+    = link_to items_path, class: "sign-wrapper__footer__logo" do
+      %img{class: "sign-wrapper__footer__logo__img", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3791839826", alt: "mercari"}
+      %p.sign-wrapper__footer__logo__sign-mercari
+        © 2019 Mercari
+
+

@@ -1,0 +1,93 @@
+.log_wrapper {
+  background: #f5f5f5;
+  color: rgb(51, 51, 51);
+  &__logcontents {
+    height: 725px;
+    width: 450px;
+    background: white;
+    margin: 0 auto;
+    &__forms {
+      height: 100%;
+      width: 100%;
+      &__top {
+        height: 150px;
+        text-align: center;
+        border-bottom: solid 1px #f5f5f5;
+        &__text {
+          display: inline-block;
+          width: 240px;
+          font-size: 13px;
+          margin: 42px 0 5px;
+        }
+        &__form {
+          display: block;
+          text-decoration: none;
+          height: 45px;
+          width: 73%;
+          background: #0099e8;
+          color: #fff;
+          text-align: center;
+          margin: 0 auto;
+          &__btn {
+            line-height: 45px;
+            font-size: 14px;
+          }
+        }
+      }
+      &__contents {
+        height: 79%;
+        width: 100%;
+        &__btns {
+          margin-top: 40px;
+          &__facebook {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            height: 50px;
+            width: 73%;
+            margin: 0 auto;
+            text-decoration: none;
+            background: #385185;
+            margin-bottom: 20px;
+            position: relative;
+            text-align: center;
+            &__face {
+              position: absolute;
+              top: 12px;
+              left: 15px;
+              font-size: 27px;
+            }
+            &__text {
+              line-height: 50px;
+            }
+          }
+          &__google {
+            display: block;
+            color: black;
+            text-decoration: none;
+            height: 50px;
+            width: 73%;
+            margin: 0 auto;
+            text-decoration: none;
+            background: white;
+            border: 1px solid #979797;
+            position: relative;
+            text-align: center;
+            &__img {
+              display: inline-block;
+              width:20px;
+              height: 20px;
+              position: absolute;
+              top: 12px;
+              left: 15px;
+              font-size: 27px;
+            }
+            &__text {
+              line-height: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
