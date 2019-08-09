@@ -2,8 +2,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  before_action :set_user, only: [:address]
-  before_action :set_user_params, only: [:address]
+  before_action :set_user, only: [:tell]
+  before_action :set_user_params, only: [:tell]
 
   # GET /resource/sign_up
   def index
@@ -14,13 +14,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  def address
+  def tell
     if @user.valid?
       session = user_params
     else
       redirect_back(fallback_location: root_path)
     end
   end
+
+  def address
+    
+  end
+
 
   # POST /resource
   # def create
