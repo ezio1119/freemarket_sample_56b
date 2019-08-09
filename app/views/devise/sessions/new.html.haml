@@ -18,6 +18,15 @@
             %img.log_wrapper__logcontents__forms__contents__btns__google__img(src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png")
             %span.log_wrapper__logcontents__forms__contents__btns__google__text
               Googleでログイン
+        .log_wrapper__logcontents__forms__contents__bottom
+          = form_for(resource, as: resource_name, url: session_path(resource_name), class: "log_wrapper__logcontents__forms__contents__bottom__input") do |f|
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "　メールアドレス", class: "log_wrapper__logcontents__forms__contents__bottom__input__form"
+            = f.password_field :password, autocomplete: "current-password", placeholder: "　パスワード", class: "log_wrapper__logcontents__forms__contents__bottom__input__formpath"
+            = recaptcha_tags
+            = f.submit "ログイン", class: "log_wrapper__logcontents__forms__contents__bottom__input__btn"
+          = link_to "", class: "log_wrapper__logcontents__forms__contents__bottom__message" do
+            %p.log_wrapper__logcontents__forms__contents__bottom__message__text
+              パスワードをお忘れの方
   = render 'users/shared/footer'
 
 
