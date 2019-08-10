@@ -30,6 +30,8 @@
                 本人確認書類のアップロードについて
                 = fa_icon "chevron-right", class: "mypage__right__side__identification__container__top__link__icon"
           .mypage__right__side__identification__container__form
+            = form_for @address, url: root_path do |f|
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name
             %label.mypage__right__side__identification__container__form__item
               お名前
             %p.mypage__right__side__identification__container__form__item--name
