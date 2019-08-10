@@ -9,7 +9,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def index
-    
   end
 
   def new
