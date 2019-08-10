@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get 'users/identification' => 'users#identification'
   resources :items, only: [:index, :show, :new]
   resources :users, only:[:show, :index]
+  resources :cards, only: :index
 end
-
