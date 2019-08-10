@@ -22,6 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       redirect_back(fallback_location: root_path)
     end
+    
   end
 
   def address
@@ -31,7 +32,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+    if verify_recaptcha
+      super
+    else
+      self.resource = resource_class.new
+      binding.pry
+      respond_with_navigational(resource) { render :new }
+    end
   end
 
   # GET /resource/edit
