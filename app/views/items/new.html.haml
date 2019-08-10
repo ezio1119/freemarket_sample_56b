@@ -13,9 +13,8 @@
           %p.newpage__box__upload__text
             最大10枚までアップロードできます
           .newpage__box__upload__drop
-            .newpage__box__upload__drop--span
-              %span ドラッグアンドドロップ 
-              %br またはクリックしてファイルをアップロード
+            = f.file_field :images, multiple: true, class: "newpage__box__upload__drop--span"
+              
           
       .newpage__box__form
         .newpage__box__form__group
