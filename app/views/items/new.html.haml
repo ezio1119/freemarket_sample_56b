@@ -29,7 +29,7 @@
             商品の説明
             .newpage__box__form__group__title--req
               必須
-          = f.text_field :info, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）\n2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: 'newpage__box__form__group__text'
+          = f.text_area :info, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）\n2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: 'newpage__box__form__group__text'
           
       .newpage__box__form
         .newpage__box__form__block
@@ -45,7 +45,10 @@
               商品の状態
               .newpage__box__form__block__right__title--req
                 必須
-            %input{ placeholder: "---", type: "text", class: 'newpage__box__form__block__right__text'}
+            .newpage__box__form__block__right__text
+              = f.select :state, Item.states.keys, {}, class: 'newpage__box__form__block__right__text--sel'
+              = fa_icon "chevron-down", class: "newpage__box__form__block__right__text--icon"
+            
         
       .newpage__box__form
         .newpage__box__form__block
@@ -56,17 +59,23 @@
               配送料の負担
               .newpage__box__form__block__right__title--req
                 必須
-            = f.select :delivery, Item.deliveries.keys, {}, class: 'newpage__box__form__block__right__input'
+            .newpage__box__form__block__right__input
+              = f.select :delivery, Item.deliveries.keys, {},class: 'newpage__box__form__block__right__input--sel'
+              = fa_icon "chevron-down", class: "newpage__box__form__block__right__input--icon"
             %h3.newpage__box__form__block__right__title
               発送元の地域
               .newpage__box__form__block__right__title--req
                 必須
-            = f.select :region, Item.regions.keys, {}, class: 'newpage__box__form__block__right__input'
+            .newpage__box__form__block__right__input
+              = f.select :region, Item.regions.keys, {}, class: 'newpage__box__form__block__right__input--sel'
+              = fa_icon "chevron-down", class: "newpage__box__form__block__right__input--icon"
             %h3.newpage__box__form__block__right__title
               発送までの日数
               .newpage__box__form__block__right__title--req
                 必須
-            = f.select :days, Item.days.keys, {}, class: 'newpage__box__form__block__right__text'
+            .newpage__box__form__block__right__text
+              = f.select :days, Item.days.keys, {}, class: 'newpage__box__form__block__right__text--sel'
+              = fa_icon "chevron-down", class: "newpage__box__form__block__right__text--icon"
 
       .newpage__box__form
         .newpage__box__form__price
