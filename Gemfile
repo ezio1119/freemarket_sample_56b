@@ -40,6 +40,7 @@ gem 'devise'
 gem "font-awesome-rails"
 gem "aws-sdk-s3", require: false
 gem 'recaptcha', require: "recaptcha/rails"
+gem 'active_hash'
 
 
 group :development, :test do
