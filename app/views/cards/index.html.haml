@@ -1,0 +1,45 @@
+= render 'items/header'
+
+.sub__header
+  %ul.sub__header__list
+    %li.sub__header__list__item
+      = link_to "https://www.mercari.com/jp/", class: "sub__header__list__item__active" do
+        メルカリ
+        = fa_icon "chevron-right", class: "sub__header__list__item__icon"
+    %li.sub__header__list__item
+      = link_to "https://www.mercari.com/jp/", class: "sub__header__list__item__active" do
+        マイページ
+        = fa_icon "chevron-right", class: "sub__header__list__item__icon"
+    %li.sub__header__list__item--now
+      支払い方法
+
+.mypage
+
+  = render 'users/sidebar'
+
+  .mypage__right
+    .mypage__right__side
+      %section.mypage__right__side__credit
+        %h2.mypage__right__side__credit__title
+          支払い方法
+        .mypage__right__side__credit__container
+          %section.mypage__right__side__credit__container__top
+            .mypage__right__side__credit__container__top__title
+              %h3.mypage__right__side__credit__container__top__title__text
+                クレジットカード一覧
+            %ul
+              %li.mypage__right__side__credit__container__top__list
+                %form.mypage__right__side__credit__container__top__list__content
+                  .mypage__right__side__credit__container__top__list__content__icon
+                    = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2508029365", alt: "visa", height: "15", width: "49"
+                  .mypage__right__side__credit__container__top__list__content__num
+                    ************1234
+                  .mypage__right__side__credit__container__top__list__content__num
+                    01/23
+                  %button.mypage__right__side__credit__container__top__list__content__btn{ type: "submit"} 削除する
+          .mypage__right__side__credit__container__bottom
+            = link_to "#", class: "mypage__right__side__credit__container__bottom__link" do
+              支払い方法について
+              = fa_icon "chevron-right", class: "mypage__right__side__credit__container__bottom__link__icon"
+
+= render 'items/footer'
