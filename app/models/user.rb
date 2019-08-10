@@ -8,19 +8,19 @@ class User < ApplicationRecord
   validates :nickname, presence: true, length: { maximum: 20 }
   validates :first_name, presence: true, format: {
     with: /[^ -~｡-ﾟ]+/,
-    message: "全角のみで入力してください"
+    message: "Please enter only double-byte"
   }
   validates :first_name_kana, presence: true, format: {
     with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
-    message: "全角カタカナのみで入力して下さい"
+    message: "Please enter only full-width katakan"
   }
   validates :last_name, presence: true, format: {
     with: /[^ -~｡-ﾟ]+/,
-    message: "全角のみで入力してください"
+    message: "Please enter only double-byte"
   }
   validates :last_name_kana, presence: true, format: {
     with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
-    message: "全角カタカナのみで入力して下さい"
+    message: "Please enter only full-width katakan"
   }
   validates :birth_date, presence: true
     
