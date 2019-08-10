@@ -134,8 +134,5 @@ describe User do
       user.valid?
       expect(user.errors[:last_name_kana][0]).to include("Please enter only full-width katakan")
     end
-
-    
-    
   end
 end
