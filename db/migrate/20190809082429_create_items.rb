@@ -3,6 +3,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
     create_table :items do |t|
       t.integer   :size
       t.text      :name, null: false, add_index: true
+      t.integer   :state, null: false
       t.integer   :delivery, null: false
       t.integer   :region, null: false
       t.integer   :days, null: false

@@ -8,9 +8,10 @@
 |------|----|-------|
 |size|integer|
 |name|text|null: false, index: true|
-|delivery|integer|null: false|
-|region|integer|null: false|
-|days|integer|null: false|
+|state|integer|null: false, dafault: ---|
+|delivery|integer|null: false, dafault: ---|
+|region|integer|null: false, dafault: ---|
+|days|integer|null: false, dafault: ---|
 |price|integer|null: false, CHECK (price >= 300, price <= 9999999)|
 |info|text|null: false, limit: 1000|
 |user|references|foreign_key: true|

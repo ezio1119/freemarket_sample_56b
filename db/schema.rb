@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_08_09_082429) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "size"
     t.text "name", null: false
+    t.integer "state", null: false
     t.integer "delivery", null: false
     t.integer "region", null: false
     t.integer "days", null: false
