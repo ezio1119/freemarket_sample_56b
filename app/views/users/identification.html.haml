@@ -19,7 +19,7 @@
     .mypage__right__side
       %section.mypage__right__side__identification
         %h2.mypage__right__side__identification__title 本人情報の登録
-        %form.mypage__right__side__identification__container
+        = form_for @address, url: root_path, :html => {class: "mypage__right__side__identification__container"} do |f|
           .mypage__right__side__identification__container__top
             %p.mypage__right__side__identification__container__top__text
               お客さまの本人情報をご登録ください。
@@ -30,104 +30,45 @@
                 本人確認書類のアップロードについて
                 = fa_icon "chevron-right", class: "mypage__right__side__identification__container__top__link__icon"
           .mypage__right__side__identification__container__form
-            = form_for @address, url: root_path do |f|
-              = f.collection_select :prefecture_id, Prefecture.all, :id, :name
-            %label.mypage__right__side__identification__container__form__item
-              お名前
+            = f.label :name, "お名前", class: "mypage__right__side__identification__container__form__item"
             %p.mypage__right__side__identification__container__form__item--name
               テスト 太朗
           .mypage__right__side__identification__container__form
-            %label.mypage__right__side__identification__container__form__item
-              お名前カナ
+            = f.label :name_kana, "お名前カナ", class: "mypage__right__side__identification__container__form__item"
             %p.mypage__right__side__identification__container__form__item--name
               テスト タロウ
           .mypage__right__side__identification__container__form
-            %label.mypage__right__side__identification__container__form__item
-              生年月日
+            = f.label :birth_date, "生年月日", class: "mypage__right__side__identification__container__form__item"
             %p.mypage__right__side__identification__container__form__item--name
               0000/00/00
           .mypage__right__side__identification__container__form
-            %label.mypage__right__side__identification__container__form__item
-              郵便番号
+            = f.label :postcode, "郵便番号", class: "mypage__right__side__identification__container__form__item"
             %span.mypage__right__side__identification__container__form__arbitrary
               任意
-            %input.mypage__right__side__identification__container__form__text{ placeholder: "例）1234567", type: "text"}
+            = f.text_field :postcode, class: "mypage__right__side__identification__container__form__text", placeholder: "例) 1234567"
           .mypage__right__side__identification__container__form
-            %label.mypage__right__side__identification__container__form__item
-              都道府県
+            = f.label :prefecture, "都道府県", class: "mypage__right__side__identification__container__form__item"
             %span.mypage__right__side__identification__container__form__arbitrary
               任意
             .mypage__right__side__identification__container__form__prefecture
               = fa_icon "chevron-down", class:"mypage__right__side__identification__container__form__prefecture__icon"
-              %select.mypage__right__side__identification__container__form__prefecture__list{ name: "prefecture", value: "address"}
-                %option --
-                %option 北海道
-                %option 青森県
-                %option 岩手県
-                %option 宮城県
-                %option 秋田県
-                %option 山形県
-                %option 福島県
-                %option 東京都
-                %option 神奈川県
-                %option 埼玉県
-                %option 千葉県
-                %option 茨城県
-                %option 栃木県
-                %option 群馬県
-                %option 山梨県
-                %option 新潟県
-                %option 長野県
-                %option 富山県
-                %option 石川県
-                %option 福井県
-                %option 愛知県
-                %option 岐阜県
-                %option 静岡県
-                %option 三重県
-                %option 大阪府
-                %option 兵庫県
-                %option 京都府
-                %option 滋賀県
-                %option 奈良県
-                %option 和歌山県
-                %option 鳥取県
-                %option 島根県
-                %option 岡山県
-                %option 広島県
-                %option 山口県
-                %option 徳島県
-                %option 香川県
-                %option 愛媛県
-                %option 高知県
-                %option 福岡県
-                %option 佐賀県
-                %option 長崎県
-                %option 熊本県
-                %option 大分県
-                %option 宮崎県
-                %option 鹿児島県
-                %option 沖縄県
-
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, class: "mypage__right__side__identification__container__form__prefecture__list"
           .mypage__right__side__identification__container__form
-            %label.mypage__right__side__identification__container__form__item
-              市区町村
+            = f.label :city, "市区町村", class: "mypage__right__side__identification__container__form__item"
             %span.mypage__right__side__identification__container__form__arbitrary
               任意
-            %input.mypage__right__side__identification__container__form__text{ placeholder: "例) 横浜市緑区", type: "text"}
+            = f.text_field :city, class: "mypage__right__side__identification__container__form__text", placeholder: "例) 横浜市緑区"
           .mypage__right__side__identification__container__form
-            %label.mypage__right__side__identification__container__form__item
-              番地
+            = f. label :block, "番地", class: "mypage__right__side__identification__container__form__item"
             %span.mypage__right__side__identification__container__form__arbitrary
               任意
-            %input.mypage__right__side__identification__container__form__text{ placeholder: "例) 青山1-1-1", type: "text"}
+            = f.text_field :block, class: "mypage__right__side__identification__container__form__text", placeholder: "例) 青山1-1-1"
           .mypage__right__side__identification__container__form
-            %label.mypage__right__side__identification__container__form__item
-              建物名
+            = f.label :building, "建物名", class: "mypage__right__side__identification__container__form__item"
             %span.mypage__right__side__identification__container__form__arbitrary
               任意
-            %input.mypage__right__side__identification__container__form__text{ placeholder: "例) 柳ビル103", type: "text"}
-          %button.mypage__right__side__identification__container__form__btn{ type: "submit" } 登録する
+            = f.text_field :building, class: "mypage__right__side__identification__container__form__text", placeholder: "例) 柳ビル103"
+          = f.submit "登録する", class: "mypage__right__side__identification__container__form__btn"
           .mypage__right__side__identification__container__bottom
             %p.mypage__right__side__identification__container__bottom__link
               = link_to "https://www.mercari.com/jp/help_center/article/423/", class: "mypage__right__side__identification__container__bottom__link" do
