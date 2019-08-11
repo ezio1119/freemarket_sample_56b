@@ -1,0 +1,230 @@
+//ヘッダー
+.header{
+  height: 100px;
+  width: 100vw;
+  &__inner{
+    width: 1050px;
+    margin: 0 auto;
+    padding: 8px 0 0;
+    &__top{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      &--search{
+        position: relative;
+        margin-left:45px;
+        width: 100%;
+        &--input{
+          width: 100%;
+          height: 40px;
+          padding: 0 42px 0 10px;
+          border-radius: 4px;
+          background-color: #f5f5f5;
+        }
+        &--icon{
+          position: absolute;
+          top: 0px;
+          right: 0px;
+          width: 40px;
+          height: 40px;
+          cursor: pointer;
+          text-align: center;
+          line-height: 40px;
+        }
+      }
+    }
+    &__bottom{
+      margin: 0 0 8px;
+      display: flex;
+      justify-content: space-between;
+      &--left{
+        display: flex;
+        line-height: 40px;
+        font-size: 14px;
+        &--nav{
+          padding: 0 11px;
+          &--wrap{
+            &--icon{
+              color: red;
+            }
+            &--link{
+              text-decoration: none;
+              color: black;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+      &--right{
+        display: flex;
+        line-height: 40px;
+        &--signin{
+          background-color: red;
+          color: white;
+          height: 32px;
+          padding: 0 10px;
+          border-radius: 5px;
+          border: none;
+        }
+        &--login{
+          color: rgb(0, 153, 232);
+          height: 32px;
+          padding: 0 10px;
+          border-radius: 5px;
+          border: 1px solid rgb(0, 153, 232);
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
+
+//バーナー
+.banner{
+  background-image: url("https://www.mercari.com/jp/assets/img/common/jp/top/download_bg_pc.jpg?78373356");
+  height: 260px;
+  background-position: center;
+  background-size: cover;
+  &__contents{
+    width: 750px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    &__left{
+      color: #fff;
+      margin: 50px 0 0 15px; 
+      text-shadow: 1px 2px 2px #808080;
+      &__first{
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      &__second{
+        font-size: 34px;
+        margin-bottom: 10px;
+      }
+      &__icon{
+        display: flex;
+        &--btn{
+          display: flex;
+          padding: 15px 20px;
+          &--google{
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+//フッター
+.footer{
+  height: 400px;
+  background-color: #212121;
+  &__contents{
+    width: 1020px;
+    margin: 0 auto;
+    color: #fff;
+    display: flex;
+    padding-top: 10px;
+    &__left{
+      &__title{
+        font-size: 16px;
+      }
+      &__ul{
+        &--li{ 
+          margin-top: 10px;
+          &--text{
+            text-decoration: none;
+            color: #fff;
+            opacity: 0.7;
+            font-size: 11px;
+          }
+        }
+      }
+      &__icon{
+        display: flex;
+        margin-top: 14px;
+        &--li{
+          &--link{
+            cursor: pointer;
+          }
+          &--twitter{
+            color: #fff;
+            font-size: 36px;
+          }
+          &--facebook{
+            color: #fff;
+            font-size: 36px;
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+    &__center{
+      margin-left: 40px;
+      &__title{
+        font-size: 16px;
+      }
+      &__ul{
+        &--li{ 
+          margin-top: 10px;
+          &--text{
+            text-decoration: none;
+            color: #fff;
+            opacity: 0.7;
+            font-size: 11px;
+          }
+        }
+      }
+    }
+    &__right{
+      margin-left: 40px;
+      &__title{
+        font-size: 16px;
+      }
+      &__ele{
+        display: flex;
+        &__ul{
+          padding-right: 5px; 
+          &--li{ 
+            margin-top: 10px;
+            &--text{
+              text-decoration: none;
+              color: #fff;
+              opacity: 0.7;
+              font-size: 11px;
+            }
+          }
+        }
+      }
+    }
+    &__language{
+      margin-left: 40px;
+      &__title{
+        font-size: 16px;
+      }
+      &__ul{
+        &--li{ 
+          margin-top: 10px;
+          &--text{
+            text-decoration: none;
+            color: #fff;
+            opacity: 0.7;
+            font-size: 11px;
+          }
+        }
+      }
+    }
+  }
+  &__bottom{
+    width: 1020px;
+    height: 40px;
+    margin: 30px auto 0;
+    color: #fff;
+    &__copyright{
+      text-align: center;
+      font-size: 10px;
+    }
+  }
+}

@@ -1,0 +1,78 @@
+= render 'items/header'
+
+.sub__header
+  %ul.sub__header__list
+    %li.sub__header__list__item
+      = link_to "https://www.mercari.com/jp/", class: "sub__header__list__item__active" do
+        メルカリ
+        = fa_icon "chevron-right", class: "sub__header__list__item__icon"
+    %li.sub__header__list__item
+      = link_to "https://www.mercari.com/jp/", class: "sub__header__list__item__active" do
+        マイページ
+        = fa_icon "chevron-right", class: "sub__header__list__item__icon"
+    %li.sub__header__list__item--now
+      本人情報の登録
+
+.mypage
+  = render 'sidebar'
+  .mypage__right
+    .mypage__right__side
+      %section.mypage__right__side__identification
+        %h2.mypage__right__side__identification__title 本人情報の登録
+        = form_for @address, url: root_path, :html => {class: "mypage__right__side__identification__container"} do |f|
+          .mypage__right__side__identification__container__top
+            %p.mypage__right__side__identification__container__top__text
+              お客さまの本人情報をご登録ください。
+              %br
+              登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+            %p.mypage__right__side__identification__container__top__link
+              = link_to "https://www.mercari.com/jp/help_center/article/495/", class: "mypage__right__side__identification__container__top__link" do
+                本人確認書類のアップロードについて
+                = fa_icon "chevron-right", class: "mypage__right__side__identification__container__top__link__icon"
+          .mypage__right__side__identification__container__form
+            = f.label :name, "お名前", class: "mypage__right__side__identification__container__form__item"
+            %p.mypage__right__side__identification__container__form__item--name
+              テスト 太朗
+          .mypage__right__side__identification__container__form
+            = f.label :name_kana, "お名前カナ", class: "mypage__right__side__identification__container__form__item"
+            %p.mypage__right__side__identification__container__form__item--name
+              テスト タロウ
+          .mypage__right__side__identification__container__form
+            = f.label :birth_date, "生年月日", class: "mypage__right__side__identification__container__form__item"
+            %p.mypage__right__side__identification__container__form__item--name
+              0000/00/00
+          .mypage__right__side__identification__container__form
+            = f.label :postcode, "郵便番号", class: "mypage__right__side__identification__container__form__item"
+            %span.mypage__right__side__identification__container__form__arbitrary
+              任意
+            = f.text_field :postcode, class: "mypage__right__side__identification__container__form__text", placeholder: "例) 1234567"
+          .mypage__right__side__identification__container__form
+            = f.label :prefecture, "都道府県", class: "mypage__right__side__identification__container__form__item"
+            %span.mypage__right__side__identification__container__form__arbitrary
+              任意
+            .mypage__right__side__identification__container__form__prefecture
+              = fa_icon "chevron-down", class:"mypage__right__side__identification__container__form__prefecture__icon"
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, class: "mypage__right__side__identification__container__form__prefecture__list"
+          .mypage__right__side__identification__container__form
+            = f.label :city, "市区町村", class: "mypage__right__side__identification__container__form__item"
+            %span.mypage__right__side__identification__container__form__arbitrary
+              任意
+            = f.text_field :city, class: "mypage__right__side__identification__container__form__text", placeholder: "例) 横浜市緑区"
+          .mypage__right__side__identification__container__form
+            = f. label :block, "番地", class: "mypage__right__side__identification__container__form__item"
+            %span.mypage__right__side__identification__container__form__arbitrary
+              任意
+            = f.text_field :block, class: "mypage__right__side__identification__container__form__text", placeholder: "例) 青山1-1-1"
+          .mypage__right__side__identification__container__form
+            = f.label :building, "建物名", class: "mypage__right__side__identification__container__form__item"
+            %span.mypage__right__side__identification__container__form__arbitrary
+              任意
+            = f.text_field :building, class: "mypage__right__side__identification__container__form__text", placeholder: "例) 柳ビル103"
+          = f.submit "登録する", class: "mypage__right__side__identification__container__form__btn"
+          .mypage__right__side__identification__container__bottom
+            %p.mypage__right__side__identification__container__bottom__link
+              = link_to "https://www.mercari.com/jp/help_center/article/423/", class: "mypage__right__side__identification__container__bottom__link" do
+                本人情報の登録について
+                = fa_icon "chevron-right", class: "mypage__right__side__identification__container__bottom__link"
+
+= render 'items/footer'

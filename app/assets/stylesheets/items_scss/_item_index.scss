@@ -1,0 +1,47 @@
+.main{
+  &__slider{
+    height: 400px;
+    width: 100vw;
+    background-color: rgb(202, 212, 182);
+  }
+  &__container{
+    width: 100vw;
+    margin: 24px auto 0;
+    padding-bottom: 40px;
+    text-align: center;
+    &__title{
+      font-size: 28px;
+      font-weight: bold;
+    }
+    &__box{
+      font-size: 22px;
+      width: 1000px;
+      min-width: 800px;
+      margin: 0 auto;
+      &--title{
+        text-decoration: none;
+        color: rgb(0, 153, 232);
+        font-weight: bold; 
+      }
+      &--title:hover{
+        text-decoration: underline;
+      }
+      &--content{
+        display: flex;
+        &--items{
+          width: 213px;
+          margin-left: 10px;
+          background-color: aliceblue;
+          cursor: pointer;
+          &--image{
+            width: 213px;
+            height: 220px;
+          }
+          &--text{
+            height: 110px;
+          }
+        }
+      }
+    }
+  }
+}

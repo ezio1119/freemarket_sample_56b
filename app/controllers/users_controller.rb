@@ -1,8 +1,15 @@
 class UsersController < ApplicationController
   def show
+
+  end
+  
   end
 
-  def index
-    binding.pry
+  def profile
   end
+
+  def identification
+    @address = Address.new
+  end
+
 end
