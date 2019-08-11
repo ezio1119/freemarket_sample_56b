@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 class Users::RegistrationsController < Devise::RegistrationsController
 
+
   before_action :set_user, only: [:tell]
   before_action :set_user_params, only: [:tell,:create]
 
+
   def index
+    
+
   end
 
   def new
@@ -17,6 +21,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       add_user_session(@user)
     else
       render 'new'
+    if @user.valid?
+      session = user_params
+    else
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -35,6 +43,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       respond_with_navigational(resource) { render :new }
     end
   end
+    
+  end
+
 
 
   protected
@@ -62,7 +73,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:birth_date] = user.birth_date
   end
 
-end
+  
 
 
 #----------------------------------------------------------------------------
@@ -91,6 +102,8 @@ end
   # end
 
 #----------------------------------------------------------------------------
+
+
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
