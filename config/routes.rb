@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   root 'items#index'
   resources :items, only: [:index, :show, :new]
+  resources :cards, only: :index
   resources :users, only:[:show] do
     collection do
       get :profile
@@ -23,4 +24,6 @@ Rails.application.routes.draw do
     end
   end
 end
+
+  
 
