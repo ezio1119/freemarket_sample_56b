@@ -28,6 +28,10 @@
         position: relative;
         max-width: 320px;
         margin: 0 auto;
+        &__icon {
+          height: 15px;
+          width: 49px;
+        }
         &__num {
           margin: 8px 0 0;
           font-size: 14px;
