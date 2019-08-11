@@ -18,3 +18,4 @@ workflows:
           family: ${MY_APP_PREFIX}
           cluster-name: ${MY_APP_PREFIX}
           container-image-name-updates: 'container=${MY_APP_PREFIX},tag=latest'
+          
