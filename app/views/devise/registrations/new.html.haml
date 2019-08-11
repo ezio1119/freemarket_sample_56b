@@ -6,6 +6,7 @@
         %p
           会員情報入力
       .user_wrapper__contents__forms__body
+
         = form_for(resource, as: resource_name, url: user_registration_path) do |f| 
           .user_wrapper__contents__forms__body__form
             = f.label :name, "ニックネーム", class: "user_wrapper__contents__forms__body__form__label"
@@ -74,27 +75,4 @@
             = fa_icon "chevron-right", class: "user_wrapper__contents__forms__body__infobox__icon"
   = render 'users/shared/footer'
             
--# %h2 Sign up
--#   = render "devise/shared/error_messages", resource: resource
--#   .field
--#     
--#     = f.text_field :first_name, placeholder: "first_name"
--#     = f.text_field :last_name, placeholder: "last_name"
--#     
--#     = f.label :email
--#     %br/
--#     
--#   .field
--#     = f.label :password
--#     - if @minimum_password_length
--#       %em
--#         (#{@minimum_password_length} characters minimum)
--#     %br/
--#     = f.password_field :password, autocomplete: "new-password"
--#   .field
--#     = f.label :password_confirmation
--#     %br/
--#     = f.password_field :password_confirmation, autocomplete: "new-password"
--#   .actions
--#     = f.submit "Sign up"
--# = render "devise/shared/links"
+
