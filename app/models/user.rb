@@ -5,4 +5,23 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_one :address, dependent: :destroy
+  validates :nickname, presence: true, length: { maximum: 20 }
+  validates :first_name, presence: true, format: {
+    with: /[^ -~｡-ﾟ]+/,
+    message: "Please enter only double-byte"
+  }
+  validates :first_name_kana, presence: true, format: {
+    with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
+    message: "Please enter only full-width katakan"
+  }
+  validates :last_name, presence: true, format: {
+    with: /[^ -~｡-ﾟ]+/,
+    message: "Please enter only double-byte"
+  }
+  validates :last_name_kana, presence: true, format: {
+    with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
+    message: "Please enter only full-width katakan"
+  }
+  validates :birth_date, presence: true
+  
 end
