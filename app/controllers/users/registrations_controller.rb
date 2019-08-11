@@ -2,7 +2,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
   before_action :set_user, only: [:tell]
-  before_action :set_user_params, only: [:tell]
+  before_action :set_user_params, only: [:tell,:create]
 
   def index
   end
@@ -22,14 +22,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def address
     @user = User.new(session)
-    @address = Address.new
   end
 
   def card
   end
 
   def create
-    if verify_recaptcha
+    if @user.valid? && verify_recaptcha
       super
     else
       self.resource = resource_class.new
