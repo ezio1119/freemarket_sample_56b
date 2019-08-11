@@ -10,6 +10,7 @@
       %input.tell_wrapper__contents__body__input{type: "text", placeholder: "   携帯電話の番号を入力"}
       %p.tell_wrapper__contents__body__comment
         本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+      = link_to "SNSを送信する", users_address_path, class: "tell_wrapper__contents__body__submit"
       %input.tell_wrapper__contents__body__submit{type: "submit", value:"SNSを送信する"}
       %p.tell_wrapper__contents__body__message
         ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。

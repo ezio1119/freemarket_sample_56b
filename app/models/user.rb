@@ -23,6 +23,5 @@ class User < ApplicationRecord
     message: "Please enter only full-width katakan"
   }
   validates :birth_date, presence: true
-    
   
 end
