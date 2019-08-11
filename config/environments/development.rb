@@ -61,4 +61,6 @@ Rails.application.configure do
 
   # 1. Ensure you have defined default url options in your environments files
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.web_console.whitelisted_ips = '0.0.0.0/0'
 end
