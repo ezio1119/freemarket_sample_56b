@@ -45,7 +45,7 @@
               .newpage__box__form__block__right__title--req
                 必須
             .newpage__box__form__block__right__text
-              = f.select :state, Item.states.keys, {}, class: 'newpage__box__form__block__right__text--sel'
+              = f.collection_select :state, State.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel'
               = fa_icon "chevron-down", class: "newpage__box__form__block__right__text--icon"
             
         
@@ -59,21 +59,21 @@
               .newpage__box__form__block__right__title--req
                 必須
             .newpage__box__form__block__right__input
-              = f.select :delivery, Item.deliveries.keys, {},class: 'newpage__box__form__block__right__input--sel'
+              = f.collection_select :delivery, Delivery.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel'
               = fa_icon "chevron-down", class: "newpage__box__form__block__right__input--icon"
             %h3.newpage__box__form__block__right__title
               発送元の地域
               .newpage__box__form__block__right__title--req
                 必須
             .newpage__box__form__block__right__input
-              = f.select :region, Item.regions.keys, {}, class: 'newpage__box__form__block__right__input--sel'
+              = f.collection_select :region, Prefecture.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel'
               = fa_icon "chevron-down", class: "newpage__box__form__block__right__input--icon"
             %h3.newpage__box__form__block__right__title
               発送までの日数
               .newpage__box__form__block__right__title--req
                 必須
             .newpage__box__form__block__right__text
-              = f.select :days, Item.days.keys, {}, class: 'newpage__box__form__block__right__text--sel'
+              = f.collection_select :days, Days.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel'
               = fa_icon "chevron-down", class: "newpage__box__form__block__right__text--icon"
 
       .newpage__box__form
