@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def identification
+    @address = Address.new
   end
 
 end
