@@ -8,15 +8,22 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get 'users/tell' => 'users/registrations#tell'
+
+    get 'users/address' => 'users/registrations#address'
     get 'users/index' => 'users/registrations#index'
+    get 'users/card' => 'users/registrations#card'
   end
 
   root 'items#index'
-
-  get 'users/profile' => 'users#profile'
-  get 'users/identification' => 'users#identification'
-  resources :items, only: [:index, :show, :new, :create]
-  resources :users, only:[:show, :index]
-
+  resources :items, only: [:index, :show, :new]
+  resources :cards, only: :index
+  resources :users, only:[:show] do
+    collection do
+      get :profile
+      get :identification
+    end
+  end
 end
+
+  
 
