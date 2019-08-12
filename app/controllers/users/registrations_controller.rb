@@ -23,7 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def card
-
+    binding.pry
   end
 
   def create
