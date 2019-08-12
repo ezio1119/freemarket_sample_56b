@@ -3,67 +3,66 @@ orbs:
   aws-ecr: circleci/aws-ecr@6.2.0
   aws-ecs: circleci/aws-ecs@0.0.11
 
-
-jobs:
-  test:
-    docker:
-      - image: circleci/ruby:2.6.3-node-browsers-legacy
-        environment:
-          RAILS_ENV: test
-          MYSQL_HOST: 127.0.0.1
-          MYSQL_USERNAME: 'root'
-          MYSQL_PASSWORD: 'password'
-          MYSQL_PORT: 3306
-      - image: mysql:5.7.26
-        environment:
-          MYSQL_DATABASE: app_test
-          MYSQL_PASSWORD: 'password'
-          MYSQL_ROOT_HOST: '%'
-    working_directory: ~/app
-    steps:
-      - checkout
-      - restore_cache:
-          key: v2-repo-{{ .Environment.CIRCLE_SHA1 }}
-      - restore_cache:
-          keys:
-          - v2-dependencies-{{ checksum "Gemfile.lock" }}
-          - v2-dependencies-
-      - run:
-          name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - save_cache:
-          paths:
-          - ./vendor/bundle
-          key: v2-dependencies-{{ checksum "Gemfile.lock" }}
-      # Database setup
-      - run: rm ./config/database.yml
-      - run: mv ./config/database.yml.ci ./config/database.yml
-      - run:
-          name: Prepare db
-          command: |
-            bundle exec rake db:create db:schema:load --trace
-      # run tests!
-      - run:
-          name: Run rspec
-          command: |
-            mkdir /tmp/test-results
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-            bundle exec rspec --format progress --color --format documentation
-      # collect reports
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
+# jobs:
+#   test:
+#     docker:
+#       - image: circleci/ruby:2.6.3-node-browsers-legacy
+#         environment:
+#           RAILS_ENV: test
+#           MYSQL_HOST: 127.0.0.1
+#           MYSQL_USERNAME: 'root'
+#           MYSQL_PASSWORD: 'password'
+#           MYSQL_PORT: 3306
+#       - image: mysql:5.7.26
+#         environment:
+#           MYSQL_DATABASE: app_test
+#           MYSQL_PASSWORD: 'password'
+#           MYSQL_ROOT_HOST: '%'
+#     working_directory: ~/app
+#     steps:
+#       - checkout
+#       - restore_cache:
+#           key: v2-repo-{{ .Environment.CIRCLE_SHA1 }}
+#       - restore_cache:
+#           keys:
+#           - v2-dependencies-{{ checksum "Gemfile.lock" }}
+#           - v2-dependencies-
+#       - run:
+#           name: install dependencies
+#           command: |
+#             bundle install --jobs=4 --retry=3 --path vendor/bundle
+#       - save_cache:
+#           paths:
+#           - ./vendor/bundle
+#           key: v2-dependencies-{{ checksum "Gemfile.lock" }}
+#       # Database setup
+#       - run: rm ./config/database.yml
+#       - run: mv ./config/database.yml.ci ./config/database.yml
+#       - run:
+#           name: Prepare db
+#           command: |
+#             bundle exec rake db:create db:schema:load --trace
+#       # run tests!
+#       - run:
+#           name: Run rspec
+#           command: |
+#             mkdir /tmp/test-results
+#             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+#             bundle exec rspec --format progress --color --format documentation
+#       # collect reports
+#       - store_test_results:
+#           path: /tmp/test-results
+#       - store_artifacts:
+#           path: /tmp/test-results
+#           destination: test-results
 
 workflows:
   version: 2.1
   build_and_deploy:
     jobs:
-      - test
+      # - test
       - aws-ecr/build-and-push-image:
-          requires: test
+          # requires: test
           repo: ${MY_REPO_PREFIX}
           extra-build-args: --build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
           filters:
