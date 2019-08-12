@@ -1,0 +1,133 @@
+.buypage {
+  background-color: rgb(245, 245, 245);
+  &__main__container {
+      background-color: #fff;
+      margin: 0 auto;
+      width: 700px;
+      &__title {
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 1.5;
+        padding: 16px;
+        text-align: center;
+      }
+      &__item {
+        border-top: 1px solid #f5f5f5;
+        padding: 24px 12.5% 0;
+        text-align: center;
+        &__inner {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 0 auto;
+          max-width: 320px;
+          &__image {
+            width: 64px;
+          }
+          &__name {
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 1.5;
+            margin: 0 0 0 16px;
+            text-align: left;
+            width: calc(100% - 80px);
+          }
+          &__content {
+            display: block;
+            width: 100%;
+            &__price {
+              font-size: 20px;
+              font-weight: bold;
+              line-height: 1.5;
+              margin: 8px 0 0;
+              &__fee {
+                margin: 0 0 0 8px;
+                font-size: 14px;
+                font-weight: lighter;
+              }
+            }
+            &__point {
+              background-color: #ccc;
+              margin: 16px 0 0;
+              &__text {
+                border: 1px solid #ccc;
+                font-size: 14px;
+                padding: 16px;
+              }
+            }
+            &__pay {
+              font-size: 18px;
+              font-weight: bold;
+              &__box {
+                border-collapse: collapse;
+                display: table-row;
+                &__cell {
+                  display: table-cell;
+                  padding: 16px 0;
+                  text-align: left;
+                  width: 100%;
+                }
+              }
+            }
+          }
+          &__btn {
+            background: #ea352d;
+            border: 1px solid #ea352d;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 48px;
+            margin: 6px 0 0;
+            width: 100%;
+          }
+        }
+      }
+      &__user {
+        border-top: 1px solid #f5f5f5;
+        margin: 40px 0 0;
+        padding: 24px 12.5%;
+        &--bottom {
+          border-top: 1px solid #f5f5f5;
+          padding: 24px 12.5%;
+        }
+        &__inner {
+          font-size: 13px;
+          max-width: 320px;
+          margin: 0 auto;
+          &__send {
+            font-weight: bold;
+          }
+          &__address {
+            line-height: 1.4;
+            margin: 6px 0 0;
+          }
+          &__text {
+            margin: 8px 0 0;
+            font-size: 14px;
+            line-height: 1.4;
+          }
+          &__link {
+            color: #0099e8;
+            display: block;
+            text-align: right;
+            text-decoration: none;
+            &__icon {
+              -webkit-text-stroke: 1px #fff;
+            }
+          }
+          &__pay {
+            font-weight: bold;
+          }
+          &__num {
+            line-height: 1.4;
+            margin: 6px 0 0;
+          }
+          &__card {
+            height: 15px;
+            margin: 0;
+            width: 49px;
+          }
+        }
+      }
+    }
+}

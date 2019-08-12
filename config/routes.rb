@@ -15,8 +15,15 @@ Rails.application.routes.draw do
   end
 
   root 'items#index'
-  resources :items, only: [:index, :show, :new]
+
+  resources :items, only: [:index, :show, :new] do
+    member do
+      get :buy
+    end
+  end
+  
   resources :cards, only: :index
+  
   resources :users, only:[:show] do
     collection do
       get :profile
