@@ -2,8 +2,6 @@ class UsersController < ApplicationController
   def show
 
   end
-  
-  end
 
   def profile
   end
@@ -11,5 +9,4 @@ class UsersController < ApplicationController
   def identification
     @address = Address.new
   end
-
 end
