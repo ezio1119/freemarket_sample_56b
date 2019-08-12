@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            export RAILS_MASTER_KEY=${RAILS_MASTER_KEY} \
+            export RAILS_MASTER_KEY=${RAILS_MASTER_KEY} &&\
             docker-compose up
 
 
