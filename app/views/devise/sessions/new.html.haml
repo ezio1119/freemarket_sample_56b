@@ -20,8 +20,8 @@
               Googleでログイン
         .log_wrapper__logcontents__forms__contents__bottom
           = form_for(resource, as: resource_name, url: session_path(resource_name), class: "log_wrapper__logcontents__forms__contents__bottom__input") do |f|
-            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "log_wrapper__logcontents__forms__contents__bottom__input__form"
-            = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "log_wrapper__logcontents__forms__contents__bottom__input__formpath"
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "　メールアドレス", class: "log_wrapper__logcontents__forms__contents__bottom__input__form"
+            = f.password_field :password, autocomplete: "current-password", placeholder: "　パスワード", class: "log_wrapper__logcontents__forms__contents__bottom__input__formpath"
             = recaptcha_tags
             = f.submit "ログイン", class: "log_wrapper__logcontents__forms__contents__bottom__input__btn"
           = link_to "", class: "log_wrapper__logcontents__forms__contents__bottom__message" do
