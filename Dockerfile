@@ -5,7 +5,8 @@ RUN apk add --no-cache alpine-sdk \
     nodejs \
     tzdata \
     mysql-client \
-    mysql-dev
+    mysql-dev \
+    imagemagick
 
 WORKDIR /tmp
 COPY Gemfile $APP_ROOT
@@ -21,7 +22,9 @@ RUN apk add --no-cache alpine-sdk \
     nodejs \
     tzdata \
     mysql-client \
-    mysql-dev
+    mysql-dev \
+    imagemagick
+    
 COPY --from=builder /usr/local/bundle /usr/local/bundle
 
 WORKDIR /app
