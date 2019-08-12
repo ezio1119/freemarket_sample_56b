@@ -1,0 +1,63 @@
+.buypage
+
+  = render 'users/shared/header_center'
+
+  %main.buypage__main
+    %section.buypage__main__container
+      %h2.buypage__main__container__title
+        購入内容の確認
+      %section.buypage__main__container__item
+        .buypage__main__container__item__inner
+          %h3.buypage__main__container__item__inner__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m34768823318_1.jpg?1565506724", alt: "image", class:"buypage__main__container__item__inner__image"
+          %p.buypage__main__container__item__inner__name
+            ラドー  RADO   手巻き レディース  腕時計 カクカク四角感が可愛い
+          %form.buypage__main__container__item__inner__content
+            %p.buypage__main__container__item__inner__content__price
+              ¥ 6,580
+              %span.buypage__main__container__item__inner__content__price__fee
+                送料込み
+            %ul.buypage__main__container__item__inner__content__point
+              %li
+                .buypage__main__container__item__inner__content__point__text
+                  ポイントはありません
+            %ul.buypage__main__container__item__inner__content__pay
+              %li.buypage__main__container__item__inner__content__pay__box
+                .buypage__main__container__item__inner__content__pay__box__cell
+                  支払い金額
+                .buypage__main__container__item__inner__content__pay__box__cell
+                  %span
+                    ¥&nbsp;6,580
+            %button.buypage__main__container__item__inner__btn{ type: "submit"}
+              購入する
+      %section.buypage__main__container__user
+        .buypage__main__container__user__inner
+          %h3.buypage__main__container__user__inner__send
+            配送先
+          %address.buypage__main__container__user__inner__address
+            〒000-0000
+            %br
+            北海道 札幌市A区 B町1-2-3 Cビル
+            %br
+            テスト 太朗
+          %p.buypage__main__container__user__inner__text
+          = link_to "#", class: "buypage__main__container__user__inner__link" do
+            変更する
+            = fa_icon "chevron-right", class: "buypage__main__container__user__inner__link__icon"
+      %section.buypage__main__container__user--bottom
+        .buypage__main__container__user__inner
+          %h3.buypage__main__container__user__inner__pay
+            支払い方法
+          %p.buypage__main__container__user__inner__num
+            ************1234
+            %br
+            00/11
+          %figure.buypage__main__container__user__inner__card
+            = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2508029365", class: "buypage__main__container__user__inner__card", alt: "visa"
+          %p.buypage__main__container__user__inner__text
+          = link_to "#", class: "buypage__main__container__user__inner__link" do
+            変更する
+            = fa_icon "chevron-right", class: "buypage__main__container__user__inner__link__icon"
+
+
+  = render 'users/shared/footer'
