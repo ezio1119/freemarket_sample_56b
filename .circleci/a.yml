@@ -5,53 +5,70 @@ orbs:
 
 jobs:
   test:
-    machine:
-      image: circleci/classic:latest
+    docker:
+      - image: circleci/ruby:2.6.3-node-browsers-legacy
+        environment:
+          RAILS_ENV: test
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_USERNAME: 'root'
+          MYSQL_PASSWORD: ''
+          MYSQL_PORT: 3306
+      - image: mysql:5.7.26
+        environment:
+          MYSQL_DATABASE: app_test
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_ROOT_HOST: '%'
+    working_directory: ~/app
     steps:
       - checkout
+      - restore_cache:
+          key: v2-repo-{{ .Environment.CIRCLE_SHA1 }}
+      - restore_cache:
+          keys:
+          - v2-dependencies-{{ checksum "Gemfile.lock" }}
+          - v2-dependencies-
       - run:
-          name: Build Docker Image
-          command: docker-compose -f docker-compose_test.yml build
-      - run:
-          name: docker-compose up
+          name: install dependencies
           command: |
-            export RAILS_MASTER_KEY=${RAILS_MASTER_KEY} && \
-            docker-compose -f docker-compose_test.yml up -d
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          paths:
+          - ./vendor/bundle
+          key: v2-dependencies-{{ checksum "Gemfile.lock" }}
+      - run: rm ./config/database.yml
+      - run: mv ./config/database.yml.ci ./config/database.yml
       - run:
-          name: install dockerize
-          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-          environment:
-            DOCKERIZE_VERSION: v0.3.0
+          name: Prepare db
+          command: |
+            bundle exec rake db:create db:schema:load --trace
       - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:3306 -timeout 1m
-      - run:
-          name: "before_test: setup db"
-          command: docker-compose -f docker-compose_test.yml run app rails db:create db:migrate
-      - run:
-          name: test
-          command: docker-compose -f docker-compose_test.yml run app bundle exec rspec
-      - run:
-          name: docker-compose down
-          command: docker-compose -f docker-compose_test.yml down
-
+          name: Run rspec
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+            bundle exec rspec --format progress --color --format documentation
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
 
 workflows:
   version: 2.1
   build_and_deploy:
     jobs:
       - test
-      # - aws-ecr/build-and-push-image:
-      #     requires:
-      #       - test
-      #     repo: ${MY_REPO_PREFIX}
-      #     extra-build-args: --build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
-      #     filters:
-      #       branches:
-      #         only: circleci-setting
-      # - aws-ecs/deploy-service-update:
-      #     requires:
-      #       - aws-ecr/build-and-push-image
-      #     family: ${MY_APP_PREFIX}
-      #     cluster-name: ${MY_APP_PREFIX}
-      #     container-image-name-updates: 'container=${CONTAINER_NAME},tag=latest'
+      - aws-ecr/build-and-push-image:
+          requires:
+            - test
+          repo: ${MY_REPO_PREFIX}
+          extra-build-args: --build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+          filters:
+            branches:
+              only: master
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
+          family: ${MY_APP_PREFIX}
+          cluster-name: ${MY_APP_PREFIX}
+          container-image-name-updates: 'container=${CONTAINER_NAME},tag=latest'

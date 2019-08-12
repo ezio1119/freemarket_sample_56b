@@ -5,56 +5,30 @@ orbs:
 
 jobs:
   test:
-    docker:
-      - image: circleci/ruby:2.6.3-node-browsers-legacy
-        environment:
-          RAILS_ENV: test
-          MYSQL_HOST: 127.0.0.1
-          MYSQL_USERNAME: 'root'
-          MYSQL_PASSWORD: ''
-          MYSQL_PORT: 3306
-      - image: mysql:5.7.26
-        environment:
-          MYSQL_DATABASE: app_test
-          MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_ROOT_HOST: '%'
-    working_directory: ~/app
+    machine:
+      image: circleci/classic:edge
     steps:
       - checkout
-      - restore_cache:
-          key: v2-repo-{{ .Environment.CIRCLE_SHA1 }}
-      - restore_cache:
-          keys:
-          - v2-dependencies-{{ checksum "Gemfile.lock" }}
-          - v2-dependencies-
       - run:
-          name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - save_cache:
-          paths:
-          - ./vendor/bundle
-          key: v2-dependencies-{{ checksum "Gemfile.lock" }}
-      # Database setup
-      - run: rm ./config/database.yml
-      - run: mv ./config/database.yml.ci ./config/database.yml
+          name: Build Docker Image
+          command: docker-compose -f docker-compose_test.yml build
       - run:
-          name: Prepare db
+          name: docker-compose up
           command: |
-            bundle exec rake db:create db:schema:load --trace
-      # run tests!
+            export RAILS_MASTER_KEY=${RAILS_MASTER_KEY} && \
+            docker-compose -f docker-compose_test.yml up -d
       - run:
-          name: Run rspec
-          command: |
-            mkdir /tmp/test-results
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-            bundle exec rspec --format progress --color --format documentation
-      # collect reports
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
+          name: sleep for waiting launch db
+          command: sleep 1
+      - run:
+          name: "before_test: setup db"
+          command: docker-compose -f docker-compose_test.yml run app rails db:create db:migrate
+      - run:
+          name: test
+          command: docker-compose -f docker-compose_test.yml run app bundle exec rspec
+      - run:
+          name: docker-compose down
+          command: docker-compose -f docker-compose_test.yml down
 
 
 workflows:
