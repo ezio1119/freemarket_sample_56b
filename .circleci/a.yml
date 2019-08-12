@@ -1,0 +1,28 @@
+version: 2.1
+orbs:
+  aws-ecr: circleci/aws-ecr@6.2.0
+  aws-ecs: circleci/aws-ecs@0.0.11
+
+jobs:
+  build:
+    - aws-ecr/build-and-push-image:
+        repo: ${MY_REPO_PREFIX}
+        extra-build-args: --build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+
+  deploy:
+    - aws-ecs/deploy-service-update:
+        family: ${MY_APP_PREFIX}
+        cluster-name: ${MY_APP_PREFIX}
+        container-image-name-updates: 'container=${CONTAINER_NAME},tag=latest'
+
+workflows:
+  version: 2.1
+  jobs:
+    - build:
+        filters:
+          branches:
+            only: circleci-setting
+    - deploy:
+        requires:
+          - build
+  
