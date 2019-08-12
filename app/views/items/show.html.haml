@@ -3,10 +3,10 @@
 .itempage
   .itempage__box
     %h1.itempage__box__title
-      ボーダーカットソー
+      = @item.name
     .itempage__box__info
       .itempage__box__info--photo
-        = image_tag "https://static.mercdn.net/item/detail/orig/photos/m14623143038_1.jpg?1565144722", alt: "image", class: "itempage__box__info--photo--main"
+        = image_tag @item.image,class: "itempage__box__info--photo--main" if @item.image.attached? 
       %table.itempage__box__info--table
         %tr
           %th.itempage__box__info--table--th 出品者
@@ -35,30 +35,34 @@
             = link_to "ソニー", "#", class: "itempage__box__info--table--td--link"
         %tr
           %th.itempage__box__info--table--th 商品の状態
-          %td.itempage__box__info--table--td やや傷や汚れあり
+          %td.itempage__box__info--table--td
+            = @item.state.name
         %tr
           %th.itempage__box__info--table--th 配送料の負担	
-          %td.itempage__box__info--table--td 送料込み(出品者負担)
+          %td.itempage__box__info--table--td
+            = @item.delivery_burden.name
         %tr
           %th.itempage__box__info--table--th 配送の方法
-          %td.itempage__box__info--table--td 未定
+          %td.itempage__box__info--table--td
+            = @item.delivery_method.name
         %tr
           %th.itempage__box__info--table--th 配送元地域	
           %td.itempage__box__info--table--td
-            = link_to "岩手県", "#", class: "itempage__box__info--table--td--link"
+            = link_to "#{ @item.prefecture.name }", "#", class: "itempage__box__info--table--td--link"
         %tr
           %th.itempage__box__info--table--th 発送日の目安
-          %td.itempage__box__info--table--td 2~3日で発送
+          %td.itempage__box__info--table--td
+            = @item.day.name
     .itempage__box__price
       .itempage__box__price--num
-        ¥ 900
+        = "¥ #{ @item.price }" 
       .itempage__box__price--tax
         (税込)
       .itempage__box__price--post
         送料込み
     = button_to "購入画面に進む", "", class: "itempage__box__buy"
     .itempage__box__text
-      ボーダーの丈が短めの長袖になります⌄̈⃝
+      = @item.info
     .itempage__box__btn
       .itempage__box__btn--left
         = button_to "", class: "itempage__box__btn--left--like" do
@@ -105,38 +109,11 @@
     .itempage__container__box
       = link_to "**さんの新着アイテム", "", class: "itempage__container__box--title"
       %ul.itempage__container__box--content
-        %li.itempage__container__box--content--items
-          = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
-          .itempage__container__box--content--items--text
-            .itempage__container__box--content--items--text--name
-              パウダーファンデーション
-            .itempage__container__box--content--items--text--price
-              ¥ 3,999
-        %li.itempage__container__box--content--items
-          = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
-          .itempage__container__box--content--items--text
-        %li.itempage__container__box--content--items
-          = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
-          .itempage__container__box--content--items--text
-        %li.itempage__container__box--content--items
-          = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
-          .itempage__container__box--content--items--text
-
+        
   .itempage__container
     .itempage__container__box
       = link_to "ブリスポイントのガウチョパンツ その他の商品", "", class: "itempage__container__box--title"
       %ul.itempage__container__box--content
-        %li.itempage__container__box--content--items
-          = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
-          .itempage__container__box--content--items--text
-        %li.itempage__container__box--content--items
-          = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
-          .itempage__container__box--content--items--text
-        %li.itempage__container__box--content--items
-          = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
-          .itempage__container__box--content--items--text
-        %li.itempage__container__box--content--items
-          = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "itempage__container__box--content--items--image"
-          .itempage__container__box--content--items--text
+        
       
 = render 'footer'

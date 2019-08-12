@@ -1,4 +1,4 @@
-%li.main__container__box--content--items
+= link_to "items/#{item.id}", class: "li main__container__box--content--items" do
   = image_tag item.image, size: "213x300" if item.image.attached?
   .main__container__box--content--items--text
     .main__container__box--content--items--text--name

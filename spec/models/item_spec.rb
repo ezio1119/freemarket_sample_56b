@@ -35,28 +35,34 @@ RSpec.describe Item, type: :model do
         expect(item.errors[:name][0]).to include("is too long (maximum is 40 characters)")
       end
 
-      it "is invalid without a state" do
-        item = build(:item, state: "")
+      it "is invalid without a state_id" do
+        item = build(:item, state_id: "")
         item.valid?
-        expect(item.errors[:state]).to include("can't be blank")
+        expect(item.errors[:state_id]).to include("can't be blank")
       end
 
-      it "is invalid without a delivery" do
-        item = build(:item, delivery: "")
+      it "is invalid without a delivery_burden_id" do
+        item = build(:item, delivery_burden_id: "")
         item.valid?
-        expect(item.errors[:delivery]).to include("can't be blank")
+        expect(item.errors[:delivery_burden_id]).to include("can't be blank")
       end
 
-      it "is invalid without a region" do
-        item = build(:item, region: "")
+      it "is invalid without a delivery_method_id" do
+        item = build(:item, delivery_method_id: "")
         item.valid?
-        expect(item.errors[:region]).to include("can't be blank")
+        expect(item.errors[:delivery_method_id]).to include("can't be blank")
       end
 
-      it "is invalid without a days" do
-        item = build(:item, days: "")
+      it "is invalid without a prefecture_id" do
+        item = build(:item, prefecture_id: "")
         item.valid?
-        expect(item.errors[:days]).to include("can't be blank")
+        expect(item.errors[:prefecture_id]).to include("can't be blank")
+      end
+
+      it "is invalid without a day_id" do
+        item = build(:item, day_id: "")
+        item.valid?
+        expect(item.errors[:day_id]).to include("can't be blank")
       end
 
       it "is invalid without a info" do
