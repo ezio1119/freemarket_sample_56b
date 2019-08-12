@@ -8,10 +8,11 @@
 |------|----|-------|
 |size|integer|
 |name|text|null: false, index: true|
-|state|integer|null: false, dafault: ---|
-|delivery|integer|null: false, dafault: ---|
-|region|integer|null: false, dafault: ---|
-|days|integer|null: false, dafault: ---|
+|state_id|integer|null: false|
+|delivery_burden_id|integer|null: false|
+|delivery_method_id|integer|null: false|
+|prefecture_id|integer|null: false|
+|day_id|integer|null: false|
 |price|integer|null: false, CHECK (price >= 300, price <= 9999999)|
 |info|text|null: false, limit: 1000|
 |user|references|foreign_key: true|
