@@ -1,5 +1,5 @@
 %li.main__container__box--content--items
-  = image_tag "https://static.mercdn.net/thumb/photos/m17476524660_1.jpg?1564989728", alt: "image", class: "main__container__box--content--items--image"
+  = image_tag item.image, size: "213x300" if item.image.attached?
   .main__container__box--content--items--text
     .main__container__box--content--items--text--name
       = item.name
