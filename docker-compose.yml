@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     environment:
-      - RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
+      - RAILS_MASTER_KEY
     volumes:
       - .:/app
       - bundle-data:/bundle
