@@ -9,6 +9,7 @@ workflows:
     jobs:
       - aws-ecr/build-and-push-image:
           repo: ${MY_REPO_PREFIX}
+          extra-build-args: "${RAILS_MASTER_KEY}"
           filters:
             branches:
               only: circleci-setting
