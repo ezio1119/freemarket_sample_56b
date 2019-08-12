@@ -21,7 +21,7 @@
           = f.text_field :first_name_kana, class: "new_user__fbox__field"
           = f.text_field :last_name_kana, class: "new_user__fbox__field"
         .new_user__address
-          = f.fields_for :address, :html => {:class => "new_user__address__box"}, method: "GET" do |f|
+          = f.fields_for :address, html: {class: "new_user__address__box"}, method: "GET" do |f|
             = f.label :name, "郵便番号", class: "new_user__address__box__labels"
             %span.new_user__address__box__text
               必須
