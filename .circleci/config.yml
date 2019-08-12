@@ -10,7 +10,8 @@ workflows:
           repo: ${MY_REPO_PREFIX}
           filters:
             branches:
-              only: circleci-setting
+              only:
+                - circleci-setting
 
       - aws-ecs/deploy-service-update:
           requires:
