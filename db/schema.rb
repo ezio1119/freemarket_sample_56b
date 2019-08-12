@@ -46,6 +46,21 @@ ActiveRecord::Schema.define(version: 2019_08_10_104621) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.integer "size"
+    t.text "name", null: false
+    t.integer "state", null: false
+    t.integer "delivery", null: false
+    t.integer "region", null: false
+    t.integer "days", null: false
+    t.integer "price", null: false
+    t.text "info", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -66,4 +81,5 @@ ActiveRecord::Schema.define(version: 2019_08_10_104621) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "users"
+  add_foreign_key "items", "users"
 end
