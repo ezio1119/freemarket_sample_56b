@@ -4,13 +4,14 @@ orbs:
   aws-ecs: circleci/aws-ecs@0.0.11
 
 workflows:
+  version: 2
   build_and_deploy:
     jobs:
       - aws-ecr/build-and-push-image:
           repo: ${MY_REPO_PREFIX}
-        filters:
-          branches:
-            only: circleci-setting
+          filters:
+            branches:
+              only: circleci-setting
 
       - aws-ecs/deploy-service-update:
           requires:
