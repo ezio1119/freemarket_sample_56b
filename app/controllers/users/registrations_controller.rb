@@ -20,7 +20,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def address
     @user.build_address
-    binding.pry
   end
 
   def card
