@@ -27,10 +27,10 @@ jobs:
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
       - run:
           name: "before_test: setup db"
-          command: docker-compose run web rails db:create db:migrate RAILS_ENV=test
+          command: docker-compose run app rails db:create db:migrate RAILS_ENV=test
       - run:
           name: test
-          command: docker-compose run web bundle exec rspec
+          command: docker-compose run app bundle exec rspec
       - run:
           name: docker-compose down
           command: docker-compose down
