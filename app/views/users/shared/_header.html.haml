@@ -1,7 +1,7 @@
 .user_wrapper__header
   .user_wrapper__header__contents
     = link_to items_path, class: "user_wrapper__header__contents__link" do
-      %img{class: "user_wrapper__header__contents__link__img", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3791839826"}
+      = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3791839826", class: "user_wrapper__header__contents__link__img"
     .user_wrapper__header__contents__text
       %span.user_wrapper__header__contents__text__message1
         会員情報
