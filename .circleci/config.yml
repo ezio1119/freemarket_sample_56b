@@ -10,8 +10,7 @@ workflows:
           repo: ${MY_REPO_PREFIX}
           filters:
             branches:
-              only:
-                - circleci-setting
+              only: circleci-setting
 
       - aws-ecs/deploy-service-update:
           requires:
@@ -19,3 +18,6 @@ workflows:
           family: ${MY_APP_PREFIX}
           cluster-name: ${MY_APP_PREFIX}
           container-image-name-updates: 'container=${MY_APP_PREFIX},tag=latest'
+          filters:
+            branches:
+              only: circleci-setting
