@@ -47,8 +47,7 @@
             .newpage__box__form__block__right__text
               = f.collection_select :state, State.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel'
               = fa_icon "chevron-down", class: "newpage__box__form__block__right__text--icon"
-            
-        
+                    
       .newpage__box__form
         .newpage__box__form__block
           .newpage__box__form__block__left
