@@ -20,12 +20,13 @@ class ItemsController < ApplicationController
         render :new
       end
     end
-    
-    private
+  
+    def buy
+      
+    end   
 
     def item_params
       params.require(:item).permit(:name, :state, :delivery, :region, :days, :price, :info, :image)
     end
-
     
 end
