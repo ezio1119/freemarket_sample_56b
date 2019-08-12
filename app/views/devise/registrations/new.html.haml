@@ -6,8 +6,7 @@
         %p
           会員情報入力
       .user_wrapper__contents__forms__body
-        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-          = f.submit "Sign up"
+        = form_for(resource, as: resource_name, url: user_registration_path) do |f| 
           .user_wrapper__contents__forms__body__form
             = f.label :name, "ニックネーム", class: "user_wrapper__contents__forms__body__form__label"
             %span.user_wrapper__contents__forms__body__form__logo
@@ -45,8 +44,8 @@
               = f.label :name, "お名前カナ(全角)", class: "user_wrapper__contents__forms__body__form__items__namelabel"
               %span.user_wrapper__contents__forms__body__form__items__name-logo
                 必須
-            = f.text_field :first_name_ruby, placeholder: "　例）フクザワ", class: "user_wrapper__contents__forms__body__form__field-name"
-            = f.text_field :last_name_ruby, placeholder: "　例　ユキチ", class: "user_wrapper__contents__forms__body__form__field-lsname"
+            = f.text_field :first_name_kana, placeholder: "　例）フクザワ", class: "user_wrapper__contents__forms__body__form__field-name"
+            = f.text_field :last_name_kana, placeholder: "　例　ユキチ", class: "user_wrapper__contents__forms__body__form__field-lsname"
           .user_wrapper__contents__forms__body__form
             .user_wrapper__contents__forms__body__form__items
               = f.label :name, "お名前カナ(全角)", class: "user_wrapper__contents__forms__body__form__items__namelabel"
@@ -65,7 +64,8 @@
             %span.user_wrapper__contents__forms__body__tbox__agree
               に同意したものとみなします
           .user_wrapper__contents__forms__body__buttonbox
-            = link_to "", class: "user_wrapper__contents__forms__body__buttonbox__btn" do
+            = f.submit "次に進む", class: "user_wrapper__contents__forms__body__buttonbox__btn"
+            -# = link_to "", class: "user_wrapper__contents__forms__body__buttonbox__btn" do
               %p.user_wrapper__contents__forms__body__buttonbox__btn__next
                 次に進む
           .user_wrapper__contents__forms__body__infobox
@@ -74,27 +74,4 @@
             = fa_icon "chevron-right", class: "user_wrapper__contents__forms__body__infobox__icon"
   = render 'users/shared/footer'
             
--# %h2 Sign up
--#   = render "devise/shared/error_messages", resource: resource
--#   .field
--#     
--#     = f.text_field :first_name, placeholder: "first_name"
--#     = f.text_field :last_name, placeholder: "last_name"
--#     
--#     = f.label :email
--#     %br/
--#     
--#   .field
--#     = f.label :password
--#     - if @minimum_password_length
--#       %em
--#         (#{@minimum_password_length} characters minimum)
--#     %br/
--#     = f.password_field :password, autocomplete: "new-password"
--#   .field
--#     = f.label :password_confirmation
--#     %br/
--#     = f.password_field :password_confirmation, autocomplete: "new-password"
--#   .actions
--#     = f.submit "Sign up"
--# = render "devise/shared/links"
+
