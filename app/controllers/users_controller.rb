@@ -12,4 +12,9 @@ class UsersController < ApplicationController
   def identification
     @address = Address.new
   end
+
+  def items_list
+    @items = Item.all
+  end
+
 end
