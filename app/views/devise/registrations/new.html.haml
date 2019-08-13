@@ -6,7 +6,8 @@
         %p
           会員情報入力
       .user_wrapper__contents__forms__body
-        = form_for(resource, as: resource_name, url: user_registration_path) do |f| 
+        -# = form_for(resource, as: resource_name, url: users_tell_path(resource_name), method: 'GET') do |f|
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
           .user_wrapper__contents__forms__body__form
             = f.label :name, "ニックネーム", class: "user_wrapper__contents__forms__body__form__label"
             %span.user_wrapper__contents__forms__body__form__logo
