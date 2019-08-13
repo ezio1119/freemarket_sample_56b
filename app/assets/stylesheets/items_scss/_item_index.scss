@@ -15,8 +15,7 @@
     }
     &__box{
       font-size: 22px;
-      width: 1000px;
-      min-width: 800px;
+      width: 900px;
       margin: 0 auto;
       &--title{
         text-decoration: none;
@@ -28,6 +27,7 @@
       }
       &--content{
         display: flex;
+        flex-wrap: wrap;
         &--items{
           width: 213px;
           margin-left: 10px;
