@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'users/address' => 'users/registrations#address'
     get 'users/index' => 'users/registrations#index'
     get 'users/card' => 'users/registrations#card'
+    get 'users/completion' => 'users/registrations#completion'
   end
 
   root 'items#index'
