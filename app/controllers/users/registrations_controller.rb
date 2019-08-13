@@ -3,7 +3,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :set_user_params, only: [:tell,:create]
   before_action :build_user_name, only: [:address]
   def index
-    
+
   end
 
   def new
@@ -23,7 +23,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def card
-    binding.pry
   end
 
   def create
