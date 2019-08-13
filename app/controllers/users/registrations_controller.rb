@@ -25,6 +25,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def card
   end
 
+  def completion
+    
+  end
+
   def create
     if @user.valid? && verify_recaptcha
       super
