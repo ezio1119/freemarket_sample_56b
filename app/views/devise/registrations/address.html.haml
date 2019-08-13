@@ -1,1 +1,51 @@
-hello
+.address-wrapper
+  = render 'users/shared/header'
+  .address-wrapper__contents
+    .address-wrapper__contents__form
+      .address-wrapper__contents__form__top
+        %p.address-wrapper__contents__form__top__text
+          住所入力
+      = form_for @user, url: users_card_path, method: "GET" do |f|
+        .new_user__box
+          = f.label :name, "お名前(全角)", class: "new_user__box__label"
+          %span.new_user__box__text
+            必須
+        .new_user__fbox
+          = f.text_field :first_name, class: "new_user__fbox__field"
+          = f.text_field :last_name, class: "new_user__fbox__field"
+        .new_user__box
+          = f.label :name, "お名前カナ(全角)", class: "new_user__box__label"
+          %span.new_user__box__text
+            必須
+        .new_user__fbox
+          = f.text_field :first_name_kana, class: "new_user__fbox__field"
+          = f.text_field :last_name_kana, class: "new_user__fbox__field"
+        .new_user__address
+          = f.fields_for :address, html: {class: "new_user__address__box"}, method: "GET" do |f|
+            = f.label :name, "郵便番号", class: "new_user__address__box__labels"
+            %span.new_user__address__box__text
+              必須
+            = f.text_field :postcode, placeholder:"　例）123-4567", class:"new_user__address__field"
+            = f.label :name, "都道府県", class: "new_user__address__box__label"
+            %span.new_user__address__box__text
+              必須
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, class:"new_user__address__field"
+            = f.label :name, "市区町村", class: "new_user__address__box__label"
+            %span.new_user__address__box__text
+              必須
+            = f.text_field :city, placeholder:"　例）渋谷区道玄坂", class:"new_user__address__field"
+            = f.label :name, "番地", class: "new_user__address__box__label"
+            %span.new_user__address__box__text
+              必須
+            = f.text_field :block, placeholder:"　例）青山1-1-1", class:"new_user__address__field"
+            = f.label :name, "建物名", class: "new_user__address__box__label"
+            %span.new_user__address__box__text
+              必須
+            = f.text_field :building, placeholder:"　例）山田ビル101", class:"new_user__address__field"
+            = f.label :name, "電話", class: "new_user__address__box__label"
+            %span.new_user__address__box__text
+              必須
+            = f.text_field :phone_number, placeholder:"　例）09012345678", class:"new_user__address__field"
+            = f.submit "次に進む", class:"new_user__address__btn"
+
+  = render 'users/shared/footer'

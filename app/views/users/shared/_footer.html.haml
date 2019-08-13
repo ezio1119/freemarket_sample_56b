@@ -4,6 +4,6 @@
     = link_to "メルカリ利用規約", "", class: "user_wrapper__footer__info__links" 
     = link_to "特定商取引に関する表記", "", class: "user_wrapper__footer__info__links" 
     = link_to items_path, class: "user_wrapper__footer__logo" do
-      %img{class: "user_wrapper__footer__logo__img", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3791839826", alt: "mercari"}
+      = image_tag "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3791839826", class: "user_wrapper__footer__logo__img"
       %p.user_wrapper__footer__logo__sign-mercari
         © 2019 Mercari
