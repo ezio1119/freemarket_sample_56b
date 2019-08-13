@@ -40,7 +40,6 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.with_attached_image.find(params[:id])
-    binding.pry
     if @item.user_id == current_user.id
       @item.destroy!
       redirect_to items_list_users_path
