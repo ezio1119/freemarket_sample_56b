@@ -25,8 +25,16 @@ class ItemsController < ApplicationController
       
     end   
 
+    def edit
+      @item = Item.with_attached_image.find(params[:id])
+    end
+
+    def update
+    end
+
+    private
+
     def item_params
       params.require(:item).permit(:name, :state_id, :delivery_burden_id, :prefecture_id,:delivery_method_id, :day_id, :price, :info, :image)
     end
-    
 end

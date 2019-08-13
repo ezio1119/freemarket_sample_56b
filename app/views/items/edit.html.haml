@@ -1,0 +1,136 @@
+= form_for @item, remote: true, authenticity_token: true do |f|
+  .newpage
+    = render 'users/shared/header_center'
+    .newpage__box
+      .newpage__box__title
+        商品の情報を入力
+      .newpage__box__form
+        .newpage__box__upload
+          %h3.newpage__box__upload__title
+            出品画像
+            .newpage__box__upload__title--req
+              必須
+          %p.newpage__box__upload__text
+            最大10枚までアップロードできます
+          .newpage__box__upload__drop
+            = f.file_field :image, class: "newpage__box__upload__drop--span"
+              
+          
+      .newpage__box__form
+        .newpage__box__form__group
+          %h3.newpage__box__form__group__title
+            出品画像
+            .newpage__box__form__group__title--req
+              必須
+          = f.text_field :name, placeholder: "商品名（必須40文字まで）", class: 'newpage__box__form__group__input'
+        .newpage__box__form__group
+          %h3.newpage__box__form__group__title
+            商品の説明
+            .newpage__box__form__group__title--req
+              必須
+          = f.text_area :info, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）\n2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: 'newpage__box__form__group__text'
+          
+      .newpage__box__form
+        .newpage__box__form__block
+          .newpage__box__form__block__left
+            商品の詳細
+          .newpage__box__form__block__right
+            %h3.newpage__box__form__block__right__title
+              カテゴリー
+              .newpage__box__form__block__right__title--req
+                必須
+            %input{ placeholder: "---", type: "text", class: 'newpage__box__form__block__right__input'}
+            %h3.newpage__box__form__block__right__title
+              商品の状態
+              .newpage__box__form__block__right__title--req
+                必須
+            .newpage__box__form__block__right__text
+              = f.collection_select :state_id, State.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel'
+              = fa_icon "chevron-down", class: "newpage__box__form__block__right__text--icon"
+                    
+      .newpage__box__form
+        .newpage__box__form__block
+          .newpage__box__form__block__left
+            配送について
+          .newpage__box__form__block__right
+            %h3.newpage__box__form__block__right__title
+              配送料の負担
+              .newpage__box__form__block__right__title--req
+                必須
+            .newpage__box__form__block__right__input
+              = f.collection_select :delivery_burden_id, DeliveryBurden.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel'
+              = fa_icon "chevron-down", class: "newpage__box__form__block__right__input--icon"
+            %h3.newpage__box__form__block__right__title
+              配送の方法
+              .newpage__box__form__block__right__title--req
+                必須
+            .newpage__box__form__block__right__input
+              = f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel'
+              = fa_icon "chevron-down", class: "newpage__box__form__block__right__input--icon"
+            %h3.newpage__box__form__block__right__title
+              発送元の地域
+              .newpage__box__form__block__right__title--req
+                必須
+            .newpage__box__form__block__right__input
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel'
+              = fa_icon "chevron-down", class: "newpage__box__form__block__right__input--icon"
+            %h3.newpage__box__form__block__right__title
+              発送までの日数
+              .newpage__box__form__block__right__title--req
+                必須
+            .newpage__box__form__block__right__text
+              = f.collection_select :day_id, Day.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel'
+              = fa_icon "chevron-down", class: "newpage__box__form__block__right__text--icon"
+
+      .newpage__box__form
+        .newpage__box__form__price
+          .newpage__box__form__price__left
+            販売価格(300〜9,999,999)
+          .newpage__box__form__price__right
+            .newpage__box__form__price__right__count
+              %h3.newpage__box__form__price__right__count__title
+                価格
+                .newpage__box__form__price__right__count__title--req
+                  必須
+              = f.number_field :price, placeholder: "---", class: 'newpage__box__form__price__right__count__input'
+            .newpage__box__form__price__right__tax
+              %h3.newpage__box__form__price__right__tax__str
+                販売手数料 (10%)
+              %p.newpage__box__form__price__right__tax__str
+                ***
+            .newpage__box__form__price__right__total
+              %h3.newpage__box__form__price__right__total__title
+                販売利益
+              %p.newpage__box__form__price__right__total__title
+                ***
+      
+      .newpage__box__btn
+        .newpage__box__btn__group
+          .newpage__box__btn__group__note
+            .newpage__box__btn__group__note--first
+              = link_to "禁止されている出品", "", class: "newpage__box__btn__group__note--first--one"
+              %span.txtred<>
+                、
+              = link_to "行為", "", class: "newpage__box__btn__group__note--first--one"
+              %span.txtred<>
+                を必ずご確認ください。
+            .newpage__box__btn__group__note--first
+              %span.txtred<>
+                またブランド品でシリアルナンバー等がある場合はご記載ください。
+              = link_to "偽ブランドの販売", "", class: "newpage__box__btn__group__note--first--one"
+              %span.txtred<>
+                は犯罪であり処罰される可能性があります。
+            .newpage__box__btn__group__note--first
+              %span.txtred<>
+                また、出品をもちまして
+              = link_to "加盟店規約", "", class: "newpage__box__btn__group__note--first--one"
+              %span.txtred<>
+                に同意したことになります。
+          = f.submit "変更する", class: "newpage__box__btn__group__submit"
+          .newpage__box__btn__group__return
+            = button_to "戻る", root_path, class: "newpage__box__btn__group__return--click"
+
+    = render 'users/shared/footer'
+
+
+          
