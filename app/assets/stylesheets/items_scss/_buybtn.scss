@@ -1,0 +1,21 @@
+.buybtn{
+  position: fixed;
+  height: 160px;
+  width: 160px;
+  bottom: 32px;
+  right: 32px;
+  background: red;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+    &__name{
+      display: block;
+      font-size: 22px;
+      font-weight: bold;
+      padding-top: 25px;
+    }
+    &__icon{
+      font-size: 60px;
+    }
+}
