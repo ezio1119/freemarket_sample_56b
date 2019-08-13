@@ -60,7 +60,8 @@
         (税込)
       .itempage__box__price--post
         送料込み
-    = button_to "購入画面に進む", "", class: "itempage__box__buy"
+    - if user_signed_in? && @item.user_id != current_user.id
+      = button_to "購入画面に進む", "", class: "itempage__box__buy"
     .itempage__box__text
       = @item.info
     .itempage__box__btn
@@ -76,12 +77,16 @@
         = link_to "", class: "itempage__box__btn--right--link" do
           = fa_icon "lock", class: "itempage__box__btn--right--link--icon"
           %span あんしん・あんぜんへの取り組み
-    
-  .itempage__comment
-    %p.itempage__comment__note
-      相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-    %textarea{ name: "text", class: "itempage__comment__text", type: "textarea" }
-    = button_to "コメントする", "", class: "itempage__comment__btn"
+  - if user_signed_in? && @item.user_id == current_user.id
+    .itempage__comment
+      = button_to "編集する",  edit_item_path(@item.id), class: "itempage__comment__btn", method: :get
+      = button_to "削除する", item_path(@item.id), class: "itempage__comment__btn", method: :delete, data: { confirm: '本当にいいですか？' }
+
+    .itempage__comment
+      %p.itempage__comment__note
+        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      %textarea{ name: "text", class: "itempage__comment__text", type: "textarea" }
+      = button_to "コメントする", "", class: "itempage__comment__btn"
   
   .itempage__page
     .itempage__page__prev
