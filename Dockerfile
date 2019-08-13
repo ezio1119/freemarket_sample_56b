@@ -14,7 +14,6 @@ COPY Gemfile.lock $APP_ROOT
 
 RUN bundle install
 
-
 FROM ruby:2.6.3-alpine3.10
 
 RUN apk add --no-cache alpine-sdk \
@@ -24,19 +23,19 @@ RUN apk add --no-cache alpine-sdk \
     mysql-client \
     mysql-dev \
     imagemagick
-    
+
 COPY --from=builder /usr/local/bundle /usr/local/bundle
 
 WORKDIR /app
 ADD . /app
-RUN mkdir -p /app/tmp/sockets
+
+ENV RAILS_ENV production
 
 ARG RAILS_MASTER_KEY
 ENV RAILS_MASTER_KEY $RAILS_MASTER_KEY
 
+RUN mkdir -p /app/tmp/sockets
 RUN RAILS_ENV=production bundle exec rake assets:precompile
-
-ENV RAILS_ENV production
 
 VOLUME /app/public
 VOLUME /app/tmp
