@@ -4,16 +4,106 @@
   width: 100vw;
   color: rgb(51, 51, 51);
   &__header {
+    width: 750px;
     height: 50px;
-    width: 100vw;
     padding: 40px 0;
+    margin: 0 auto;
+    position: relative;
+    color: gray;
     &__contents {
-      width: 750px;
+      width: 730px;
       margin: 0 auto;
+      display: inline-block;
       &__link {
         &__img {
           width: 185px;
           height: 49px;
+        }
+      }
+      &__progress {
+        display: block;
+        height: 11px;
+        width: 470px;
+        border-bottom: solid 2px #ccc;
+        float: right;
+        &__box1 {
+          display: inline-block;
+          height:12px;
+          width: 12px;
+          border-radius: 50%;
+          background: #ccc;
+        }
+        &__box2 {
+          display: inline-block;
+          height:12px;
+          width: 12px;
+          border-radius: 50%;
+          background: #ccc;
+          margin-left:97px;
+        }
+        &__box3 {
+          display: inline-block;
+          height:12px;
+          width: 12px;
+          border-radius: 50%;
+          background: #ccc;
+          margin-left:97px;
+        }
+        &__box4 {
+          display: inline-block;
+          height:12px;
+          width: 12px;
+          border-radius: 50%;
+          background: #ccc;
+          margin-left:97px;
+        }
+        &__box5 {
+          display: inline-block;
+          height:12px;
+          width: 12px;
+          border-radius: 50%;
+          background: #ccc;
+          margin-left:97px;
+        }
+      }
+      &__text {
+        width: 470px;
+        float: right;
+        height: 1px;
+        font-size: 12px;
+        
+        &__message1 {
+          position: absolute;
+          top: 70px;
+          right: 460px;
+        }
+        &__message2 {
+          display: inline-block;
+          margin-left: 30px;
+          position: absolute;
+          top: 70px;
+          right: 335px;
+        }
+        &__message3 {
+          display: inline-block;
+          margin-left: 30px;
+          position: absolute;
+          top: 70px;
+          right: 210px;
+        }
+        &__message4 {
+          display: inline-block;
+          margin-left: 30px;
+          position: absolute;
+          top: 70px;
+          right: 110px;
+        }
+        &__message5 {
+          display: inline-block;
+          margin-left: 63px;
+          position: absolute;
+          top: 70px;
+          right: 15px;
         }
       }
     }
