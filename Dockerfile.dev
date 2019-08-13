@@ -6,6 +6,7 @@ RUN apk add --no-cache alpine-sdk \
     tzdata \
     mysql-client \
     mysql-dev \
+    imagemagick \
     less
 
 WORKDIR /tmp
@@ -22,6 +23,7 @@ RUN apk add --no-cache alpine-sdk \
     tzdata \
     mysql-client \
     mysql-dev \
+    imagemagick \
     less
 
 COPY --from=builder /usr/local/bundle /usr/local/bundle

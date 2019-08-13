@@ -5,7 +5,8 @@ RUN apk add --no-cache alpine-sdk \
     nodejs \
     tzdata \
     mysql-client \
-    mysql-dev
+    mysql-dev \
+    imagemagick
 
 WORKDIR /tmp
 COPY Gemfile $APP_ROOT
@@ -21,12 +22,18 @@ RUN apk add --no-cache alpine-sdk \
     nodejs \
     tzdata \
     mysql-client \
-    mysql-dev
+    mysql-dev \
+    imagemagick
+    
 COPY --from=builder /usr/local/bundle /usr/local/bundle
 
 WORKDIR /app
 ADD . /app
 RUN mkdir -p /app/tmp/sockets
+
+ARG RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY $RAILS_MASTER_KEY
+
 RUN RAILS_ENV=production bundle exec rake assets:precompile
 
 ENV RAILS_ENV production
