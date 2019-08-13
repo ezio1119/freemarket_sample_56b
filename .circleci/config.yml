@@ -65,7 +65,7 @@ workflows:
             - test
           filters:
             branches:
-              only: circleci-setting
+              only: master
       - aws-ecs/deploy-service-update:
           requires:
             - aws-ecr/build-and-push-image
