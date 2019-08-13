@@ -5,7 +5,12 @@
       .address-wrapper__contents__form__top
         %p.address-wrapper__contents__form__top__text
           住所入力
-      = form_for @user, url: users_card_path, method: "GET" do |f|
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = f.hidden_field :email
+        = f.hidden_field :nickname
+        = f.hidden_field :password
+        = f.hidden_field :password_confirmation
+        = f.hidden_field :birth_date
         .new_user__box
           = f.label :name, "お名前(全角)", class: "new_user__box__label"
           %span.new_user__box__text
