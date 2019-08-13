@@ -21,6 +21,7 @@ RUN apk add --no-cache alpine-sdk \
     tzdata \
     mysql-client \
     mysql-dev
+
 COPY --from=builder /usr/local/bundle /usr/local/bundle
 
 WORKDIR /app
