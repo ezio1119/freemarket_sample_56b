@@ -1,0 +1,53 @@
+.card-wrapper
+  = render 'users/shared/header'
+  .card-wrapper__container
+    %section.card-wrapper__container__form
+      %h2.card-wrapper__container__form__title
+        支払い方法
+      .card-wrapper__container__form__content
+        .card-wrapper__container__form__content__box
+          %label.card-wrapper__container__form__content__box__name
+            カード番号
+          %span.card-wrapper__container__form__content__box__require
+            必須
+          %input.card-wrapper__container__form__content__box__text{ placeholder: "半角数字のみ"}
+        %ul.card-wrapper__container__form__content__logo
+          %li.card-wrapper__container__form__content__logo__list
+            %img{src:"https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?3135490372",width:"49",height:"20"}
+          %li.card-wrapper__container__form__content__logo__list
+            %img{src:"https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?3135490372",width:"34",height:"20"}
+          %li.card-wrapper__container__form__content__logo__list
+            %img{src:"https://www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?3135490372",width:"30",height:"20"}
+          %li.card-wrapper__container__form__content__logo__list
+            %img{src:"https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?3135490372",width:"32",height:"20"}
+          %li.card-wrapper__container__form__content__logo__list
+            %img{src:"https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?3135490372",width:"21",height:"20"}
+          %li.card-wrapper__container__form__content__logo__list
+            %img{src:"https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?3135490372",width:"32",height:"20"}
+          %li.card-wrapper__container__form__content__logo__list
+            %img{src:"https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?3135490372",width:"32",height:"20"}
+        .card-wrapper__container__form__content__box
+          %label.card-wrapper__container__form__content__box__name
+            有効期限
+          %span.card-wrapper__container__form__content__box__require
+            必須
+          .card-wrapper__container__form__content__box__text__limit
+            %input.card-wrapper__container__form__content__box__text__limit__date
+            %p
+              月
+            %input.card-wrapper__container__form__content__box__text__limit__date__right
+            %p
+              年
+        .card-wrapper__container__form__content__box
+          %label.card-wrapper__container__form__content__box__name
+            セキュリティコード
+          %span.card-wrapper__container__form__content__box__require
+            必須
+          %input.card-wrapper__container__form__content__box__text{ placeholder: "カード背面4桁もしくは3桁の番号"}
+          .card-wrapper__container__form__content__box__link
+            %p.card-wrapper__container__form__content__box__link__tag
+              = fa_icon "question-circle", class: "card-wrapper__container__form__content__box__link" 
+              = link_to "カード裏面の番号とは？", "#", class: "card-wrapper__container__form__content__box__link" 
+          %button.card-wrapper__container__form__content__box__btn{ type: "submit" }
+            次へ進む
+  = render 'users/shared/footer'
