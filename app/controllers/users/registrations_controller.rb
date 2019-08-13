@@ -23,10 +23,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def card
+
   end
 
   def completion
-    
+
   end
 
   def create
