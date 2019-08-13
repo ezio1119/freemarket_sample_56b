@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     collection do
       get :profile
       get :identification
+      get :items_list
     end
   end
 end
