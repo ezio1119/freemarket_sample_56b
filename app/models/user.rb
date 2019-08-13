@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_one :address, dependent: :destroy
+  has_many :items, dependent: :destroy
   validates :nickname, presence: true, length: { maximum: 20 }
   validates :first_name, presence: true, format: {
     with: /[^ -~｡-ﾟ]+/,
