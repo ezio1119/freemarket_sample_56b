@@ -1,0 +1,22 @@
+.mypage__right__side__logout {
+  background-color: #fff;
+  height: 179px;
+  &__content {
+    padding: 64px;
+    &__box {
+      margin: 0 auto;
+      max-width: 320px;
+      &__btn {
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff;
+        display: block;
+        font-size: 14px;
+        line-height: 48px;
+        text-align: center;
+        text-decoration: none;
+        width: 100%
+      }
+    }
+  }
+}
