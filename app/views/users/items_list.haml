@@ -1,0 +1,31 @@
+= render 'items/header'
+
+.sub__header
+  %ul.sub__header__list
+    %li.sub__header__list__item
+      = link_to "https://www.mercari.com/jp/", class: "sub__header__list__item__active" do
+        メルカリ
+        = fa_icon "chevron-right", class: "sub__header__list__item__icon"
+    %li.sub__header__list__item
+      = link_to "https://www.mercari.com/jp/", class: "sub__header__list__item__active" do
+        マイページ
+        = fa_icon "chevron-right", class: "sub__header__list__item__icon"
+    %li.sub__header__list__item--now
+      プロフィール
+
+.mypage
+
+  = render 'sidebar'
+
+  .mypage__right
+    .mypage__right__side
+      .mypage__right__side__tab--white 出品した商品
+      .mypage__right__side__tab
+        .mypage__right__side__tab__top
+          .mypage__right__side__tab__top--left 出品中
+          .mypage__right__side__tab__top--right 
+        .mypage__right__side__tab__bottom
+          %ul.mypage__right__side__tab__bottom__list
+            = render 'users/shared/list', items: @items
+
+= render 'items/footer'

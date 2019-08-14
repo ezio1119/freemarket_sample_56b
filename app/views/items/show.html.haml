@@ -11,7 +11,7 @@
         %tr
           %th.itempage__box__info--table--th 出品者
           %td.itempage__box__info--table--td
-            = link_to " フージー", "", class: "itempage__box__info--table--td--name"
+            = link_to " #{@item.user.nickname}", "", class: "itempage__box__info--table--td--name"
             .itempage__box__info--table--td--rating
               .itempage__box__info--table--td--rating--grin
                 = fa_icon "smile-o", class: "itempage__box__info--table--td--rating--grin--smile"
@@ -60,7 +60,10 @@
         (税込)
       .itempage__box__price--post
         送料込み
-    = button_to "購入画面に進む", "", class: "itempage__box__buy"
+    - if user_signed_in? && @item.user_id == current_user.id
+
+    - else
+      = button_to "購入画面に進む", "", class: "itempage__box__buy"
     .itempage__box__text
       = @item.info
     .itempage__box__btn
@@ -76,7 +79,11 @@
         = link_to "", class: "itempage__box__btn--right--link" do
           = fa_icon "lock", class: "itempage__box__btn--right--link--icon"
           %span あんしん・あんぜんへの取り組み
-    
+  - if user_signed_in? && @item.user_id == current_user.id
+    .itempage__edit
+      = button_to "編集する",  edit_item_path(@item.id), class: "itempage__edit__btn", method: :get
+      = button_to "削除する", item_path(@item.id), class: "itempage__edit__btn", method: :delete, data: { confirm: '本当にいいですか？' }
+
   .itempage__comment
     %p.itempage__comment__note
       相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
