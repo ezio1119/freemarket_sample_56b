@@ -14,8 +14,6 @@
             最大10枚までアップロードできます
           .newpage__box__upload__drop
             = f.file_field :image, class: "newpage__box__upload__drop--span"
-              
-          
       .newpage__box__form
         .newpage__box__form__group
           %h3.newpage__box__form__group__title
@@ -29,7 +27,6 @@
             .newpage__box__form__group__title--req
               必須
           = f.text_area :info, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）\n2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: 'newpage__box__form__group__text'
-          
       .newpage__box__form
         .newpage__box__form__block
           .newpage__box__form__block__left
@@ -39,6 +36,7 @@
               カテゴリー
               .newpage__box__form__block__right__title--req
                 必須
+            = f.collection_select :category_id, Category.all, :id, :name
             %input{ placeholder: "---", type: "text", class: 'newpage__box__form__block__right__input'}
             %h3.newpage__box__form__block__right__title
               商品の状態
