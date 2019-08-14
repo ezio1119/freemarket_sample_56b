@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.limit(8)
-    @items = current_user.items.limit(8) if user_signed_in?
+    @items = Item.where.not(user_id: current_user.id).limit(8) if user_signed_in?
   end
 
   def show
