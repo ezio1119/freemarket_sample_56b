@@ -36,7 +36,7 @@
               カテゴリー
               .newpage__box__form__block__right__title--req
                 必須
-            = f.collection_select :category_id, Category.all, :id, :name
+            = f.collection_select :category_id, @category, :id, :name
             %input{ placeholder: "---", type: "text", class: 'newpage__box__form__block__right__input'}
             %h3.newpage__box__form__block__right__title
               商品の状態
