@@ -11,7 +11,7 @@
         マイページ
         = fa_icon "chevron-right", class: "sub__header__list__item__icon"
     %li.sub__header__list__item--now
-      本人情報の登録
+      ログアウト
 
 .mypage
 
@@ -22,4 +22,6 @@
       .mypage__right__side__logout
         .mypage__right__side__logout__content
           .mypage__right__side__logout__content__box
-            = link_to "ログアウト", destroy_user_session_path, class: "mypage__right__side__logout__content__box__btn"
+            = link_to "ログアウト", destroy_user_session_path, method: 'delete', class: "mypage__right__side__logout__content__box__btn"
+
+= render 'items/footer'
