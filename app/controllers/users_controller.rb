@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+
   def index
   end
 
@@ -13,8 +14,9 @@ class UsersController < ApplicationController
     @address = Address.new
   end
 
-  def items_list
-    @items = Item.where(user_id: current_user.id)
+  def items_list 
+    @user = User.find(current_user.id)
+    @items = @user.items
   end
 
 end
