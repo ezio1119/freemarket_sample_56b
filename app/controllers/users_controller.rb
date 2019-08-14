@@ -18,8 +18,7 @@ class UsersController < ApplicationController
   end
 
   def items_list 
-    @user = User.find(current_user.id)
-    @items = @user.items
+    @items = current_user.items
   end
 
 end
