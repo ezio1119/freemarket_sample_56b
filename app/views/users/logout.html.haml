@@ -1,0 +1,27 @@
+= render 'items/header'
+
+.sub__header
+  %ul.sub__header__list
+    %li.sub__header__list__item
+      = link_to "https://www.mercari.com/jp/", class: "sub__header__list__item__active" do
+        メルカリ
+        = fa_icon "chevron-right", class: "sub__header__list__item__icon"
+    %li.sub__header__list__item
+      = link_to "https://www.mercari.com/jp/", class: "sub__header__list__item__active" do
+        マイページ
+        = fa_icon "chevron-right", class: "sub__header__list__item__icon"
+    %li.sub__header__list__item--now
+      ログアウト
+
+.mypage
+
+  = render 'sidebar'
+
+  .mypage__right
+    .mypage__right__side
+      .mypage__right__side__logout
+        .mypage__right__side__logout__content
+          .mypage__right__side__logout__content__box
+            = link_to "ログアウト", destroy_user_session_path, method: 'delete', class: "mypage__right__side__logout__content__box__btn"
+
+= render 'items/footer'
