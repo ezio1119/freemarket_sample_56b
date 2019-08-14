@@ -1,7 +1,13 @@
 class ItemsController < ApplicationController
+
+  before_action :authenticate_user!, except: [:index, :show]
   
   def index
-    @items = Item.all
+    if user_signed_in?
+      @items = Item.where.not(user_id: current_user.id).limit(8)
+    else
+      @items = Item.all.limit(8)
+    end
   end
 
   def show
@@ -51,4 +57,5 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :state_id, :delivery_burden_id, :prefecture_id,:delivery_method_id, :day_id, :price, :info, :image).merge(user_id: current_user.id)
   end
+
 end

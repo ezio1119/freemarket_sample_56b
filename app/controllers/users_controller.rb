@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def items_list
-    @items = Item.all
+    @items = Item.where(user_id: current_user.id)
   end
 
 end
