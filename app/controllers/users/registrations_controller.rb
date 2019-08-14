@@ -36,9 +36,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     binding.pry
     @address = Address.new(address_params)
-    @address.user_id = @user.id
+    @address.user_id = current_user.id
     @address.save
     binding.pry
+    #next
+    9011076249 is out of range for ActiveModel::Type::Integer with limit 4 bytes
   end
 
   protected
