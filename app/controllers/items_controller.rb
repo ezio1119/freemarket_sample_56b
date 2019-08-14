@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_items, only: [:show, :update, :destroy]
   
   def index
-    @items = Item.all.limit(8)
+    @items = Item.limit(8)
     @items = Item.where.not(user_id: current_user.id).limit(8) if user_signed_in?
   end
 
