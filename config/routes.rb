@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       get :profile
       get :identification
       get :items_list
+      get :logout
     end
   end
 end
