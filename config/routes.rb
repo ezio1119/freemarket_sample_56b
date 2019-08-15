@@ -21,7 +21,10 @@ Rails.application.routes.draw do
       get :buy
     end
   end
-  
+
+
+  get 'categories/search_children', to: 'categories#search_children'
+
   resources :cards, only: [:index, :new]
   
   resources :users, only:[:show] do

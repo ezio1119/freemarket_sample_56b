@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def tell
     if @user.valid? && verify_recaptcha
-      add_user_session(@user)
+      render 'tell'
     else
       render 'new'
     end
@@ -34,8 +34,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.valid? && verify_recaptcha
       super
     else
-      self.resource = resource_class.new
-      respond_with_navigational(resource) { render :new }
+      
+      
     end
   end
 

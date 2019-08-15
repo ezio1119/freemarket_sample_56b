@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+
   end
   
   def new
@@ -49,7 +50,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :size, :state_id, :delivery_burden_id, :prefecture_id,:delivery_method_id, :day_id, :price, :info, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :state_id, :delivery_burden_id, :prefecture_id,:delivery_method_id, :day_id, :price, :info, :image, :category_id).merge(user_id: current_user.id)
   end
 
   def set_items
