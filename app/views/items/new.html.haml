@@ -40,6 +40,13 @@
             = f.collection_select :category_id, [], :id, :name, {prompt: "---"}, {id: "child_id"}
             = f.collection_select :category_id, [], :id, :name, {prompt: "---"}, {id: "grandchild_id"}
             %h3.newpage__box__form__block__right__title
+              サイズ
+              .newpage__box__form__block__right__title--req
+                必須
+            .newpage__box__form__block__right__input
+              = f.text_field :size, placeholder: "---", class: 'newpage__box__form__block__right__text--sel'
+              = fa_icon "chevron-down", class: "newpage__box__form__block__right__input--icon"
+            %h3.newpage__box__form__block__right__title
               商品の状態
               .newpage__box__form__block__right__title--req
                 必須
@@ -91,7 +98,7 @@
                 価格
                 .newpage__box__form__price__right__count__title--req
                   必須
-              = f.number_field :price, placeholder: "---", class: 'newpage__box__form__price__right__count__input'
+              = f.text_field :price, placeholder: "---", class: 'newpage__box__form__price__right__count__input'
             .newpage__box__form__price__right__tax
               %h3.newpage__box__form__price__right__tax__str
                 販売手数料 (10%)

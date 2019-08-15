@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_items, only: [:show, :update, :destroy]
+  before_action :set_items, only: [:show, :edit, :update, :destroy]
   
   def index
     @items = Item.limit(8)
