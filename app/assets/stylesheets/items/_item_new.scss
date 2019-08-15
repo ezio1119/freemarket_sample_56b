@@ -91,6 +91,24 @@
             }
             &__right{
             width: 400px;
+            #item_category_id {
+              background: #fff;
+              margin-bottom: 10px;
+              width: 400px;
+              height: 50px;
+            }
+            #child_id {
+              background: #fff;
+              margin-bottom: 10px;
+              width: 400px;
+              height: 50px;
+            }
+            #grandchild_id {
+              background: #fff;
+              margin-bottom: 10px;
+              width: 400px;
+              height: 50px;
+            }
             &__title{
               font-weight: bold;
               font-size: 14px;
