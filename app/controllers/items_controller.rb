@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_items, only: [:show, :update, :destroy]
+  before_action :set_items, only: [:show, :edit, :update, :destroy]
   
   def index
     @items = Item.limit(8)
@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :state_id, :delivery_burden_id, :prefecture_id,:delivery_method_id, :day_id, :price, :info, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :size, :state_id, :delivery_burden_id, :prefecture_id,:delivery_method_id, :day_id, :price, :info, :image).merge(user_id: current_user.id)
   end
 
   def set_items
