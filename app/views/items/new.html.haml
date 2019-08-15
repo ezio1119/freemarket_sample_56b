@@ -36,7 +36,9 @@
               カテゴリー
               .newpage__box__form__block__right__title--req
                 必須
-            = f.collection_select :category_id, @category, :id, :name
+            = f.collection_select :category_id, Category.limit(2), :id, :name, { prompt: "---"}
+            = f.collection_select :category_id, [], :id, :name, {prompt: ""}, {id: "child_id"}
+            = f.collection_select :category_id, [], :id, :name, {prompt: ""}, {id: "grandchild_id"}
             %input{ placeholder: "---", type: "text", class: 'newpage__box__form__block__right__input'}
             %h3.newpage__box__form__block__right__title
               商品の状態

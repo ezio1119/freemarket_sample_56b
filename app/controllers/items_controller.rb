@@ -14,10 +14,10 @@ class ItemsController < ApplicationController
   
   def new
     @item = Item.new
-    @category = Category.all
   end
 
   def create
+    binding.pry
     @item = Item.new(item_params)
       if @item.save
       redirect_to root_path
