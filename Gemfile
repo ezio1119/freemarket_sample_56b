@@ -42,6 +42,7 @@ gem "aws-sdk-s3", require: false
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'active_hash'
 gem 'dropzonejs-rails'
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
