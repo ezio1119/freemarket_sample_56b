@@ -29,9 +29,11 @@ Rails.application.routes.draw do
     member do
       get :profile
       get :identification
+      get :items_list
+      get :logout
     end
   end
-
+  get 'categories/search_children', to: 'categories#search_children'
   
 end
 
