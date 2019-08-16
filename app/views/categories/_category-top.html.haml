@@ -1,0 +1,6 @@
+.category.cate#category
+  - categories.each do |category|
+    = link_to category.name, "", data: {id: category.id}, class: "category__links"
+  = link_to 'カテゴリー一覧', "", class: "category__links"
+.child-category.cate#child-category
+.grandchild-category.cate#grandchild-category

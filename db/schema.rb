@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< Updated upstream
+
+ActiveRecord::Schema.define(version: 2019_08_16_104142) do
+
 ActiveRecord::Schema.define(version: 2019_08_16_021308) do
+=======
+ActiveRecord::Schema.define(version: 2019_08_16_104142) do
+>>>>>>> Stashed changes
+
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -79,6 +87,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_021308) do
     t.datetime "updated_at", null: false
     t.integer "delivery_burden_id", null: false
     t.integer "category_id"
+    t.integer "brand_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 

@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_items, only: [:show, :edit, :update, :destroy]
   
   def index
+    @categories = Category.limit(13)
     @items = Item.limit(8)
     @items = Item.where.not(user_id: current_user.id).limit(8) if user_signed_in?
   end
@@ -37,7 +38,7 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-
+  
   def destroy
     if @item.user_id == current_user.id
       @item.destroy!
@@ -48,7 +49,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :state_id, :delivery_burden_id, :prefecture_id,:delivery_method_id, :day_id, :price, :info, :image, :category_id).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :state_id, :delivery_burden_id, :prefecture_id,:delivery_method_id, :day_id, :price, :info, :image, :category_id, :brand_id).merge(user_id: current_user.id)
   end
 
   def set_items
