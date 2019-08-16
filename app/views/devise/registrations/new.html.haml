@@ -29,6 +29,12 @@
               %span.user_wrapper__contents__forms__body__form__logo
                 必須
               = f.password_field :password_confirmation, placeholder: "  ７文字以上", autocomplete: "new-password", class: "user_wrapper__contents__forms__body__form__field"
+          - else
+            .user_wrapper__contents__forms__body__form
+              = f.hidden_field :password, autocomplete: "new-password", class: "user_wrapper__contents__forms__body__form__field"
+            .user_wrapper__contents__forms__body__form
+              = f.hidden_field :password_confirmation, autocomplete: "new-password", class: "user_wrapper__contents__forms__body__form__field"
+
           .user_wrapper__contents__forms__body__info
             %h3.user_wrapper__contents__forms__body__info__message
               本人確認
