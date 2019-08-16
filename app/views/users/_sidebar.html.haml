@@ -22,7 +22,7 @@
           出品する
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
-        = link_to "#", class: "mypage__left__side__list__item__active" do
+        = link_to items_list_users_path(current_user.id), class: "mypage__left__side__list__item__active" do
           出品した商品 - 出品中
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
@@ -70,7 +70,7 @@
     .mypage__left__side__head 設定
     %ul.mypage__left__side__list
       %li.mypage__left__side__list__item
-        = link_to "#", class: "mypage__left__side__list__item__active" do
+        = link_to profile_users_path, class: "mypage__left__side__list__item__active" do
           プロフィール
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
@@ -86,7 +86,7 @@
           メール/パスワード
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
-        = link_to "#", class: "mypage__left__side__list__item__active" do
+        = link_to identification_users_path, class: "mypage__left__side__list__item__active" do
           本人情報
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
@@ -94,6 +94,6 @@
           電話番号の確認
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
-        = link_to "#", class: "mypage__left__side__list__item__active" do
+        = link_to logout_users_path, class: "mypage__left__side__list__item__active" do
           ログアウト
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"

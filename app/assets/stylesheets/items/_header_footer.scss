@@ -74,6 +74,18 @@
           border: 1px solid rgb(0, 153, 232);
           margin-left: 10px;
         }
+        &--mypage{
+          color: #aaa;
+          height: 32px;
+          padding: 0 10px;
+          border-radius: 5px;
+          margin-left: 10px;
+          text-decoration: none;
+        }
+        &--mypage:hover{
+            color: rgb(0, 153, 232);
+            text-decoration: underline;
+        }
       }
     }
   }

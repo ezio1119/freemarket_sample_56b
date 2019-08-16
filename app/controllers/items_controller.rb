@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :buy]
-  before_action :authenticate_user!, only: [:buy, :new, :create]
-
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_items, only: [:show, :edit, :update, :destroy]
+  
   def index
     @items = Item.limit(8)
     @items = Item.where.not(user_id: current_user.id).limit(8) if user_signed_in?
@@ -16,35 +16,42 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+      if @item.save
+      redirect_to root_path
+      else
+        render :new
+      end
+  end
 
-    if @item.save
-    redirect_to root_path
+  def buy
+    
+  end   
+
+  def edit
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item)
     else
-      render :new
+      render :edit
     end
   end
 
   def destroy
-  end
-  
-  private
-  def item_params
-    params.require(:item).permit(
-      :name,
-      :state_id,
-      :delivery_burden_id,
-      :prefecture_id,
-      :delivery_method_id,
-      :day_id,
-      :price,
-      :info,
-      :image,
-      ).merge(
-        user_id: current_user.id
-      )
+    if @item.user_id == current_user.id
+      @item.destroy!
+      redirect_to items_list_users_path
+    end
   end
 
-  def set_item
-    @item = Item.find(params[:id])
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :state_id, :delivery_burden_id, :prefecture_id,:delivery_method_id, :day_id, :price, :info, :image, :category_id).merge(user_id: current_user.id)
+  end
+
+  def set_items
+    @item = Item.with_attached_image.find(params[:id])
   end
 end

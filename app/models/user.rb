@@ -10,11 +10,11 @@ class User < ApplicationRecord
   has_many :bought_items, through: :bought_lists, source: :item
   has_many :sold_lists, class_name: "Order", foreign_key: "sold_id"
   has_many :sold_items, through: :sold_lists, source: :sold
+  has_many :items, dependent: :destroy
 
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :cards
-
-
+  
   validates :nickname, presence: true, length: { maximum: 20 }
   validates :first_name, presence: true, format: {
     with: /[^ -~｡-ﾟ]+/,
