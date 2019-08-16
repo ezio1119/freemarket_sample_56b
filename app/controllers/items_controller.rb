@@ -28,6 +28,10 @@ class ItemsController < ApplicationController
     
   end   
 
+  def search
+    @items = Item.where("name LIKE ?", "%#{params[:keyword]}%")
+  end
+
   def edit
   end
 

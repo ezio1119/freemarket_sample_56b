@@ -12,6 +12,17 @@ Rails.application.routes.draw do
   end
   
 
+  root 'items#index'
+
+  resources :items do
+    collection do
+      get :search
+    end
+    member do
+      get :buy
+    end
+  end
+  
   namespace :users do
     resource :cards, only: [:create, :new, :show, :destroy] do
       collection do
