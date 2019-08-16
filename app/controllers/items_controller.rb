@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_items, only: [:show, :edit, :update, :destroy]
   
@@ -10,7 +9,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-
   end
   
   def new
@@ -57,5 +55,4 @@ class ItemsController < ApplicationController
   def set_items
     @item = Item.with_attached_image.find(params[:id])
   end
-
 end

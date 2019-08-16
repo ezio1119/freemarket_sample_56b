@@ -1,9 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
-  before_action :set_user_params, only: [:tell,:create]
-  before_action :build_user_name, only: [:address]
   def index
-
   end
 
   def new
@@ -11,65 +8,50 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def tell
+    
+    @user = User.new(user_params)
     if @user.valid? && verify_recaptcha
-      render 'tell'
+      session[:user] = @user
+      session[:pass] = @user.password
+      session[:pass_conf] = @user.password_confirmation
     else
       render 'new'
     end
   end
 
-  def address
-    @user.build_address
-  end
-
-  def card
-
-  end
-
-  def completion
-
-  end
-
   def create
-    if @user.valid? && verify_recaptcha
-      super
+    user = User.new(build_user)
+    if user.save
+      session.clear
     else
-      
-      
+      redirect_to root_path
     end
   end
 
-  protected
-
+  private
   def user_params
-    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :first_name, :last_name, :first_name_kana, :last_name_kana ,:birth_date)
+    params.require(:user).permit(
+      :nickname,
+      :email,
+      :password,
+      :password_confirmation,
+      :birth_date,
+      :first_name,
+      :last_name,
+      :first_name_kana,
+      :last_name_kana
+    )
   end
 
-  def set_user_params
-    @user = User.new(user_params)
+  def build_user
+    session[:user].merge(
+      password: session[:pass],
+      password_confirmation: session[:pass_conf],
+      payjp_cus: session[:payjp_cus],
+      address_attributes: session[:address],
+      cards_attributes: [{
+        payjp_car: session[:payjp_car]
+      }]
+    )
   end
-
-  
-  def add_user_session(user)
-    session[:nickname] = user.nickname
-    session[:email] = user.email
-    session[:password] = user.password
-    session[:password_confirmation] = user.password_confirmation
-    session[:first_name] = user.first_name
-    session[:last_name] = user.last_name
-    session[:first_name_kana] = user.first_name_kana
-    session[:last_name_kana] = user.last_name_kana
-    session[:birth_date] = user.birth_date
-  end
-
-
-  def build_user_name
-    @user = User.new
-    @user.first_name = session[:first_name]
-    @user.last_name = session[:last_name]
-    @user.first_name_kana = session[:first_name_kana]
-    @user.last_name_kana = session[:last_name_kana]
-  end
-
-
 end

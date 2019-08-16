@@ -1,6 +1,7 @@
 = render 'header'
 = render partial:'categories/category-top', locals: {categories: @categories}
 .main
+
   .main__slider
   .main__container
     %h2.main__container__title
@@ -9,5 +10,6 @@
       = link_to "レディース新着アイテム", "", class: "main__container__box--title"
       %ul.main__container__box--content
         = render @items
+
 = render 'footer'
 = render 'buybtn'
