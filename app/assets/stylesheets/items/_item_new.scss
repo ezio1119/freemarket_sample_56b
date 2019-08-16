@@ -91,6 +91,11 @@
             }
             &__right{
             width: 400px;
+            &__input {
+              #item_size {
+                width: 365px;
+              }
+            }
             #item_category_id {
               background: #fff;
               margin-bottom: 10px;
