@@ -1,6 +1,7 @@
 = render 'header'
 
 .main
+
   .main__slider
 
   .main__container
@@ -10,5 +11,6 @@
       = link_to "レディース新着アイテム", "", class: "main__container__box--title"
       %ul.main__container__box--content
         = render @items
+
 = render 'footer'
 = render 'buybtn'

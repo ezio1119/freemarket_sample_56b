@@ -9,14 +9,14 @@
       %section.buypage__main__container__item
         .buypage__main__container__item__inner
           %h3.buypage__main__container__item__inner__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m34768823318_1.jpg?1565506724", alt: "image", class:"buypage__main__container__item__inner__image"
+            = image_tag @item.image, alt: "image", class:"buypage__main__container__item__inner__image"
           %p.buypage__main__container__item__inner__name
-            ラドー  RADO   手巻き レディース  腕時計 カクカク四角感が可愛い
-          %form.buypage__main__container__item__inner__content
+            = @item.name
+          = form_with class: :buypage__main__container__item__inner__content do |f|
             %p.buypage__main__container__item__inner__content__price
-              ¥ 6,580
+              = "¥ #{ @item.price }"
               %span.buypage__main__container__item__inner__content__price__fee
-                送料込み
+                = @item.delivery_method.name
             %ul.buypage__main__container__item__inner__content__point
               %li
                 .buypage__main__container__item__inner__content__point__text
@@ -27,19 +27,20 @@
                   支払い金額
                 .buypage__main__container__item__inner__content__pay__box__cell
                   %span
-                    ¥&nbsp;6,580
-            %button.buypage__main__container__item__inner__btn{ type: "submit"}
-              購入する
+                    = "¥#{ @item.price }"
+                    = f.hidden_field :amount, value: @item.price
+            = f.submit "購入する", class: "buypage__main__container__item__inner__btn"
+            
       %section.buypage__main__container__user
         .buypage__main__container__user__inner
           %h3.buypage__main__container__user__inner__send
             配送先
           %address.buypage__main__container__user__inner__address
-            〒000-0000
+            = @address.postcode
             %br
-            北海道 札幌市A区 B町1-2-3 Cビル
+            = "#{@address.prefecture.name} #{@address.city} #{@address.block} #{@address.building}"
             %br
-            テスト 太朗
+            = "#{@address.first_name} #{@address.last_name}"
           %p.buypage__main__container__user__inner__text
           = link_to "#", class: "buypage__main__container__user__inner__link" do
             変更する
@@ -49,11 +50,11 @@
           %h3.buypage__main__container__user__inner__pay
             支払い方法
           %p.buypage__main__container__user__inner__num
-            ************1234
+            = "************#{@card[:last4]}"
             %br
-            00/11
+              ="#{@card[:month]}/#{@card[:year]}"
           %figure.buypage__main__container__user__inner__card
-            = image_tag "https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2508029365", class: "buypage__main__container__user__inner__card", alt: "visa"
+            = image_tag "visa.svg", class: "buypage__main__container__user__inner__card", alt: "visa"
           %p.buypage__main__container__user__inner__text
           = link_to "#", class: "buypage__main__container__user__inner__link" do
             変更する
