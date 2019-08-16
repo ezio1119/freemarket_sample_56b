@@ -4,7 +4,6 @@ class Item < ApplicationRecord
     has_one :order
     has_one :bought, through: :order, source: :bought
     has_one :sold, through: :order, source: :sold
-
     validates :name, length: { maximum: 40 }, presence: true
     validates :state_id, presence: true
     validates :delivery_burden_id, presence: true

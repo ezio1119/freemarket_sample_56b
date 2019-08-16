@@ -1,4 +1,4 @@
-= form_for [current_user, @item], remote: true, authenticity_token: true, url: "/items" do |f|
+= form_for @item do |f|
   .newpage
     = render 'users/shared/header_center'
     .newpage__box
@@ -14,6 +14,8 @@
             最大10枚までアップロードできます
           .newpage__box__upload__drop
             = f.file_field :image, class: "newpage__box__upload__drop--span"
+              
+          
       .newpage__box__form
         .newpage__box__form__group
           %h3.newpage__box__form__group__title
@@ -27,6 +29,7 @@
             .newpage__box__form__group__title--req
               必須
           = f.text_area :info, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）\n2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: 'newpage__box__form__group__text'
+          
       .newpage__box__form
         .newpage__box__form__block
           .newpage__box__form__block__left
@@ -36,16 +39,7 @@
               カテゴリー
               .newpage__box__form__block__right__title--req
                 必須
-            = f.collection_select :category_id, Category.limit(13), :id, :name, { prompt: "---"}
-            = f.collection_select :category_id, [], :id, :name, {prompt: "---"}, {id: "child_id"}
-            = f.collection_select :category_id, [], :id, :name, {prompt: "---"}, {id: "grandchild_id"}
-            %h3.newpage__box__form__block__right__title
-              サイズ
-              .newpage__box__form__block__right__title--req
-                必須
-            .newpage__box__form__block__right__input
-              = f.text_field :size, placeholder: "---", class: 'newpage__box__form__block__right__text--sel'
-              = fa_icon "chevron-down", class: "newpage__box__form__block__right__input--icon"
+            %input{ placeholder: "---", type: "text", class: 'newpage__box__form__block__right__input'}
             %h3.newpage__box__form__block__right__title
               商品の状態
               .newpage__box__form__block__right__title--req
@@ -98,7 +92,7 @@
                 価格
                 .newpage__box__form__price__right__count__title--req
                   必須
-              = f.text_field :price, placeholder: "---", class: 'newpage__box__form__price__right__count__input'
+              = f.number_field :price, placeholder: "---", class: 'newpage__box__form__price__right__count__input'
             .newpage__box__form__price__right__tax
               %h3.newpage__box__form__price__right__tax__str
                 販売手数料 (10%)
@@ -132,7 +126,7 @@
               = link_to "加盟店規約", "", class: "newpage__box__btn__group__note--first--one"
               %span.txtred<>
                 に同意したことになります。
-          = f.submit "出品する", class: "newpage__box__btn__group__submit"
+          = f.submit "変更する", class: "newpage__box__btn__group__submit"
           .newpage__box__btn__group__return
             = button_to "戻る", root_path, class: "newpage__box__btn__group__return--click"
 

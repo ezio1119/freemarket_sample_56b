@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   
 
+
   def index
   end
 
@@ -10,7 +11,15 @@ class UsersController < ApplicationController
   def profile
   end
 
+  def logout
+  end
+
   def identification
     @address = Address.new
   end
+
+  def items_list 
+    @items = current_user.items
+  end
+
 end
