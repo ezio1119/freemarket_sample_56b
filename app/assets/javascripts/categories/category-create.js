@@ -2,14 +2,6 @@ $(document).on('turbolinks:load', function(){
 
   $('#child_id').hide()
   $('#grandchild_id').hide()
-
-  function moveForm() {
-    $('#child_id').show()
-    $('#child_id').empty()
-    $('#grandchild_id').hide()
-    $('#grandchild_id').empty()
-  }
-
   function appendChild(child) {
     var option = `
                 <option value="${child.id}">${child.name}</option>
