@@ -20,7 +20,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    binding.pry
     user = User.new(build_user)
     if user.save
       session.clear
