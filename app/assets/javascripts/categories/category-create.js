@@ -27,7 +27,8 @@ $(document).on('turbolinks:load', function(){
       dataType: 'json',
     })
     .done(function(children){
-      moveForm()
+      $('#child_id').show()
+      $('#child_id').empty()
       children.forEach(function(child){
         appendChild(child)
       })
