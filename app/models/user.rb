@@ -37,12 +37,17 @@ class User < ApplicationRecord
   validates :birth_date, presence: true
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0, 20]
-      user.nickname = auth.info.name
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+
+    unless user
+      user = User.create(
+      uid: auth.uid,
+      provider: auth.provider,
+      nickname: auth.info.name,
+      email:    auth.info.email,
+      password: Devise.friendly_token[0,20]
+      )
     end
+    user
   end
 end

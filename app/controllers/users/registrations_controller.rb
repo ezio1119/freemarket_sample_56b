@@ -5,9 +5,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new
     if session[:email].present?
-      @user = User.new
-      @user.nickname = session[:nickname] 
-      @user.email = session[:email]
+      @user = User.new(
+      nickname: session[:nickname],
+      email: session[:email],
+      password: session[:password],
+      password_confirmation: session[:password]
+      )
     else 
       super
     end 
@@ -53,6 +56,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:user].merge(
       password: session[:pass],
       password_confirmation: session[:pass_conf],
+      uid: session[:uid],
+      provider: session[:provider],
       payjp_cus: session[:payjp_cus],
       address_attributes: session[:address],
       cards_attributes: [{
