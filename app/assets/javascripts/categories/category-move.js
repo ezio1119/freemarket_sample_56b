@@ -10,4 +10,7 @@ $(document).on('turbolinks:load', function(){
   $('#child-category').mouseover(function(){
     $('#grandchild-category').show()
   })
+  $('.main').on('mouseover', function(){
+    $('.cate').hide()
+  })
 })
