@@ -60,7 +60,7 @@
         (税込)
       .itempage__box__price--post
         送料込み
-    = button_to "購入画面に進む", "", class: "itempage__box__buy"
+    = button_to "購入画面に進む", item_orders_path(@item), method: :get, class: "itempage__box__buy"
     .itempage__box__text
       = @item.info
     .itempage__box__btn
