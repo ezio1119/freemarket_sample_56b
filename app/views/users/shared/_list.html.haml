@@ -1,0 +1,20 @@
+- items.each do |item|
+  %li.itemlist
+    = link_to item_path(item.id), class: "itemlist__box" do
+      .itemlist__box__left
+        = image_tag item.image, class:"itemlist__box__left__photo"
+        .itemlist__box__left__detail
+          .itemlist__box__left__detail__upper
+            = item.name
+          .itemlist__box__left__detail__lower
+            .itemlist__box__left__detail__lower--icon
+              = fa_icon "heart", class: "itemlist__box__left__detail__lower--icon--set"
+              .itemlist__box__left__detail__lower--icon--count
+                0
+            .itemlist__box__left__detail__lower--icon
+              = fa_icon "comment", class: "itemlist__box__left__detail__lower--icon--set"
+              .itemlist__box__left__detail__lower--icon--count
+                0
+            .itemlist__box__left__detail__lower--note
+              公開中
+      = fa_icon "chevron-right", class:"itemlist__box__right"

@@ -22,7 +22,7 @@
           出品する
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
-        = link_to "#", class: "mypage__left__side__list__item__active" do
+        = link_to items_list_users_path(current_user.id), class: "mypage__left__side__list__item__active" do
           出品した商品 - 出品中
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
@@ -78,7 +78,7 @@
           発送元・お届け先住所変更
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
-        = link_to cards_path, class: "mypage__left__side__list__item__active" do
+        = link_to users_cards_path, class: "mypage__left__side__list__item__active" do
           支払い方法
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
