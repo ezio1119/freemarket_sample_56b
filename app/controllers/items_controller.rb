@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-
+  
   def destroy
     if @item.user_id == current_user.id
       @item.destroy!
@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :state_id, :delivery_burden_id, :prefecture_id,:delivery_method_id, :day_id, :price, :info, :image, :category_id).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :state_id, :delivery_burden_id, :prefecture_id,:delivery_method_id, :day_id, :price, :info, :image, :category_id, :brand_id).merge(user_id: current_user.id)
   end
 
   def set_items

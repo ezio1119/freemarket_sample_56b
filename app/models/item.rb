@@ -19,4 +19,5 @@ class Item < ApplicationRecord
     belongs_to_active_hash :delivery_burden
     belongs_to_active_hash :delivery_method
     belongs_to_active_hash :day
+    belongs_to_active_hash :brand, optional: true
 end

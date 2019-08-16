@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_14_104837) do
+ActiveRecord::Schema.define(version: 2019_08_16_095245) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -46,6 +46,11 @@ ActiveRecord::Schema.define(version: 2019_08_14_104837) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
+  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.integer "parent_id"
@@ -67,6 +72,7 @@ ActiveRecord::Schema.define(version: 2019_08_14_104837) do
     t.datetime "updated_at", null: false
     t.integer "delivery_burden_id", null: false
     t.integer "category_id"
+    t.integer "brand_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
