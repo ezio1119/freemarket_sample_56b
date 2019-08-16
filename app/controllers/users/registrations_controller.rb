@@ -4,7 +4,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def new
-    super
+    if session[:email].present?
+      @user = User.new
+      @user.nickname = session[:nickname] 
+      @user.email = session[:email]
+    else 
+      super
+    end 
   end
 
   def tell
