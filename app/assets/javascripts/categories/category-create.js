@@ -20,6 +20,7 @@ $(document).on('turbolinks:load', function(){
 
   $('#item_category_id').change(function(){
     var select = $('#item_category_id').val()
+    $('#grandchild_id').hide()
     $.ajax({
       url: '/categories/search_children',
       type: "GET",

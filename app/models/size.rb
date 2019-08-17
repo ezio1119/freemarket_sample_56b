@@ -10,4 +10,12 @@ class Size < ActiveHash::Base
     {id: 22, name: '26.0cm', size_name: "shoes"}, {id: 23, name: '26.5cm', size_name: "shoes"}, {id: 24, name: '27.0cm', size_name: "shoes"},
     {id: 25, name: '27.5cm以上', size_name: "shoes"}
   ]
+  def self.clothes_size
+    where(size_name: 'clothes')
+  end
+
+  def self.shoes_size
+    where(size_name: 'shoes')
+  end
+
 end

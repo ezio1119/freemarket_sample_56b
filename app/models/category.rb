@@ -4,4 +4,7 @@ class Category < ApplicationRecord
   has_many :children, class_name: :Category, foreign_key: :parent_id
 
   scope :top_category, -> { limit(13) }
+  def self.mach_size
+    where()
+  end
 end
