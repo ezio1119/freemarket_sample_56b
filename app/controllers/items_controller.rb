@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_items, only: [:show, :edit, :update, :destroy]
   
   def index
-    @categories = Category.limit(13)
+    @categories = Category.top_category
     @items = Item.limit(8)
     @items = Item.where.not(user_id: current_user.id).limit(8) if user_signed_in?
   end
