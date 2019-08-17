@@ -45,13 +45,12 @@
                 .newpage__box__form__block__right__title--req
                   必須
               = f.collection_select :size_id, [], :id, :name, { prompt: "---"}, {id: "size-form"}
-            %h3.newpage__box__form__block__right__title#brand-field
+            %h3.newpage__box__form__block__right__brand#brand-field
               ブランド
               .newpage__box__form__block__right__title--req.label
                 任意
-              .newpage__box__form__block__right__input
+              .newpage__box__form__block__right__brand
                 = f.collection_select :brand_id, Brand.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel', id: "brand-box"
-                = fa_icon "chevron-down", class: "newpage__box__form__block__right__text--icon"
             %h3.newpage__box__form__block__right__title
               商品の状態
               .newpage__box__form__block__right__title--req
