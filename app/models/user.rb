@@ -40,7 +40,7 @@ class User < ApplicationRecord
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
     unless user
-      user = User.create(
+      user = User.new(
       uid: auth.uid,
       provider: auth.provider,
       nickname: auth.info.name,
