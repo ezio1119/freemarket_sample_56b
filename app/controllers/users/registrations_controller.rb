@@ -4,21 +4,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def new
-    if session[:email].present?
-      @user = User.new(
-      nickname: session[:nickname],
-      email: session[:email],
-      password: session[:password],
-      password_confirmation: session[:password]
-      )
-    else 
+    if session[:omni]
+      @user = User.new(session[:omni])
+    else
       super
-    end 
+    end
   end
 
   def tell
-    
     @user = User.new(user_params)
+    
+    if session[:omni]
+      pass = Devise.friendly_token[0,20]
+      @user.password = pass
+      @user.password_confirmation = pass
+      @user.uid = session[:omni]["uid"]
+      @user.provider = session[:omni]["provider"]
+    end
+
     if @user.valid? && verify_recaptcha
       session[:user] = @user
       session[:pass] = @user.password
@@ -56,8 +59,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session[:user].merge(
       password: session[:pass],
       password_confirmation: session[:pass_conf],
-      uid: session[:uid],
-      provider: session[:provider],
       payjp_cus: session[:payjp_cus],
       address_attributes: session[:address],
       cards_attributes: [{
