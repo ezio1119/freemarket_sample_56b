@@ -36,7 +36,6 @@ $(document).on('turbolinks:load', function(){
       })
 
     }else if (result != -1 ) {
-      debugger
       $.ajax({
         url: '/sizes/clothes_size',
         type: "GET",
