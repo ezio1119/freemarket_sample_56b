@@ -10,7 +10,7 @@
       text-align: left;
       display: inline-block;
       width: 230px;
-      height: 670px;
+      height: 616px;
       background: white;
       border-right: solid 1px #ccc;
       border-bottom: solid 1px #ccc;
@@ -23,9 +23,9 @@
         font-size: 13px;
         display: block;
         width: 100%;
-        height: 35px;
+        height: 44px;
         text-decoration: none;
-        line-height: 35px;
+        line-height: 44px;
         padding-left: 10px;
         color: #333;
       }
@@ -37,36 +37,33 @@
         font-size: 13px;
         display: block;
         width: 100%;
-        height: 35px;
+        height: 32.4px;
         text-decoration: none;
         line-height: 35px;
         padding-left: 10px;
         color: #333;
       }
       &__links-child:hover {
-        background: #ea352d;
-        color: white;
+        background: rgb(245, 245, 245);
       }
       &__links-grand {
         font-size: 13px;
         display: block;
         width: 100%;
-        height: 35px;
+        height: 32.4px;
         text-decoration: none;
         line-height: 35px;
-        
         color: #333;
       }
       &__links-grand:hover {
-        background: #ea352d;
-        color: white;
+        background: rgb(245, 245, 245);
       }
     }
     &__child-category {
       text-align: left;
       display: inline-block;
       width: 230px;
-      height: 670px;
+      height: 616px;
       background: white;
       border-right: solid 1px #ccc;
       border-bottom: solid 1px #ccc;
@@ -79,7 +76,7 @@
       text-align: left;
       display: inline-block;
       width: 330px;
-      height: 670px;
+      height: 616px;
       background: white;
       border-right: solid 1px #ccc;
       border-bottom: solid 1px #ccc;
