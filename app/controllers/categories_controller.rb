@@ -5,13 +5,4 @@ class CategoriesController < ApplicationController
       format.json
     end
   end
-
-  def category_mach_size
-    @category = Category.find(params[:select])
-    if @category.parent.name == "靴"
-      respond_to do |format|
-        format.json
-      end
-    end
-  end
 end
