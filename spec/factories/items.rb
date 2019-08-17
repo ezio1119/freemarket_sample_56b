@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    size                    {"00"}
+    size_id                 {"1"}
     name                    {"テスト太郎"}
     state_id                {"1"}
     delivery_burden_id      {"1"}
@@ -9,6 +9,7 @@ FactoryBot.define do
     day_id                  {"1"}
     price                   {"500"}
     info                    {"aaaaaaaaaa"}
-    user                
+    user
+    category           
   end
 end
