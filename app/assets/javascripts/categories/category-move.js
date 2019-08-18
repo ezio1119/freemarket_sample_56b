@@ -1,9 +1,9 @@
 $(document).on('turbolinks:load', function(){
   $('.cate').hide()
   $('#categories').mouseover(function(){
-    $('.category').show()
+    $('#category').show()
   })
-  $('.category').mouseover(function(){
+  $('#category').mouseover(function(){
     $('#child-category').show()
     $('#grandchild-category').hide()
   })

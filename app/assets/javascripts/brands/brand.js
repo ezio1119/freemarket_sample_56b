@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function(){
     $('#brand-field').hide()
   })
 
-  $('#child_id').on('change', function(){
+  $('#grandchild_id').on('change', function(){
     $('#brand-field').show()
   })
 })

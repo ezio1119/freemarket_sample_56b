@@ -46,7 +46,8 @@ Rails.application.routes.draw do
     end
   end
   get 'categories/search_children', to: 'categories#search_children'
-  
+  get 'sizes/shoes_size', to: 'sizes#shoes_size'
+  get 'sizes/clothes_size', to: 'sizes#clothes_size'
 end
 
   
