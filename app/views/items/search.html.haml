@@ -143,4 +143,5 @@
                     = item.name
                   .search-container__content__items__box__detail__bottom__price
                     = "¥" + number_with_delimiter(item.price)
+        = paginate @items 
 = render 'footer'

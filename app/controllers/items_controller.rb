@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
   end   
 
   def search
-    @items = Item.where("name LIKE ?", "%#{params[:keyword]}%")
+    @items = Item.page(params[:page]).per(20).where("name LIKE ?", "%#{params[:keyword]}%")
   end
 
   def edit
