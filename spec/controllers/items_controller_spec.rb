@@ -16,7 +16,7 @@ describe ItemsController do
 
   describe 'GET #show' do
     before do
-      @userA = FactoryBot.create(:user)
+      @userA = FactoryBot.create(:user, email: "test1@gmail.com")
       @item = create_list(:item,1)
     end
     it "renders the :show template" do
@@ -27,8 +27,8 @@ describe ItemsController do
 
   describe 'GET #new' do
     before do
-      @userA = FactoryBot.create(:user)
-      @userB = FactoryBot.create(:user)
+      @userA = FactoryBot.create(:user, email: "test2@gmail.com")
+      @userB = FactoryBot.create(:user, email: "test3@gmail.com")
     end
     it "renders the :new template" do
       sign_in @userA
@@ -43,7 +43,7 @@ describe ItemsController do
 
   describe 'GET #create' do
     before do
-      @userA = FactoryBot.create(:user)
+      @userA = FactoryBot.create(:user, email: "test4@gmail.com")
     end
     it "renders the :create template" do
       sign_in @userA
@@ -67,7 +67,7 @@ describe ItemsController do
 
   describe 'GET #buy' do
     before do
-      @userA = FactoryBot.create(:user)
+      @userA = FactoryBot.create(:user, email: "test5@gmail.com")
       @item = create_list(:item,1)
     end
     it "renders the :buy template" do
@@ -79,7 +79,7 @@ describe ItemsController do
 
   describe 'GET #search' do
     before do
-      @userA = FactoryBot.create(:user)
+      @userA = FactoryBot.create(:user, email: "test6@gmail.com")
       @item = create_list(:item,1)
     end
     it "renders the :search template" do
@@ -91,7 +91,7 @@ describe ItemsController do
 
   describe 'GET #edit' do
     before do
-      @userA = FactoryBot.create(:user)
+      @userA = FactoryBot.create(:user, email: "test7@gmail.com")
       @item = create_list(:item,1)
     end
     it "renders the :edit template" do
@@ -100,4 +100,5 @@ describe ItemsController do
       expect(response).to render_template :edit
     end
   end
+
 end
