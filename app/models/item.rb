@@ -1,9 +1,12 @@
 class Item < ApplicationRecord
     has_one_attached :image, dependent: :destroy
     belongs_to :user
+    belongs_to :category
+
     has_one :order
     has_one :bought, through: :order, source: :bought
     has_one :sold, through: :order, source: :sold
+  
     validates :name, length: { maximum: 40 }, presence: true
     validates :state_id, presence: true
     validates :delivery_burden_id, presence: true
@@ -22,4 +25,6 @@ class Item < ApplicationRecord
     belongs_to_active_hash :delivery_burden
     belongs_to_active_hash :delivery_method
     belongs_to_active_hash :day
+    belongs_to_active_hash :brand, optional: true
+    belongs_to_active_hash :size, optional: true
 end

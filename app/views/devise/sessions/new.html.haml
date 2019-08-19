@@ -10,11 +10,11 @@
             新規会員登録
       .log_wrapper__logcontents__forms__contents
         .log_wrapper__logcontents__forms__contents__btns
-          = link_to "", class: "log_wrapper__logcontents__forms__contents__btns__facebook" do
+          = link_to user_facebook_omniauth_authorize_path, method: :post, class: "log_wrapper__logcontents__forms__contents__btns__facebook" do
             = fa_icon "facebook-square", class: "log_wrapper__logcontents__forms__contents__btns__facebook__face"
             %span.log_wrapper__logcontents__forms__contents__btns__facebook__text
               Facebookでログイン
-          = link_to "", class: "log_wrapper__logcontents__forms__contents__btns__google" do
+          = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "log_wrapper__logcontents__forms__contents__btns__google" do
             %img.log_wrapper__logcontents__forms__contents__btns__google__img(src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png")
             %span.log_wrapper__logcontents__forms__contents__btns__google__text
               Googleでログイン

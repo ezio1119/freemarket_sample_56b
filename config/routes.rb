@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {
     registrations: "users/registrations",
     sessions: 'users/sessions',
-    passwords: 'users/passwords'
+    passwords: 'users/passwords',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   devise_scope :user do
@@ -12,6 +13,17 @@ Rails.application.routes.draw do
   end
   
 
+  root 'items#index'
+
+  resources :items do
+    collection do
+      get :search
+    end
+    member do
+      get :buy
+    end
+  end
+  
   namespace :users do
     resource :cards, only: [:create, :new, :show, :destroy] do
       collection do
@@ -34,7 +46,8 @@ Rails.application.routes.draw do
     end
   end
   get 'categories/search_children', to: 'categories#search_children'
-  
+  get 'sizes/shoes_size', to: 'sizes#shoes_size'
+  get 'sizes/clothes_size', to: 'sizes#clothes_size'
 end
 
   

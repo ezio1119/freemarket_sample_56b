@@ -4,6 +4,7 @@
 @import "./users";
 @import "./profile";
 @import "./logout";
+@import "./breadcrumbs";
 @import "identification";
 @import "users/sign_index";
 @import "users/sign_up_view";
@@ -18,5 +19,7 @@
 @import "items/item_new";
 @import "items/buybtn";
 @import "items/item_buy";
+@import "items/search";
 @import "cards/cards_index";
 @import "cards/cards_new";
+@import "category/category";

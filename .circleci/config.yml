@@ -41,7 +41,7 @@ jobs:
       - run:
           name: Prepare db
           command: |
-            bundle exec rake db:create db:schema:load --trace
+            bundle exec rake db:create db:schema:load db:seed --trace
       - run:
           name: Run rspec
           command: |
@@ -56,7 +56,17 @@ jobs:
 
 workflows:
   version: 2.1
+  test:
+    jobs:
+      - test
   build_and_deploy:
+    triggers:
+      - schedule:
+          cron: "0 11 * * *"
+          filters:
+            branches:
+              only:
+                - master
     jobs:
       - test
       - aws-ecr/build-and-push-image:
@@ -64,9 +74,6 @@ workflows:
           extra-build-args: --build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
           requires:
             - test
-          filters:
-            branches:
-              only: master
       - aws-ecs/deploy-service-update:
           requires:
             - aws-ecr/build-and-push-image

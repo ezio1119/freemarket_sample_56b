@@ -1,0 +1,186 @@
+.search-main {
+  background-color: #f5f5f5;
+  padding: 40px 0 0;
+}
+  .search-container {
+    display: flex;
+    margin: 0 auto;
+    width: 1020px;
+    &__side {
+      width: 280px;
+      margin: 0 40px 0 0; 
+      &__form__head {
+        width: 100%;
+        &__wrap {
+          position: relative;
+          text-align: left;
+          &__select {
+            background: #fff;
+            width: 100%;
+            font-size: 16px;
+            line-height: 1.5;
+            cursor: pointer;
+            height: 48px;
+            padding: 0 16px;
+            border: 1px solid #ccc;
+          }
+        }
+      }
+      &__form__body {
+        background-color: #fff;
+        margin: 40px 0 0;
+        padding: 16px;
+        &__title {
+          font-weight: bold;
+        }
+        &__group {
+          margin: 24px 0 0;
+          &__icon {
+            margin-right: 4px;
+            color: #888;
+            font-size: 16px;
+          }
+          &__text {
+            width: 100%;
+            margin: 6px 0 0;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+            box-sizing: border-box;
+            &__price {
+              width: 32%;
+              margin: 6px 0 0;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+            }
+          }
+          &__select {
+            cursor: pointer;
+            height: 48px;
+            width: 100%;
+            margin: 6px 0 0;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+            box-sizing: border-box;
+          }
+          &__checkbox {
+            vertical-align: middle;
+            position: relative;
+            display: inline-block;
+            margin: 16px 0 0;
+            width: 48%;
+            vertical-align: middle;
+            word-break: break-word;
+            &__tag {
+              display: inline-block;
+              position: absolute;
+              top: 50%;
+              left: 0;
+              z-index: 1;
+              width: 30px;
+              height: 30px;
+              border-radius: 2px;
+              background: #fff;
+              border: 1px solid #ccc;
+              font-size: 10px;
+              line-height: 17px;
+              text-align: center;
+              color: #fff;
+              transform: translate(0, -50%);
+            }
+            &__text {
+              display: block;
+              position: relative;
+              z-index: 2;
+              padding: 0 0 0 28px;
+              font-size: 14px;
+              font-weight: 400;
+              cursor: pointer;
+            }
+          }
+        }
+        &__btn {
+          padding: 40px 0 0;
+          &__left {
+            width: 45%;
+            line-height: 48px;
+            font-size: 14px;
+            background: #aaa;
+            border: 1px solid #aaa;
+            color: #fff;
+            margin: 0 19px 0 0;
+          }
+          &__right {
+            width: 45%;
+            line-height: 48px;
+            font-size: 14px;
+            background: #ea352d;
+            border: 1px solid #ea352d;
+            color: #fff;
+          }
+        }
+      }
+    }
+    &__content {
+      width: 700px;
+      &__items__head {
+        font-size: 22px;
+        font-weight: bold;
+        margin:0 0 8px;
+        &--text {
+          font-size: 18px;
+          font-weight: normal;
+          margin: 0 0 0 4px;
+        }
+      }
+      &__items__num {
+        color: #888;
+        font-size: 12px;
+        margin: 16px 0;
+      }
+      &__items__box {
+        margin: 0 auto;
+        width: auto;
+        &__detail {
+          background-color: #fff;
+          display: inline-block;
+          margin: 0 20px 20px 0;
+          width: 160px;
+          &__link {
+            color: #333;
+            text-decoration: none;
+          }
+          &__bottom {
+            height: 60px;
+            padding: 8px 12px;
+            text-decoration: none;
+            &__name {
+              font-size: 14px;
+              overflow: hidden;
+              position: relative;
+              height: 3em;
+              line-height: 1.5;
+              word-break: break-word;
+              white-space: normal;
+            }
+            &__price {
+              font-size: 14px;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }
+  
