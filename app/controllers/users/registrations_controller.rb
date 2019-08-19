@@ -49,9 +49,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       password_confirmation: session[:pass_conf],
       payjp_cus: session[:payjp_cus],
       address_attributes: session[:address],
-      cards_attributes: [{
-        payjp_car: session[:payjp_car]
-      }]
+      cards_attributes: session[:payjp_car]
     )
   end
 end
