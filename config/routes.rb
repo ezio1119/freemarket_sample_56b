@@ -13,16 +13,23 @@ Rails.application.routes.draw do
   
 
   namespace :users do
-    resource :cards, only: [:create, :new, :show, :destroy] do
+    resources :cards, only: [:create, :index, :destroy, :new] do
       collection do
         get :register
+      end
+      member do
+        get :change
       end
     end
     resources :addresses, only: [:index, :create] 
   end
 
   resources :items, only: [:index, :show, :new, :create] do
-    resources :orders, only: [:index, :create]
+    resource :order, only: [:new, :show, :create] do
+      collection do
+        get :change
+      end
+    end
   end
 
   resources :users, only: :show do
