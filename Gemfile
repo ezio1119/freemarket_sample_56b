@@ -44,6 +44,11 @@ gem 'active_hash'
 gem 'dropzonejs-rails'
 gem 'payjp'
 gem "jquery-rails"
+gem "gretel"
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

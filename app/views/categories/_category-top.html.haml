@@ -1,0 +1,8 @@
+.contents-bar
+  .contents-bar__point
+    .contents-bar__point__category.cate#category
+      - categories.each do |category|
+        = link_to category.name, "", data: {id: category.id}, class: "contents-bar__point__category__links"
+      = link_to 'カテゴリー一覧', "", class: "contents-bar__point__category__links"
+    .contents-bar__point__child-category.cate#child-category
+    .contents-bar__point__grandchild-category.cate#grandchild-category

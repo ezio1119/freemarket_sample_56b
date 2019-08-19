@@ -87,7 +87,7 @@ RSpec.describe Item, type: :model do
         item = build(:item, price: "10000000")
         item.valid?
         expect(item.errors[:price]).to include("must be less than or equal to 9999999")
-      end
+      end  
     end
   end
 end
