@@ -4,12 +4,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def new
-    super
+    if session[:omni]
+      @user = User.new(session[:omni])
+    else
+      super
+    end
   end
 
   def tell
-    
     @user = User.new(user_params)
+    
+    if session[:omni]
+      pass = Devise.friendly_token[0,20]
+      @user.password = pass
+      @user.password_confirmation = pass
+      @user.uid = session[:omni]["uid"]
+      @user.provider = session[:omni]["provider"]
+    end
+
     if @user.valid? && verify_recaptcha
       session[:user] = @user
       session[:pass] = @user.password

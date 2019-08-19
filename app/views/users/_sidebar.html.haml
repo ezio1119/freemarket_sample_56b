@@ -2,7 +2,7 @@
   .mypage__left__side
     %ul.mypage__left__side__list
       %li.mypage__left__side__list__item--now
-        = link_to "#", class: "mypage__left__side__list__item__active" do
+        = link_to user_path, class: "mypage__left__side__list__item__active" do
           マイページ
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon--now"
       %li.mypage__left__side__list__item

@@ -1,0 +1,27 @@
+.breadcrumbs {
+  position: relative;
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  &__list {
+    margin: 0 210px;
+    padding: 16px 0;
+    font-size: 13px;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    & a {
+      color: #333;
+      text-decoration: none;
+    }
+    & i {
+      color: #888;
+      margin: 0 2px;
+      -webkit-text-stroke: 1.5px #fff;
+    }
+    & span {
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 0;
+    }
+  }
+}

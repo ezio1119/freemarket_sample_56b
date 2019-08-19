@@ -9,15 +9,15 @@
         新規会員登録
     .sign-wrapper__contents__main
       .sign-wrapper__contents__main__items
-        = link_to new_user_registration_path ,class: "sign-wrapper__contents__main__items__mail" do
+        = link_to new_user_registration_path, class: "sign-wrapper__contents__main__items__mail" do
           = fa_icon "envelope", class: "sign-wrapper__contents__main__items__mail__envelope"
           %span.sign-wrapper__contents__main__items__mail__text
             メールアドレスで登録する
-        = link_to "#" ,class: "sign-wrapper__contents__main__items__facebook" do
+        = link_to user_facebook_omniauth_authorize_path, method: :post, class: "sign-wrapper__contents__main__items__facebook" do
           = fa_icon "facebook-square", class: "sign-wrapper__contents__main__items__facebook__faceicon"
           %span.sign-wrapper__contents__main__items__mail__text
             Facebookで登録する
-        = link_to "#" ,class: "sign-wrapper__contents__main__items__google" do
+        = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "sign-wrapper__contents__main__items__google" do
           %img.sign-wrapper__contents__main__items__google__png(src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png")
           %span.sign-wrapper__contents__main__items__mail__text
             Googleで登録する

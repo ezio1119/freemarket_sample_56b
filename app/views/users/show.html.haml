@@ -1,37 +1,7 @@
-.header
-  .header__inner
-    .header__inner__top
-      .header__inner__top--logo
-        = link_to "", "https://www.mercari.com/jp/"
-        = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?863303983", alt: "logo", width: 135, height: 40
-      .header__inner__top--search
-        %input{ name: "keyword", placeholder: "何かお探しですか？", class: "header__inner__top--search--input", type: "search" }
-        = fa_icon "search", class: "header__inner__top--search--icon"
-    .header__inner__bottom
-      %ul.header__inner__bottom--left
-        %li.header__inner__bottom--left--nav
-          .header__inner__bottom--left--nav--wrap
-            = fa_icon "list", class: "header__inner__bottom--left--nav--wrap--icon"
-            = link_to "カテゴリーから探す", "https://www.mercari.com/jp/category/", class: "header__inner__bottom--left--nav--wrap--link"
-          %ul.header__inner__bottom--left--nav--li
-          
-        %li.header__inner__bottom--left--nav
-          .header__inner__bottom--left--nav--wrap
-            = fa_icon "tag", class: "header__inner__bottom--left--nav--wrap--icon"
-            = link_to "ブランドから探す", "https://www.mercari.com/jp/category/", class: "header__inner__bottom--left--nav--wrap--link"
-          %ul.header__inner__bottom--left--nav--li
-      .header__inner__bottom--right
-        = button_to "新規会員登録", new_user_registration_path, class: "header__inner__bottom--right--signin", method: :get
-        = button_to "ログイン", new_user_session_path, class: "header__inner__bottom--right--login", method: :get
+= render 'items/header'
 
-.sub__header
-  %ul.sub__header__list
-    %li.sub__header__list__item
-      = link_to "https://www.mercari.com/jp/", class: "sub__header__list__item__active" do
-        メルカリ
-        = fa_icon "chevron-right", class: "sub__header__list__item__icon"
-    %li.sub__header__list__item--now
-      マイページ
+- breadcrumb :mypage
+= render 'shared/breadcrumbs'
 
 .mypage
 

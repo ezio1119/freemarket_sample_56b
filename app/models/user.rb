@@ -4,7 +4,9 @@ class User < ApplicationRecord
   Payjp.api_key = Rails.application.credentials.payjp[:PRIVATE_KEY]
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[facebook google_oauth2]
+  
   has_one :address, dependent: :destroy
   has_many :cards, dependent: :destroy
 
@@ -35,6 +37,20 @@ class User < ApplicationRecord
     message: "Please enter only full-width katakana"
   }
   validates :birth_date, presence: true
+
+  def self.from_omniauth(auth)
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+
+    unless user
+      user = User.new(
+      uid: auth.uid,
+      provider: auth.provider,
+      nickname: auth.info.name,
+      email:    auth.info.email
+      )
+    end
+    user
+  end
 
   def cus_info
     Payjp::Customer.retrieve(payjp_cus)

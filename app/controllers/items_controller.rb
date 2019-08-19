@@ -15,16 +15,19 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-      if @item.save
+    if @item.save
       redirect_to root_path
-      else
-        render :new
-      end
+    else
+      render :new
+    end
   end
 
   def buy
-    
   end   
+
+  def search
+    @items = Item.where("name LIKE ?", "%#{params[:keyword]}%")
+  end
 
   def edit
   end
@@ -36,7 +39,7 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-
+  
   def destroy
     if @item.user_id == current_user.id
       @item.destroy!
@@ -47,7 +50,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :state_id, :delivery_burden_id, :prefecture_id,:delivery_method_id, :day_id, :price, :info, :image, :category_id).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :state_id, :delivery_burden_id, :prefecture_id,:delivery_method_id, :day_id, :price, :info, :image, :category_id, :brand_id, :size_id).merge(user_id: current_user.id)
   end
 
   def set_items

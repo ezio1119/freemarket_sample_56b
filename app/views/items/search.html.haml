@@ -1,0 +1,146 @@
+= render 'header'
+.search-main
+  %main.search-container
+    .search-container__side
+      .search-container__side__form
+        .search-container__side__form__head
+          .search-container__side__form__head__wrap
+            %select.search-container__side__form__head__wrap__select
+              %option 並び替え
+              %option 価格の安い順
+              %option 価格の高い順
+              %option 出品の古い順
+              %option 出品の新しい順
+              %option いいね!の多い順
+        .search-container__side__form__body
+          %h3.search-container__side__form__body__title
+            詳細検索
+          .search-container__side__form__body__group
+            %label
+              = fa_icon "plus", class: "search-container__side__form__body__group__icon"
+              %span
+                キーワードを追加する
+            %input.search-container__side__form__body__group__text{ value: "#{params[:keyword]}", placeholder: "例）値下げ"}
+          .search-container__side__form__body__group
+            %label
+              = fa_icon "list-ul", class: "search-container__side__form__body__group__icon"
+              %span
+                カテゴリーを選択する
+            %select.search-container__side__form__body__group__select
+              %option すべて
+          .search-container__side__form__body__group
+            %label
+              = fa_icon "tag", class: "search-container__side__form__body__group__icon"
+              %span
+                ブランド名から探す
+            %input.search-container__side__form__body__group__text{ placeholder: "例）シャネル"}
+          .search-container__side__form__body__group
+            %label
+              = fa_icon "expand", class: "search-container__side__form__body__group__icon"
+              %span
+                サイズを指定する
+            %select.search-container__side__form__body__group__select
+              %option すべて
+          .search-container__side__form__body__group
+            %label
+              = fa_icon "dollar", class: "search-container__side__form__body__group__icon"
+              %span
+                価格
+            %select.search-container__side__form__body__group__select
+              %option すべて
+            %input.search-container__side__form__body__group__text__price{ placeholder: "¥ Min"}
+            %span ~
+            %input.search-container__side__form__body__group__text__price{ placeholder: "¥ Max"}
+          .search-container__side__form__body__group
+            %label
+              = fa_icon "star", class: "search-container__side__form__body__group__icon"
+              %span
+                商品の状態
+            %div
+              .search-container__side__form__body__group__checkbox
+                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "condition_all"}
+                %label.search-container__side__form__body__group__checkbox__text{ for: "condition_all"}
+                  すべて
+              .search-container__side__form__body__group__checkbox
+                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "condition_1"}
+                %label.search-container__side__form__body__group__checkbox__text{ for: "condition_1"}
+                  新品、未使用
+              .search-container__side__form__body__group__checkbox
+                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "condition_2"}
+                %label.search-container__side__form__body__group__checkbox__text{ for: "condition_2"}
+                  未使用に近い
+              .search-container__side__form__body__group__checkbox
+                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "condition_3"}
+                %label.search-container__side__form__body__group__checkbox__text{ for: "condition_3"}
+                  目立った傷や汚れなし
+              .search-container__side__form__body__group__checkbox
+                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "condition_4"}
+                %label.search-container__side__form__body__group__checkbox__text{ for: "condition_4"}
+                  やや傷や汚れあり
+              .search-container__side__form__body__group__checkbox
+                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "condition_5"}
+                %label.search-container__side__form__body__group__checkbox__text{ for: "condition_5"}
+                  傷や汚れあり
+              .search-container__side__form__body__group__checkbox
+                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "condition_6"}
+                %label.search-container__side__form__body__group__checkbox__text{ for: "condition_6"}
+                  全体的に状態が悪い
+          .search-container__side__form__body__group
+            %label
+              = fa_icon "truck", class: "search-container__side__form__body__group__icon"
+              %span
+                配送料の負担
+            %div
+              .search-container__side__form__body__group__checkbox
+                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "deli_all"}
+                %label.search-container__side__form__body__group__checkbox__text{ for: "deli_all"}
+                  すべて
+              .search-container__side__form__body__group__checkbox
+                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "deli_1"}
+                %label.search-container__side__form__body__group__checkbox__text{ for: "deli_1"}
+                  着払い(購入者負担)
+              .search-container__side__form__body__group__checkbox
+                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "deli_2"}
+                %label.search-container__side__form__body__group__checkbox__text{ for: "deli_2"}
+                  送料込み(出品者負担)
+          .search-container__side__form__body__group
+            %label
+              = fa_icon "shopping-cart", class: "search-container__side__form__body__group__icon"
+              %span
+                販売状況
+            %div
+              .search-container__side__form__body__group__checkbox
+                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "sale_all"}
+                %label.search-container__side__form__body__group__checkbox__text{ for: "sale_all"}
+                  すべて
+              .search-container__side__form__body__group__checkbox
+                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "sale_1"}
+                %label.search-container__side__form__body__group__checkbox__text{ for: "sale_1"}
+                  販売中
+              .search-container__side__form__body__group__checkbox
+                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "sale_2"}
+                %label.search-container__side__form__body__group__checkbox__text{ for: "sale_2"}
+                  売り切れ
+          .search-container__side__form__body__btn
+            %input.search-container__side__form__body__btn__left{ type: "reset", value: "クリア"}
+            %input.search-container__side__form__body__btn__right{ type: "submit", value: "完了"}
+    .search-container__content
+      %section.search-container__content__items
+        %h2.search-container__content__items__head
+          = params[:keyword]
+          %span.search-container__content__items__head--text
+            の検索結果
+        .search-container__content__items__num
+          #{@items.length}件表示
+        .search-container__content__items__box
+          - @items.each do |item|
+            .search-container__content__items__box__detail
+              = link_to "/items/#{item.id}", class: "search-container__content__items__box__detail__link" do
+                .search-container__content__items__box__detail__figure
+                  = image_tag item.image, size: "160x160" if item.image.attached?
+                .search-container__content__items__box__detail__bottom
+                  .search-container__content__items__box__detail__bottom__name
+                    = item.name
+                  .search-container__content__items__box__detail__bottom__price
+                    = "¥" + number_with_delimiter(item.price)
+= render 'footer'
