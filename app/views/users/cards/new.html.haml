@@ -1,10 +1,28 @@
-.card-wrapper
-  = render 'users/shared/header'
-  .card-wrapper__container
-    %section.card-wrapper__container__form
-      %h2.card-wrapper__container__form__title
-        支払い方法
-      .card-wrapper__container__form__content
+= render 'items/header'
+
+.sub__header
+  %ul.sub__header__list
+    %li.sub__header__list__item
+      = link_to "https://www.mercari.com/jp/", class: "sub__header__list__item__active" do
+        メルカリ
+        = fa_icon "chevron-right", class: "sub__header__list__item__icon"
+    %li.sub__header__list__item
+      = link_to "https://www.mercari.com/jp/", class: "sub__header__list__item__active" do
+        マイページ
+        = fa_icon "chevron-right", class: "sub__header__list__item__icon"
+    %li.sub__header__list__item--now
+      支払い方法
+
+.mypage
+
+  = render 'users/sidebar'
+
+  .mypage__right
+    .mypage__right__side
+      %section.mypage__right__side__credit
+        %h2.mypage__right__side__credit__title
+          支払い方法
+        .card-wrapper__container__form__content
         = form_with(id: "charge-form", url: "/users/cards") do |f|
           .card-wrapper__container__form__content__box
             = f.label :number, "カード番号", class: "card-wrapper__container__form__content__box__name"
@@ -47,8 +65,8 @@
                 = fa_icon "question-circle", class: "card-wrapper__container__form__content__box__link" 
                 = link_to "カード裏面の番号とは？", "#", class: "card-wrapper__container__form__content__box__link" 
             = f.submit "次へ進む", class: "card-wrapper__container__form__content__box__btn"
-              
-  = render 'users/shared/footer'
+
+= render 'items/footer'
 
 %script{src: "https://js.pay.jp/", type: "text/javascript"}
 :javascript

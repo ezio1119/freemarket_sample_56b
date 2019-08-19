@@ -17,19 +17,9 @@ class Card < ApplicationRecord
     card.id
   end
 
-  def payment(amount)
-    charge = Payjp::Charge.create(
-      amount: amount,
-      customer: self.customer,
-      currency: 'jpy'
-    )
-    charge.id
-  end
-
-  def card_info
-    # customer = Payjp::Customer.retrieve(self.customer)
-    res = set_customer.cards.retrieve(self.card)
-    card_info = {
+  def disp_car_info(user)
+    res = car_info(user)
+    res = {
       brand: res.brand,
       month: res.exp_month,
       year:  res.exp_year,
@@ -37,15 +27,18 @@ class Card < ApplicationRecord
     }
   end
 
-  def destroy_card
-    customer = Payjp::Customer.retrieve(self.customer)
-    card = customer.cards.retrieve(self.card)
-    res = card.delete
-    res.deleted
+  def change_def(user)
+    cus_info = user.cus_info
+    cus_info.default_card  = payjp_car
+    cus_info.save
+  end
+
+  def destroy_card(user)
+    car_info(user).delete
   end
 
   private
-  def set_customer
-    Payjp::Customer.retrieve(self.customer)
+  def car_info(user)
+    user.cus_info.cards.retrieve(payjp_car)
   end
 end
