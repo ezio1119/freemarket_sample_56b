@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   Payjp.api_key = Rails.application.credentials.payjp[:PRIVATE_KEY]
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :address, dependent: :destroy
@@ -39,7 +39,6 @@ class User < ApplicationRecord
   def cus_info
     Payjp::Customer.retrieve(payjp_cus)
   end
-
 
   def payment(amount)
     charge = Payjp::Charge.create(
