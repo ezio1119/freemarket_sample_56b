@@ -63,7 +63,7 @@
     - if user_signed_in? && @item.user_id == current_user.id
 
     - else
-      = button_to "購入画面に進む", item_orders_path(@item), method: :get, class: "itempage__box__buy"
+      = button_to "購入画面に進む", new_item_order_path(@item), method: :get, class: "itempage__box__buy"
     .itempage__box__text
       = @item.info
     .itempage__box__btn
