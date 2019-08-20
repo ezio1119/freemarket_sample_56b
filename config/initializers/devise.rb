@@ -301,12 +301,12 @@ Devise.setup do |config|
     Rails.application.credentials.facebook[:FACEBOOK_KEY], 
     Rails.application.credentials.facebook[:FACEBOOK_SECRET],
     scope: 'email',info_fields: 'name, email',
-    callback_url: "#{Rails.application.credentials.production[:HOST_DOMAIN]}/users/auth/facebook/callback",             
+    callback_url: "http://localhost:3000/users/auth/facebook/callback",             
     token_params: { parse: :json }
     
   config.omniauth :google_oauth2,
     Rails.application.credentials.google_oauth2[:GOOGLE_CLIENT_ID],
     Rails.application.credentials.google_oauth2[:GOOGLE_CLIENT_SECRET],
     scope: 'userinfo.email, userinfo.profile',
-    redirect_uri: "#{Rails.application.credentials.production[:HOST_DOMAIN]}/users/auth/google_oauth2/callback"
+    redirect_uri: "http://localhost:3000/users/auth/google_oauth2/callback"
 end
