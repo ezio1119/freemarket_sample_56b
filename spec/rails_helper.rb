@@ -63,10 +63,9 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # for Capybara : Capybara用のDSLをinclude
   config.include Capybara::DSL
-
   # for Devise : Deviseを使用している時にsign in/outを取るためのヘルパーをinclude
   include Warden::Test::Helpers
-
   config.include OmniauthMacros
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end
 
