@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "user signin/signout" do
+feature "Email signin/signout" do
 
   let(:user) { create(:user) }
 

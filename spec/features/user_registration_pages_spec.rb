@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "user signup" do
+feature "Email signup" do
 
   before do
     include Devise::Test::IntegrationHelpers

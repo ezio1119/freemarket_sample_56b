@@ -66,4 +66,7 @@ RSpec.configure do |config|
 
   # for Devise : Deviseを使用している時にsign in/outを取るためのヘルパーをinclude
   include Warden::Test::Helpers
+
+  config.include OmniauthMacros
 end
+
