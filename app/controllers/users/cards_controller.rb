@@ -1,6 +1,7 @@
 class Users::CardsController < ApplicationController
   Payjp.api_key = Rails.application.credentials.payjp[:PRIVATE_KEY]
   before_action :set_card, only: [:destroy, :change]
+  before_action :authenticate_user!
 
   def register
   end
@@ -9,7 +10,6 @@ class Users::CardsController < ApplicationController
   end
 
   def index
-    binding.pry
     @cards = current_user.cards
     if @cards.present?
       cus_info = current_user.cus_info

@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_items, only: [:show, :edit, :update, :destroy]
   
   def index
+    @categories = Category.top_category
     @items = Item.limit(8).includes(:order)
   end
 
