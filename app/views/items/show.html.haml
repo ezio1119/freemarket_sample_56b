@@ -6,7 +6,11 @@
       = @item.name
     .itempage__box__info
       .itempage__box__info--photo
-        = image_tag @item.image,class: "itempage__box__info--photo--main" if @item.image.attached? 
+        = image_tag @item.images.first,class: "itempage__box__info--photo--main" if @item.images.attached? 
+        .itempage__box__info--photo--sub
+          - @item.images.offset(1).each do |image|
+            = image_tag image, size: "60x60", class: "itempage__box__info--photo--sub--sel"
+
       %table.itempage__box__info--table
         %tr
           %th.itempage__box__info--table--th 出品者
