@@ -1,17 +1,6 @@
 = render 'items/header'
-
-.sub__header
-  %ul.sub__header__list
-    %li.sub__header__list__item
-      = link_to "https://www.mercari.com/jp/", class: "sub__header__list__item__active" do
-        メルカリ
-        = fa_icon "chevron-right", class: "sub__header__list__item__icon"
-    %li.sub__header__list__item
-      = link_to "https://www.mercari.com/jp/", class: "sub__header__list__item__active" do
-        マイページ
-        = fa_icon "chevron-right", class: "sub__header__list__item__icon"
-    %li.sub__header__list__item--now
-      支払い方法
+- breadcrumb :card
+= render 'shared/breadcrumbs'
 
 .mypage
 

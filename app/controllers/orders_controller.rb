@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user! 
   before_action :params_order, only: :create
+  before_action :set_order, only: :show
 
   def index
-    @order = Order.new
   end
 
   def new
@@ -41,9 +41,25 @@ class OrdersController < ApplicationController
   def change
     @cards = current_user.cards
   end
+
+  def bought
+    @items = current_user.bought_items
+  end
+
+  def sold
+  end
+
+  def show
+    @item = @order.item
+    @address = current_user.address
+    @sellar = User.find(@order.sold_id)
+  end
   
   private
   def params_order
     params.permit(:item_id, :amount)
+  end
+  def set_order
+    @order = Order.find(params[:id])
   end
 end

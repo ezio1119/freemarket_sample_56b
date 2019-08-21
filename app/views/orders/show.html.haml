@@ -1,0 +1,57 @@
+= render 'items/header'
+
+- breadcrumb :dealing
+= render 'shared/breadcrumbs'
+
+.order
+  .order__left
+    %p 取引情報
+    .order__left__infobox
+      .order__left__infobox--item
+        .order__left__infobox--left
+          %p 商品
+        .order__left__infobox--right
+          = link_to item_path(@item) do
+            = image_tag @item.image, size: "75x75"
+            .order__left__infobox--item--link
+              = @item.name
+            .order__left__infobox--item--price
+              = "¥ #{@item.price}"
+
+      .order__left__infobox--postage
+        .order__left__infobox--left
+          %p 送料
+        .order__left__infobox--right
+          %p= @item.delivery_burden.name
+      .order__left__infobox--date
+        .order__left__infobox--left
+          %p 購入日時
+        .order__left__infobox--right
+          %p= simple_time(@order.created_at)
+      .order__left__infobox--itemid
+        .order__left__infobox--left
+          %p 商品ID
+        .order__left__infobox--right
+          %p m604216343
+      .order__left__infobox--address
+        .order__left__infobox--left
+          %p お届け先
+        .order__left__infobox--right
+          %p="〒#{@address.postcode}"
+          %p="#{@address.prefecture.name}#{@address.city}#{@address.block}#{@address.building}"
+          %p="#{@address.last_name} #{@address.first_name}様"
+
+    %p 出品者情報
+    = link_to "#", class: "order__left__sellar--link" do
+      .order__left__sellar
+        = image_tag "https://static.mercdn.net/images/member_photo_noimage_thumb.png"
+        %p= @sellar.nickname
+  .order__right
+    %p.order__right__deal
+      取引画面
+    .order__right__dealdone
+      %h2 取引が完了しました
+      %p このたびはメルカリのご利用ありがとうございました
+    .order__right__messages
+
+= render 'items/footer'

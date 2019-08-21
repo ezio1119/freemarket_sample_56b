@@ -10,10 +10,10 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
   has_many :cards, dependent: :destroy
 
-  has_many :bought_lists, class_name: "Order", foreign_key: "bought_id"
-  has_many :bought_items, through: :bought_lists, source: :item
-  has_many :sold_lists, class_name: "Order", foreign_key: "sold_id"
-  has_many :sold_items, through: :sold_lists, source: :sold
+  has_many :bought_orders, class_name: "Order", foreign_key: "bought_id"
+  has_many :bought_items, through: :bought_orders, source: :item
+  has_many :sold_orders, class_name: "Order", foreign_key: "sold_id"
+  has_many :sold_items, through: :sold_orders, source: :item
   has_many :items, dependent: :destroy
 
   accepts_nested_attributes_for :address

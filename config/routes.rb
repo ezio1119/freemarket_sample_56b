@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   end
 
   resources :items, only: [:index, :show, :new, :create, :edit, :destroy] do
-    resource :order, only: [:new, :show, :create] do
+    resource :order, only: [:new, :create] do
       collection do
         get :change
       end
@@ -50,6 +50,14 @@ Rails.application.routes.draw do
       get :identification
       get :items_list
       get :logout
+    end
+    collection do
+      resources :orders, only: [:index, :show] do
+        collection do
+          get :bought
+          get :sold
+        end
+      end
     end
   end
   get 'categories/search_children', to: 'categories#search_children'

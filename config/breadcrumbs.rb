@@ -3,7 +3,7 @@ crumb :root do
 end
 
 crumb :mypage do
-  link "マイページ", user_path
+  link "マイページ", user_path(current_user)
   parent :root
 end
 
@@ -28,6 +28,16 @@ crumb :identification do
 end
 
 crumb :logout do
-  link "ログアウト", logout_user_path
+  link "ログアウト"
   parent :mypage
+end
+
+crumb :bought do
+  link "購入した商品-過去の取引", bought_orders_path
+  parent :mypage
+end
+
+crumb :dealing do
+  link "取引画面"
+  parent :bought
 end

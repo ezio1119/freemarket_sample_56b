@@ -22,10 +22,7 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
-  def buy
-  end   
-
+  
   def search
     @items = Item.where("name LIKE ?", "%#{params[:keyword]}%")
   end
