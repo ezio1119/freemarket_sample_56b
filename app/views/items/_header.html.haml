@@ -4,10 +4,10 @@
       = link_to root_path, class: "header__inner__top--logo" do
         = image_tag "https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?863303983", alt: "logo", width: 135, height: 40
       .header__inner__top--search
-        = form_tag search_items_path, method: :get do
-          %input{ name: "keyword", placeholder: "何かお探しですか？", class: "header__inner__top--search--input", type: "search" }
-            = button_tag type: "submit",class: "header__inner__top--search--btn" do
-              = fa_icon "search", class: "header__inner__top--search--icon"
+        = search_form_for(Item.ransack(params[:q]), url:search_items_path) do |f|
+          = f.search_field :name_or_info_cont, class: "header__inner__top--search--input"
+          = button_tag type: "submit",class: "header__inner__top--search--btn" do
+            = fa_icon "search", class: "header__inner__top--search--icon"
     .header__inner__bottom
       %ul.header__inner__bottom--left
         %li.header__inner__bottom--left--nav
