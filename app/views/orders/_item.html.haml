@@ -1,0 +1,11 @@
+%li.itemlist
+  = link_to order_path(item.order), class: "itemlist__box" do
+    .itemlist__box__left
+      = image_tag item.image, class:"itemlist__box__left__photo"
+      .itemlist__box__left__detail
+        .itemlist__box__left__detail__upper
+          = item.name
+        .itemlist__box__left__detail__lower
+          .itemlist__box__left__detail__lower--note
+            取引完了
+    = fa_icon "chevron-right", class:"itemlist__box__right"

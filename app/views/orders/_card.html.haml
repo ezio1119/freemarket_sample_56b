@@ -1,0 +1,11 @@
+- card_info = card.disp_car_info(current_user)
+%label
+  = f.radio_button :card, card.id 
+  %li.mypage__right__side__credit__container__top__list
+    .mypage__right__side__credit__container__top__list__content
+      .mypage__right__side__credit__container__top__list__content__icon
+        = image_tag "card/#{card_info[:brand]}.svg", class: "mypage__right__side__credit__container__top__list__content__icon", alt: "#{card_info[:brand]}"  
+      .mypage__right__side__credit__container__top__list__content__num
+        = "************#{card_info[:last4]}"
+      .mypage__right__side__credit__container__top__list__content__num
+        = "#{card_info[:month]}/#{card_info[:year]}"

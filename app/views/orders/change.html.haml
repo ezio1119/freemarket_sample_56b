@@ -1,0 +1,15 @@
+
+.mypage__right
+  .mypage__right__side
+    %section.mypage__right__side__credit
+      %h2.mypage__right__side__credit__title
+        支払い方法
+      .mypage__right__side__credit__container
+        %section.mypage__right__side__credit__container__top
+          .mypage__right__side__credit__container__top__title
+            %h3.mypage__right__side__credit__container__top__title__text
+              クレジットカード一覧
+          %ul
+            = form_with url: new_item_order_path, method: :get, local: true do |f|
+              = render partial: 'card', collection: @cards, locals: {f: f}
+              = f.submit "次に進む"

@@ -36,3 +36,13 @@ crumb :logout do
   link "ログアウト"
   parent :mypage
 end
+
+crumb :bought do
+  link "購入した商品-過去の取引", bought_orders_path
+  parent :mypage
+end
+
+crumb :dealing do
+  link "取引画面"
+  parent :bought
+end

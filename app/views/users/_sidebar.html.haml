@@ -2,7 +2,7 @@
   .mypage__left__side
     %ul.mypage__left__side__list
       %li.mypage__left__side__list__item--now
-        = link_to user_path, class: "mypage__left__side__list__item__active" do
+        = link_to user_path(current_user), class: "mypage__left__side__list__item__active" do
           マイページ
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon--now"
       %li.mypage__left__side__list__item
@@ -22,7 +22,7 @@
           出品する
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
-        = link_to items_list_user_path, class: "mypage__left__side__list__item__active" do
+        = link_to items_list_user_path(current_user), class: "mypage__left__side__list__item__active" do
           出品した商品 - 出品中
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
@@ -38,7 +38,7 @@
           購入した商品 - 取引中
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
-        = link_to "#", class: "mypage__left__side__list__item__active" do
+        = link_to bought_orders_path, class: "mypage__left__side__list__item__active" do
           購入した商品 - 過去の取引
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
@@ -70,7 +70,7 @@
     .mypage__left__side__head 設定
     %ul.mypage__left__side__list
       %li.mypage__left__side__list__item
-        = link_to profile_user_path, class: "mypage__left__side__list__item__active" do
+        = link_to profile_user_path(current_user), class: "mypage__left__side__list__item__active" do
           プロフィール
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
@@ -78,7 +78,7 @@
           発送元・お届け先住所変更
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
-        = link_to users_cards_path, class: "mypage__left__side__list__item__active" do
+        = link_to users_cards_path(current_user), class: "mypage__left__side__list__item__active" do
           支払い方法
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
@@ -86,7 +86,7 @@
           メール/パスワード
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
-        = link_to identification_user_path, class: "mypage__left__side__list__item__active" do
+        = link_to identification_user_path(current_user), class: "mypage__left__side__list__item__active" do
           本人情報
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
@@ -94,6 +94,6 @@
           電話番号の確認
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
       %li.mypage__left__side__list__item
-        = link_to logout_user_path, class: "mypage__left__side__list__item__active" do
+        = link_to logout_user_path(current_user), class: "mypage__left__side__list__item__active" do
           ログアウト
           = fa_icon "chevron-right", class: "mypage__left__side__list__item__icon"
