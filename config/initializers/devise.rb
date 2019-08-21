@@ -308,5 +308,5 @@ Devise.setup do |config|
     Rails.application.credentials.google_oauth2[:GOOGLE_CLIENT_ID],
     Rails.application.credentials.google_oauth2[:GOOGLE_CLIENT_SECRET],
     scope: 'userinfo.email, userinfo.profile',
-    redirect_uri: "#{Rails.application.credentials.production[:HOST_DOMAIN]}/users/auth/google_oauth2/callback"
+    redirect_uri: "http://localhost:3000/users/auth/google_oauth2/callback"
 end
