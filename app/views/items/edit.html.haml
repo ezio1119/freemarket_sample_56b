@@ -14,8 +14,6 @@
             最大10枚までアップロードできます
           .newpage__box__upload__drop
             = f.file_field :image, class: "newpage__box__upload__drop--span"
-              
-          
       .newpage__box__form
         .newpage__box__form__group
           %h3.newpage__box__form__group__title
@@ -47,7 +45,6 @@
             .newpage__box__form__block__right__text
               = f.collection_select :state_id, State.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel'
               = fa_icon "chevron-down", class: "newpage__box__form__block__right__text--icon"
-                    
       .newpage__box__form
         .newpage__box__form__block
           .newpage__box__form__block__left
