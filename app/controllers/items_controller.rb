@@ -60,3 +60,4 @@ class ItemsController < ApplicationController
     params.require(:q).permit!
   end
 end
+
