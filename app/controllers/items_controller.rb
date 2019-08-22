@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_items, only: [:show, :edit, :update, :destroy]
-  
   def index
     @categories = Category.top_category
     @items = Item.limit(8).includes(:order)
@@ -24,7 +23,8 @@ class ItemsController < ApplicationController
   end
   
   def search
-    @items = Item.where("name LIKE ?", "%#{params[:keyword]}%")
+    @q = Item.ransack(search_params)
+    @items = @q.result(distinct: true).page(params[:page]).per(20)
   end
 
   def edit
@@ -53,5 +53,9 @@ class ItemsController < ApplicationController
 
   def set_items
     @item = Item.with_attached_image.find(params[:id])
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 end
