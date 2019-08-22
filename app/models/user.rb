@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  Payjp.api_key = Rails.application.credentials.payjp[:PRIVATE_KEY]
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook google_oauth2]
@@ -8,10 +10,10 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
   has_many :cards, dependent: :destroy
 
-  has_many :bought_lists, class_name: "Order", foreign_key: "bought_id"
-  has_many :bought_items, through: :bought_lists, source: :item
-  has_many :sold_lists, class_name: "Order", foreign_key: "sold_id"
-  has_many :sold_items, through: :sold_lists, source: :sold
+  has_many :bought_orders, class_name: "Order", foreign_key: "bought_id"
+  has_many :bought_items, through: :bought_orders, source: :item
+  has_many :sold_orders, class_name: "Order", foreign_key: "sold_id"
+  has_many :sold_items, through: :sold_orders, source: :item
   has_many :items, dependent: :destroy
 
   accepts_nested_attributes_for :address
@@ -48,5 +50,18 @@ class User < ApplicationRecord
       )
     end
     user
+  end
+
+  def cus_info
+    Payjp::Customer.retrieve(payjp_cus)
+  end
+
+  def payment(amount)
+    charge = Payjp::Charge.create(
+      amount: amount,
+      customer: payjp_cus,
+      currency: 'jpy'
+    )
+    charge.id
   end
 end

@@ -18,8 +18,7 @@
             = f.label :images, class: "dropzone-box", for: "upload-image" do
               .input_area
                 = f.file_field :images, multiple: true, name: "item[images][]",class: "newpage__box__upload__drop--span input-default", id: "upload-image0", 'data-image': 0
-              
-          
+                
       .newpage__box__form
         .newpage__box__form__group
           %h3.newpage__box__form__group__title
@@ -65,7 +64,6 @@
             .newpage__box__form__block__right__text
               = f.collection_select :state_id, State.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel'
               = fa_icon "chevron-down", class: "newpage__box__form__block__right__text--icon"
-                    
       .newpage__box__form
         .newpage__box__form__block
           .newpage__box__form__block__left
