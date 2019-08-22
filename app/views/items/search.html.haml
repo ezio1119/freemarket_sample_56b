@@ -69,7 +69,9 @@
             .search-container__content__items__box__detail
               = link_to "/items/#{item.id}", class: "search-container__content__items__box__detail__link" do
                 .search-container__content__items__box__detail__figure
-                  = image_tag item.image, size: "160x160" if item.image.attached?
+                  - if item.images.attached?
+                    - item.images.each do |image|
+                      = image_tag image, size: "213x300"
                 .search-container__content__items__box__detail__bottom
                   .search-container__content__items__box__detail__bottom__name
                     = item.name
