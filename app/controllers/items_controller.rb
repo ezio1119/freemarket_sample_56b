@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_items, only: [:show, :edit, :update, :destroy]
-  
   def index
     @categories = Category.top_category
     @items = Item.limit(8).includes(:order)
@@ -12,6 +11,7 @@ class ItemsController < ApplicationController
   
   def new
     @item = Item.new
+    @item.images.build
   end
 
   def create
@@ -19,12 +19,13 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      render :new
+      render action: 'new'
     end
   end
   
   def search
-    @items = Item.where("name LIKE ?", "%#{params[:keyword]}%")
+    @q = Item.ransack(search_params)
+    @items = @q.result(distinct: true).page(params[:page]).per(20)
   end
 
   def edit
@@ -48,10 +49,14 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :state_id, :delivery_burden_id, :prefecture_id,:delivery_method_id, :day_id, :price, :info, :image, :category_id, :brand_id, :size_id).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :state_id, :delivery_burden_id, :prefecture_id,:delivery_method_id, :day_id, :price, :info, :category_id, :brand_id, :size_id, images:[]).merge(user_id: current_user.id)
   end
 
   def set_items
-    @item = Item.with_attached_image.find(params[:id])
+    @item = Item.with_attached_images.find(params[:id])
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 end

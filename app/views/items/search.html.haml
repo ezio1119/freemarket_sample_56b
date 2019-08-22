@@ -2,16 +2,10 @@
 .search-main
   %main.search-container
     .search-container__side
-      .search-container__side__form
+      = search_form_for(Item.ransack(params[:q]), url:search_items_path, class: "search-container__side__form") do |f|
         .search-container__side__form__head
           .search-container__side__form__head__wrap
-            %select.search-container__side__form__head__wrap__select
-              %option 並び替え
-              %option 価格の安い順
-              %option 価格の高い順
-              %option 出品の古い順
-              %option 出品の新しい順
-              %option いいね!の多い順
+          = f.select( :sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] } )
         .search-container__side__form__body
           %h3.search-container__side__form__body__title
             詳細検索
@@ -20,37 +14,28 @@
               = fa_icon "plus", class: "search-container__side__form__body__group__icon"
               %span
                 キーワードを追加する
-            %input.search-container__side__form__body__group__text{ value: "#{params[:keyword]}", placeholder: "例）値下げ"}
-          .search-container__side__form__body__group
-            %label
-              = fa_icon "list-ul", class: "search-container__side__form__body__group__icon"
-              %span
-                カテゴリーを選択する
-            %select.search-container__side__form__body__group__select
-              %option すべて
+            = f.text_field :name_or_info_cont, class: "search-container__side__form__body__group__text"
           .search-container__side__form__body__group
             %label
               = fa_icon "tag", class: "search-container__side__form__body__group__icon"
               %span
                 ブランド名から探す
-            %input.search-container__side__form__body__group__text{ placeholder: "例）シャネル"}
+            = f.collection_select :brand_id_eq, Brand.all, :id, :name, include_blank: "指定なし"
           .search-container__side__form__body__group
             %label
               = fa_icon "expand", class: "search-container__side__form__body__group__icon"
               %span
                 サイズを指定する
-            %select.search-container__side__form__body__group__select
-              %option すべて
+            = f.collection_select :size_id_eq, Size.all, :id, :name, include_blank: "指定なし"
           .search-container__side__form__body__group
             %label
               = fa_icon "dollar", class: "search-container__side__form__body__group__icon"
               %span
                 価格
-            %select.search-container__side__form__body__group__select
-              %option すべて
-            %input.search-container__side__form__body__group__text__price{ placeholder: "¥ Min"}
+              = f.search_field :price_eq, class: "search-container__side__form__body__group__select"
+            = f.search_field :price_gteq, placeholder: "¥ Min"
             %span ~
-            %input.search-container__side__form__body__group__text__price{ placeholder: "¥ Max"}
+            = f.search_field :price_lteq, placeholder: "¥ Max"
           .search-container__side__form__body__group
             %label
               = fa_icon "star", class: "search-container__side__form__body__group__icon"
@@ -58,33 +43,7 @@
                 商品の状態
             %div
               .search-container__side__form__body__group__checkbox
-                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "condition_all"}
-                %label.search-container__side__form__body__group__checkbox__text{ for: "condition_all"}
-                  すべて
-              .search-container__side__form__body__group__checkbox
-                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "condition_1"}
-                %label.search-container__side__form__body__group__checkbox__text{ for: "condition_1"}
-                  新品、未使用
-              .search-container__side__form__body__group__checkbox
-                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "condition_2"}
-                %label.search-container__side__form__body__group__checkbox__text{ for: "condition_2"}
-                  未使用に近い
-              .search-container__side__form__body__group__checkbox
-                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "condition_3"}
-                %label.search-container__side__form__body__group__checkbox__text{ for: "condition_3"}
-                  目立った傷や汚れなし
-              .search-container__side__form__body__group__checkbox
-                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "condition_4"}
-                %label.search-container__side__form__body__group__checkbox__text{ for: "condition_4"}
-                  やや傷や汚れあり
-              .search-container__side__form__body__group__checkbox
-                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "condition_5"}
-                %label.search-container__side__form__body__group__checkbox__text{ for: "condition_5"}
-                  傷や汚れあり
-              .search-container__side__form__body__group__checkbox
-                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "condition_6"}
-                %label.search-container__side__form__body__group__checkbox__text{ for: "condition_6"}
-                  全体的に状態が悪い
+                = f.collection_check_boxes :state_id_in, State.all, :id, :name, include_blank: "指定なし"
           .search-container__side__form__body__group
             %label
               = fa_icon "truck", class: "search-container__side__form__body__group__icon"
@@ -92,38 +51,10 @@
                 配送料の負担
             %div
               .search-container__side__form__body__group__checkbox
-                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "deli_all"}
-                %label.search-container__side__form__body__group__checkbox__text{ for: "deli_all"}
-                  すべて
-              .search-container__side__form__body__group__checkbox
-                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "deli_1"}
-                %label.search-container__side__form__body__group__checkbox__text{ for: "deli_1"}
-                  着払い(購入者負担)
-              .search-container__side__form__body__group__checkbox
-                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "deli_2"}
-                %label.search-container__side__form__body__group__checkbox__text{ for: "deli_2"}
-                  送料込み(出品者負担)
-          .search-container__side__form__body__group
-            %label
-              = fa_icon "shopping-cart", class: "search-container__side__form__body__group__icon"
-              %span
-                販売状況
-            %div
-              .search-container__side__form__body__group__checkbox
-                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "sale_all"}
-                %label.search-container__side__form__body__group__checkbox__text{ for: "sale_all"}
-                  すべて
-              .search-container__side__form__body__group__checkbox
-                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "sale_1"}
-                %label.search-container__side__form__body__group__checkbox__text{ for: "sale_1"}
-                  販売中
-              .search-container__side__form__body__group__checkbox
-                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "sale_2"}
-                %label.search-container__side__form__body__group__checkbox__text{ for: "sale_2"}
-                  売り切れ
+                = f.collection_check_boxes :delivery_burden_id_in, DeliveryBurden.all, :id, :name, include_blank: "指定なし"
           .search-container__side__form__body__btn
             %input.search-container__side__form__body__btn__left{ type: "reset", value: "クリア"}
-            %input.search-container__side__form__body__btn__right{ type: "submit", value: "完了"}
+            = f.submit class: "search-container__side__form__body__btn__right"
     .search-container__content
       %section.search-container__content__items
         %h2.search-container__content__items__head

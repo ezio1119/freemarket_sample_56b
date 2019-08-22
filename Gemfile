@@ -49,6 +49,8 @@ gem "omniauth-rails_csrf_protection"
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'twilio-ruby', '~> 5.25.3'
+gem 'kaminari', '~> 0.17.0'
+gem 'ransack'
 
 
 group :development, :test do
