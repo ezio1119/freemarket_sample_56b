@@ -1,0 +1,30 @@
+.categories-wrapper
+  = render 'items/header'
+  - breadcrumb :categories
+  = render 'shared/breadcrumbs'
+  .categories-wrapper__container
+    .categories-wrapper__container__title
+      %h2 カテゴリー一覧
+    .categories-wrapper__container__nav
+      - Category.top_category.each do |category|
+        = link_to category.name, "#", class: "categories-wrapper__container__nav__name"
+    .categories-wrapper__container__list
+      - Category.top_category.each do |category|
+        .categories-wrapper__container__list__box
+          .categories-wrapper__container__list__box__title
+            %h3= category.name
+          .categories-wrapper__container__list__box__inner
+            %p
+              = link_to "すべて", "#"
+              - category.children.each do |category|
+                .categories-wrapper__container__list__box__inner__name
+                  %h4= category.name
+                  .categories-wrapper__container__list__box__inner__category
+                    .categories-wrapper__container__list__box__inner__category__item
+                      %p
+                        = link_to "すべて", "#"
+                    - category.children.each do |category|
+                      .categories-wrapper__container__list__box__inner__category__item
+                        %p
+                          = link_to category.name, "#"
+= render 'items/footer'
