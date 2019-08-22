@@ -2,6 +2,15 @@ class Card < ApplicationRecord
   Payjp.api_key = Rails.application.credentials.payjp[:PRIVATE_KEY]
   belongs_to :user
 
+  def self.create_token(input_card)
+    token = Payjp::Token.create({card: input_card},
+      {
+        'X-Payjp-Direct-Token-Generate': 'true'
+      }
+    )
+    token.id
+  end
+
   def self.create_customer
     customer = Payjp::Customer.create(
       description: 'test'

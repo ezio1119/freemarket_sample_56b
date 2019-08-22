@@ -5,7 +5,7 @@
       %h2.card-wrapper__container__form__title
         支払い方法
       .card-wrapper__container__form__content
-        = form_with(id: "charge-form", url: "/users/cards") do |f|
+        = form_with(id: "charge-form", url: register_create_users_cards_path, local: true) do |f|
           .card-wrapper__container__form__content__box
             = f.label :number, "カード番号", class: "card-wrapper__container__form__content__box__name"
             %span.card-wrapper__container__form__content__box__require

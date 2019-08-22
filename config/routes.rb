@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root 'items#index'
   devise_for :users, :controllers => {
     registrations: "users/registrations",
     sessions: 'users/sessions',
@@ -8,7 +7,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    get 'users/tell' => 'users/registrations#tell'
+    post 'users/put_in' => 'users/registrations#put_in'
     get 'users/index' => 'users/registrations#index'
   end
   
@@ -28,9 +27,16 @@ Rails.application.routes.draw do
     resources :cards, only: [:create, :index, :destroy, :new] do
       collection do
         get :register
+        post :register_create
       end
       member do
         get :change
+      end
+    end
+    resources :phone_auth, only: [:index] do
+      collection do
+        post :send_sms
+        post :conf_num
       end
     end
     resources :addresses, only: [:index, :create] 
