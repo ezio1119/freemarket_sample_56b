@@ -1,0 +1,17 @@
+.tell_wrapper
+  = render 'users/shared/header'
+  .tell_wrapper__contents
+    .tell_wrapper__contents__top
+      %p.tell_wrapper__contents__top__text
+        電話番号認証
+    = form_with url: conf_num_users_phone_auth_index_path, class: "tell_wrapper__contents__body", local: true do |f|
+      %p.tell_wrapper__contents__body__notice
+        = flash[:notice]
+      %p.tell_wrapper__contents__body__text
+        認証番号
+      = f.text_field :conf_num, class: "tell_wrapper__contents__body__input", placeholder: "   認証番号を入力", id: "smsauth"
+      %p.tell_wrapper__contents__body__comment
+        SMSで届いた認証番号を入力してください
+      = f.submit "認証して完了", class: "tell_wrapper__contents__body__submit", id: "phonesubmit"
+
+  = render 'users/shared/footer'
