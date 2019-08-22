@@ -48,6 +48,7 @@ gem "gretel"
 gem "omniauth-rails_csrf_protection"
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
+gem 'twilio-ruby', '~> 5.25.3'
 
 
 group :development, :test do
