@@ -25,7 +25,7 @@ feature "Email signup" do
     select "1", from: "user_birth_date_2i"
     select "1", from: "user_birth_date_3i"
     find('input[name="commit"]').click
-    expect(page).to have_content('SNSを送信する')
+    expect(page).to have_content('SMSを送信する')
     # expect(current_path).to eq users_tell_path
    
   end
