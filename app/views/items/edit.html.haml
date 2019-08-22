@@ -12,8 +12,12 @@
               必須
           %p.newpage__box__upload__text
             最大10枚までアップロードできます
-          .newpage__box__upload__drop
-            = f.file_field :images, multiple: true, class: "newpage__box__upload__drop--span"
+        .newpage__box__upload__drop
+          #preview.newpage__box__upload__drop--preview
+          .dropzone-area
+            = f.label :images, class: "dropzone-box", for: "upload-image" do
+              .input_area
+                = f.file_field :images, multiple: true, name: "item[images][]",class: "newpage__box__upload__drop--span input-default", id: "upload-image0", 'data-image': 0
               
           
       .newpage__box__form

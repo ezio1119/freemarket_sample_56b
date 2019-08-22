@@ -1,4 +1,4 @@
-= form_for [current_user, @item], url: "/items" do |f|
+= form_for [current_user, @item],class: 'dropzone', id: 'item-dropzone', url: "/items" do |f|
   .newpage
     = render 'users/shared/header_center'
     .newpage__box
@@ -12,8 +12,20 @@
               必須
           %p.newpage__box__upload__text
             最大10枚までアップロードできます
-          .newpage__box__upload__drop
-            = f.file_field :images, multiple: true, class: "newpage__box__upload__drop--span"
+        
+        .newpage__box__upload__drop
+          #preview.newpage__box__upload__drop--preview
+          .dropzone-area
+            = f.label :images, class: "dropzone-box", for: "upload-image" do
+              .input_area
+                = f.file_field :images, multiple: true, class: "newpage__box__upload__drop--span input-default", id: "upload-image0", 'data-image': 0
+          -# .newpage__box__upload__drop2  
+          -#   #preview2.newpage__box__upload__drop2--preview
+          -#   .dropzone-area2
+          -#     = image.label :image, class: "dropzone-box", for: "upload-image" do
+          -#       .input_area
+          -#         = image.file_field :image, multiple: true, class: "newpage__box__upload__drop--span", name: "images[image][]", id: "upload-image", 'data-image': 0
+ 
       .newpage__box__form
         .newpage__box__form__group
           %h3.newpage__box__form__group__title
