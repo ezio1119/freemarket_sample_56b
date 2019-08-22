@@ -4,8 +4,7 @@ class ItemsController < ApplicationController
   
   def index
     @categories = Category.top_category
-    @items = Item.limit(8)
-    @items = Item.where.not(user_id: current_user.id).limit(8) if user_signed_in?
+    @items = Item.limit(8).includes(:order)
   end
 
   def show
@@ -23,10 +22,7 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
-  def buy
-  end   
-
+  
   def search
     @items = Item.where("name LIKE ?", "%#{params[:keyword]}%")
   end

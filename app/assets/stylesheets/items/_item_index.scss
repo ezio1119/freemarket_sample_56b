@@ -28,7 +28,40 @@
       &--content{
         display: flex;
         flex-wrap: wrap;
+
         &--items{
+          position: relative;
+          &--soldtag {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 23px;
+            z-index: 2;
+            color: #fff;
+            letter-spacing: 2px;
+            font-weight: 600;
+            p {
+              transform: rotate(-45deg);
+              position: relative;
+              z-index: 3;
+              top : 15px;
+              right: 2px;
+            }
+           }
+           &--soldtag:after {
+            border-width: 100px 100px 0 0;
+            border-color: #ea352d transparent transparent transparent;
+            display: block;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 0;
+            height: 0;
+            border-style: solid;
+           }
+
           width: 213px;
           margin-left: 10px;
           background-color: aliceblue;

@@ -1,0 +1,113 @@
+.order {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+  height: 80vh;
+  width: 100vw;
+  background-color: rgb(245, 245, 245);
+  &__left{
+    width: 280px;
+    height: 100%;
+    &__infobox{
+      background-color: pink;
+      height: 80%;
+      margin: 3px 0 30px;
+      border: 1px ridge;
+      font-size: 14px;
+      &--left{
+        width: 45%;
+        height: 100%;
+        p {
+          padding: 15px;
+        }
+      }
+      &--right{
+        width: 60%;
+        padding: 15px 15px 15px 0;
+        font-size: 13px;
+      }
+      &--item{
+        height: 41%;
+        background-color: white;
+        display: flex;
+        &--link {
+          font-size: 15px;
+        }
+        &--price {
+          font-size: 15px;
+        }
+      }
+      &--postage{
+        height: 9%;
+        background-color: rgb(250, 250, 250);
+        display: flex;
+      }
+      &--date{
+        height: 9%;
+        background-color: white;
+        display: flex;
+      }
+      &--itemid{
+        height: 9%;
+        background-color: rgb(250, 250, 250);
+        display: flex;
+      }
+      &--address{
+        height: 32%;
+        background-color: white;
+        display: flex;
+      }
+    }
+    &__sellar{
+      margin-top: 3px; 
+      height: 11%;
+      background-color: white;
+      display: flex;
+      &--link {
+        text-decoration: none;
+        color: black;
+      }
+      img {
+        display: block;
+        border-radius: 50%;
+        width:  40px;
+        height: 40px;
+        margin: 15px 0 0 15px;
+      }
+      p{
+        text-align: center;
+        margin: auto 0;
+        padding-left: 20px;
+        font-weight: bold;
+
+      }
+    }
+  }
+  &__right{
+    width: 700px;
+    margin-left: 45px;
+    background-color: white;
+    &__deal{
+      height: 50px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 50px;
+    }
+    &__dealdone{
+      background-color: #fff6de;
+      text-align: center;
+      h2 {
+        font-size: 16px;
+        color: red;
+        font-weight: bold;
+        padding: 30px 0 20px;
+      }
+      p {
+        font-size: 15px;
+        padding-bottom: 20px;
+      }
+    }
+
+  }
+}

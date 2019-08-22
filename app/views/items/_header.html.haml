@@ -22,8 +22,8 @@
           %ul.header__inner__bottom--left--nav--li
       .header__inner__bottom--right
         - if user_signed_in?
-          = link_to "マイページ", user_path(current_user.id), class: "header__inner__bottom--right--mypage", method: :get
-          = link_to "ログアウト", destroy_user_session_path, class: "header__inner__bottom--right--mypage", method: :delete
+          = link_to "マイページ", user_path(current_user.id), class: "header__inner__bottom--right--mypage", method: :get 
+          = link_to "ログアウト", destroy_user_session_path, id: "signout", class: "header__inner__bottom--right--mypage", method: :delete
         - else
-          = button_to "新規会員登録", users_index_path, class: "header__inner__bottom--right--signin", method: :get
-          = button_to "ログイン", new_user_session_path, class: "header__inner__bottom--right--login", method: :get
+          = button_to "新規会員登録", users_index_path, id: "signup", class: "header__inner__bottom--right--signin", method: :get
+          = button_to "ログイン", new_user_session_path, id: "signin", class: "header__inner__bottom--right--login", method: :get
