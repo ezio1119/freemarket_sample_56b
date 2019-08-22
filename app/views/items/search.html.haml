@@ -17,12 +17,6 @@
             = f.text_field :name_or_info_cont, class: "search-container__side__form__body__group__text"
           .search-container__side__form__body__group
             %label
-              = fa_icon "list-ul", class: "search-container__side__form__body__group__icon"
-              %span
-                カテゴリーを選択する
-            = f.collection_select :category_id_eq, Category.top_category, :id, :name, include_blank: "指定なし"
-          .search-container__side__form__body__group
-            %label
               = fa_icon "tag", class: "search-container__side__form__body__group__icon"
               %span
                 ブランド名から探す
@@ -58,24 +52,6 @@
             %div
               .search-container__side__form__body__group__checkbox
                 = f.collection_check_boxes :delivery_burden_id_in, DeliveryBurden.all, :id, :name, include_blank: "指定なし"
-          .search-container__side__form__body__group
-            %label
-              = fa_icon "shopping-cart", class: "search-container__side__form__body__group__icon"
-              %span
-                販売状況
-            %div
-              .search-container__side__form__body__group__checkbox
-                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "sale_all"}
-                %label.search-container__side__form__body__group__checkbox__text{ for: "sale_all"}
-                  すべて
-              .search-container__side__form__body__group__checkbox
-                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "sale_1"}
-                %label.search-container__side__form__body__group__checkbox__text{ for: "sale_1"}
-                  販売中
-              .search-container__side__form__body__group__checkbox
-                %input.search-container__side__form__body__group__checkbox__tag{ type: "checkbox", id: "sale_2"}
-                %label.search-container__side__form__body__group__checkbox__text{ for: "sale_2"}
-                  売り切れ
           .search-container__side__form__body__btn
             %input.search-container__side__form__body__btn__left{ type: "reset", value: "クリア"}
             = f.submit class: "search-container__side__form__body__btn__right"
