@@ -12,8 +12,13 @@
               必須
           %p.newpage__box__upload__text
             最大10枚までアップロードできます
-          .newpage__box__upload__drop
-            = f.file_field :image, class: "newpage__box__upload__drop--span"
+        .newpage__box__upload__drop
+          #preview.newpage__box__upload__drop--preview
+          .dropzone-area
+            = f.label :images, class: "dropzone-box", for: "upload-image" do
+              .input_area
+                = f.file_field :images, multiple: true, name: "item[images][]",class: "newpage__box__upload__drop--span input-default", id: "upload-image0", 'data-image': 0
+                
       .newpage__box__form
         .newpage__box__form__group
           %h3.newpage__box__form__group__title
@@ -37,7 +42,21 @@
               カテゴリー
               .newpage__box__form__block__right__title--req
                 必須
-            %input{ placeholder: "---", type: "text", class: 'newpage__box__form__block__right__input'}
+            = f.collection_select :category_id, Category.limit(13), :id, :name, { prompt: "---"}
+            = f.collection_select :category_id, [], :id, :name, {prompt: "---"}, {id: "child_id"}
+            = f.collection_select :category_id, [], :id, :name, {prompt: "---"}, {id: "grandchild_id"}
+            .newpage__box__form__block__right__input.size-field
+              %h3.newpage__box__form__block__right__title
+                サイズ
+                .newpage__box__form__block__right__title--req
+                  必須
+              = f.collection_select :size_id, [], :id, :name, { prompt: "---"}, {id: "size-form"}
+            %h3.newpage__box__form__block__right__brand#brand-field
+              ブランド
+              .newpage__box__form__block__right__title--req.label
+                任意
+              .newpage__box__form__block__right__brand
+                = f.collection_select :brand_id, Brand.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel', id: "brand-box"
             %h3.newpage__box__form__block__right__title
               商品の状態
               .newpage__box__form__block__right__title--req

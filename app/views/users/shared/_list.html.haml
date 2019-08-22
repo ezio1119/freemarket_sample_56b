@@ -2,7 +2,7 @@
   %li.itemlist
     = link_to item_path(item.id), class: "itemlist__box" do
       .itemlist__box__left
-        = image_tag item.image, class:"itemlist__box__left__photo"
+        = image_tag item.images.first, class:"itemlist__box__left__photo"
         .itemlist__box__left__detail
           .itemlist__box__left__detail__upper
             = item.name

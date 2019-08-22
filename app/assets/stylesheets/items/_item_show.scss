@@ -24,7 +24,17 @@
         background-color: #fafafa;
         &--main{
           max-width: 100%;
-          max-height: 300px;  
+          height: 255px;  
+        }
+        &--sub{
+          height: 120px;
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          &--sel{
+            height: 60px;
+            width: 60px;
+          }
         }
       }
       &--table{
