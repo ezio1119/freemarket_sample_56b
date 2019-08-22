@@ -1,0 +1,27 @@
+= render 'items/header'
+- breadcrumb :card
+= render 'shared/breadcrumbs'
+
+.mypage
+
+  = render 'users/sidebar'
+
+  .mypage__right
+    .mypage__right__side
+      %section.mypage__right__side__credit
+        %h2.mypage__right__side__credit__title
+          支払い方法
+        .mypage__right__side__credit__container
+          %section.mypage__right__side__credit__container__top
+            .mypage__right__side__credit__container__top__title
+              %h3.mypage__right__side__credit__container__top__title__text
+                クレジットカード一覧
+            %ul
+              = render @cards, default: @default
+            = link_to "クレジットカードを追加する", new_users_card_path
+          .mypage__right__side__credit__container__bottom
+            = link_to "#", class: "mypage__right__side__credit__container__bottom__link" do
+              支払い方法について
+              = fa_icon "chevron-right", class: "mypage__right__side__credit__container__bottom__link__icon"
+
+= render 'items/footer'

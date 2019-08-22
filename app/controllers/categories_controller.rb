@@ -5,4 +5,8 @@ class CategoriesController < ApplicationController
       format.json
     end
   end
+
+  def index
+  end
+  
 end

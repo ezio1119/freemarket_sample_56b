@@ -10,6 +10,6 @@ FactoryBot.define do
     price                   {"500"}
     info                    {"aaaaaaaaaa"}
     user
-    category           
+    category
   end
 end
