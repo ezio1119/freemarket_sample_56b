@@ -40,4 +40,4 @@ RUN RAILS_ENV=production bundle exec rake assets:precompile
 VOLUME /app/public
 VOLUME /app/tmp
 
-CMD /bin/sh -c "bundle exec rails db:environment:set RAILS_ENV=production && bundle exec rails db:drop db:create db:migrate db:seed RAILS_ENV=production && bundle exec rails s puma -e production"
+CMD /bin/sh -c "RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rake db:drop"
