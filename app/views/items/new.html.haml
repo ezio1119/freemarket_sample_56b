@@ -12,28 +12,23 @@
               必須
           %p.newpage__box__upload__text
             最大10枚までアップロードできます
-        
         .newpage__box__upload__drop
           #preview.newpage__box__upload__drop--preview
           .dropzone-area
             = f.label :images, class: "dropzone-box", for: "upload-image" do
               .input_area
                 = f.file_field :images, multiple: true, class: "newpage__box__upload__drop--span input-default", id: "upload-image0", 'data-image': 0
-          -# .newpage__box__upload__drop2  
-          -#   #preview2.newpage__box__upload__drop2--preview
-          -#   .dropzone-area2
-          -#     = image.label :image, class: "dropzone-box", for: "upload-image" do
-          -#       .input_area
-          -#         = image.file_field :image, multiple: true, class: "newpage__box__upload__drop--span", name: "images[image][]", id: "upload-image", 'data-image': 0
- 
+                
       .newpage__box__form
         .newpage__box__form__group
+          %p.error= @item.errors.full_messages_for(:name)[0] if @item.errors.any?
           %h3.newpage__box__form__group__title
-            出品画像
+            出品名
             .newpage__box__form__group__title--req
               必須
           = f.text_field :name, placeholder: "商品名（必須40文字まで）", class: 'newpage__box__form__group__input'
         .newpage__box__form__group
+          %p.error= @item.errors.full_messages_for(:info)[0] if @item.errors.any?
           %h3.newpage__box__form__group__title
             商品の説明
             .newpage__box__form__group__title--req
@@ -44,6 +39,7 @@
           .newpage__box__form__block__left
             商品の詳細
           .newpage__box__form__block__right
+            %p.error= @item.errors.full_messages_for(:category_id)[0] if @item.errors.any?
             %h3.newpage__box__form__block__right__title
               カテゴリー
               .newpage__box__form__block__right__title--req
@@ -52,17 +48,20 @@
             = f.collection_select :category_id, [], :id, :name, {prompt: "---"}, {id: "child_id"}
             = f.collection_select :category_id, [], :id, :name, {prompt: "---"}, {id: "grandchild_id"}
             .newpage__box__form__block__right__input.size-field
+              %p.error= @item.errors.full_messages_for(:size_id)[0] if @item.errors.any?
               %h3.newpage__box__form__block__right__title
                 サイズ
                 .newpage__box__form__block__right__title--req
                   必須
               = f.collection_select :size_id, [], :id, :name, { prompt: "---"}, {id: "size-form"}
+            %p.error= @item.errors.full_messages_for(:brand_id)[0] if @item.errors.any?
             %h3.newpage__box__form__block__right__brand#brand-field
               ブランド
               .newpage__box__form__block__right__title--req.label
                 任意
               .newpage__box__form__block__right__brand
                 = f.collection_select :brand_id, Brand.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel', id: "brand-box"
+            %p.error= @item.errors.full_messages_for(:state_id)[0] if @item.errors.any?
             %h3.newpage__box__form__block__right__title
               商品の状態
               .newpage__box__form__block__right__title--req
@@ -76,6 +75,7 @@
           .newpage__box__form__block__left
             配送について
           .newpage__box__form__block__right
+            %p.error= @item.errors.full_messages_for(:delivery_burden_id)[0] if @item.errors.any?
             %h3.newpage__box__form__block__right__title
               配送料の負担
               .newpage__box__form__block__right__title--req
@@ -83,6 +83,7 @@
             .newpage__box__form__block__right__input
               = f.collection_select :delivery_burden_id, DeliveryBurden.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel'
               = fa_icon "chevron-down", class: "newpage__box__form__block__right__input--icon"
+            %p.error= @item.errors.full_messages_for(:delivery_method_id)[0] if @item.errors.any?
             %h3.newpage__box__form__block__right__title
               配送の方法
               .newpage__box__form__block__right__title--req
@@ -90,6 +91,7 @@
             .newpage__box__form__block__right__input
               = f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel'
               = fa_icon "chevron-down", class: "newpage__box__form__block__right__input--icon"
+            %p.error= @item.errors.full_messages_for(:prefecture_id)[0] if @item.errors.any?
             %h3.newpage__box__form__block__right__title
               発送元の地域
               .newpage__box__form__block__right__title--req
@@ -97,6 +99,7 @@
             .newpage__box__form__block__right__input
               = f.collection_select :prefecture_id, Prefecture.all, :id, :name, { prompt: "---"}, class: 'newpage__box__form__block__right__text--sel'
               = fa_icon "chevron-down", class: "newpage__box__form__block__right__input--icon"
+            %p.error= @item.errors.full_messages_for(:day_id)[0] if @item.errors.any?
             %h3.newpage__box__form__block__right__title
               発送までの日数
               .newpage__box__form__block__right__title--req
@@ -110,6 +113,7 @@
           .newpage__box__form__price__left
             販売価格(300〜9,999,999)
           .newpage__box__form__price__right
+            %p.error= @item.errors.full_messages_for(:price)[0] if @item.errors.any?
             .newpage__box__form__price__right__count
               %h3.newpage__box__form__price__right__count__title
                 価格

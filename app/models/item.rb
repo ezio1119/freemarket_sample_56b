@@ -18,6 +18,7 @@ class Item < ApplicationRecord
         greater_than_or_equal_to: 300,
         less_than_or_equal_to: 9999999
     }
+    validates :category_id, presence: true
 
     extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to_active_hash :prefecture
@@ -27,4 +28,5 @@ class Item < ApplicationRecord
     belongs_to_active_hash :day
     belongs_to_active_hash :brand, optional: true
     belongs_to_active_hash :size, optional: true
+ 
 end
