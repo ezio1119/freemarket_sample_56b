@@ -1,5 +1,5 @@
 = link_to "items/#{item.id}", class: "li main__container__box--content--items" do
-  = image_tag item.image, size: "213x300" if item.image.attached?
+  = image_tag item.images.first, size: "213x300" if item.images.attached?
   - if item.order
     .main__container__box--content--items--soldtag
       %p SOLD

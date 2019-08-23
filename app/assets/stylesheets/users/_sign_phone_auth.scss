@@ -24,6 +24,11 @@
       width: 350px;
       height: 80%;
       margin: 0 auto;
+      &__notice {
+        color: red;
+        padding-top: 10px;
+        font-size: 14px;
+      }
       &__text {
         font-size: 14px;
         font-weight: bold;

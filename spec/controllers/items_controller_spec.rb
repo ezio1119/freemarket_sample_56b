@@ -77,18 +77,6 @@ describe ItemsController do
     end
   end
 
-  describe 'GET #search' do
-    before do
-      @userA = FactoryBot.create(:user, email: "test6@gmail.com")
-      @item = create_list(:item,1)
-    end
-    it "renders the :search template" do
-      sign_in @userA
-      get :search, params: { id: @item[0] }
-      expect(response).to render_template :search
-    end
-  end
-
   describe 'GET #edit' do
     before do
       @userA = FactoryBot.create(:user, email: "test7@gmail.com")

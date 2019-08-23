@@ -12,7 +12,7 @@
           %p 商品
         .order__left__infobox--right
           = link_to item_path(@item) do
-            = image_tag @item.image, size: "75x75"
+            = image_tag @item.images.first, size: "75x75"
             .order__left__infobox--item--link
               = @item.name
             .order__left__infobox--item--price

@@ -1,13 +1,8 @@
 class Users::CardsController < ApplicationController
   Payjp.api_key = Rails.application.credentials.payjp[:PRIVATE_KEY]
   before_action :set_card, only: [:destroy, :change]
-  before_action :authenticate_user!
-
-  def register
-  end
-
-  def new
-  end
+  before_action :authenticate_user!, except: [:register, :register_create]
+  include CheckPath
 
   def index
     @cards = current_user.cards
@@ -17,30 +12,35 @@ class Users::CardsController < ApplicationController
     end
   end
 
+  def register
+    before_path("GET", "users/addresses", "index")
+  end
+
+  def register_create
+    before_path("GET", "users/cards", "register")
+    payjp_cus = Card.create_customer
+    payjp_token = Card.create_token(payjp_params.to_hash)
+    payjp_car = Card.create_card(payjp_cus, payjp_token)
+
+    session[:payjp_car] = [{
+        payjp_car: payjp_car
+    }]
+    session[:payjp_cus] = payjp_cus
+    render layout: false
+  end
+
+  def new
+  end
+
   def create
-    path = Rails.application.routes.recognize_path(request.referer)
+    payjp_token = Card.create_token(payjp_params.to_hash)
+    payjp_car = Card.create_card(current_user.payjp_cus, payjp_token)
+    card = current_user.cards.new( payjp_car: payjp_car )
 
-    if path[:action] == "register"
-      
-      payjp_cus = Card.create_customer
-      payjp_car = Card.create_card(payjp_cus, params[:payjp_token])
-
-      session[:payjp_car] = [{
-          payjp_car: payjp_car
-      }]
-      session[:payjp_cus] = payjp_cus
-      render layout: false
-
+    if card.save
+      redirect_to users_cards_path, alert: "カードを登録しました"
     else
-
-      payjp_car = Card.create_card(current_user.payjp_cus, params[:payjp_token])
-      card = current_user.cards.new( payjp_car: payjp_car )
-      if card.save
-        redirect_to users_cards_path, alert: "カードを登録しました"
-      else
-        redirect_to users_cards_path, notice: "カードの登録に失敗しました"
-      end
-
+      redirect_to users_cards_path, notice: "カードの登録に失敗しました"
     end
   end
 
@@ -52,11 +52,20 @@ class Users::CardsController < ApplicationController
   def destroy
     @card.destroy_card(current_user)
     @card.destroy
-    redirect_to users_cards_path, alert: "削除に成功しました"
+    redirect_to users_cards_path, alert: "削除しました"
   end
 
   private
   def set_card
     @card = Card.find(params[:id])
+  end
+
+  def payjp_params
+    params.permit(
+      :number,
+      :cvc,
+      :exp_month,
+      :exp_year,
+    )
   end
 end
