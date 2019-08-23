@@ -10,7 +10,15 @@ class CategoriesController < ApplicationController
   end
   
   def show
-    @categories = Category.find(params[:id])
+    @category = Category.find(params[:id])
+    @categories = [
+      # 下記で@categoryを取得
+      @category,
+      # 下記で@categoryの子カテゴリーを全て取得
+      @category.children,
+      # 下記で@categoryの子カテゴリーの子カテゴリーを全て取得
+      @category.children.map { |category| category.children }
+    ].flatten.compact
   end
 
 end

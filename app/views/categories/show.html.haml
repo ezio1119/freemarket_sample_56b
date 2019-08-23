@@ -11,15 +11,16 @@
           = link_to "その他", "#"
       %section.category-lists-wrapper__container__content__box
         %h1.category-lists-wrapper__container__content__box__title
-          #{@categories.name}の商品一覧
+          #{@category.name}の商品一覧
         .category-lists-wrapper__container__content__box__list
+          
           .category-lists-wrapper__container__content__box__list__item
             = render partial: 'items/item', collection: @items
       .category-lists-wrapper__container__content__pager
       .category-lists-wrapper__container__content__description
         .category-lists-wrapper__container__content__description__title
           %h3
-            = @categories.name
+            = @category.name
         .category-lists-wrapper__container__content__description__text
           %p
             レディースの着ない服、いらない洋服を売るならメルカリへ。レディースの商品は100万点以上あります。人気のあるカテゴリーはストール/スヌードとコスプレです。人気の商品は「ZARA 黒白チェックのストール」や「コスプレ ハロウィン 不思議の国のアリス」があります。レディースの買い取りやリサイクル処分、服の整理を検討中の方にお勧めです。
