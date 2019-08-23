@@ -2,14 +2,13 @@
 
 class Users::PhoneAuthController < ApplicationController
   before_action :set_credential, only: :send_sms
-  include CheckPath
+  before_action :session_exists?
+  include SessionCheck
 
   def index
-    before_path("GET", "users/registrations", "new")
   end
 
   def send_sms
-    before_path("GET", "users/phone_auth", "index")
     num = params[:num]
     reg = /(070|080|090)\d{4}\d{4}/
     unless num.match(reg) && num.length == 11
@@ -31,7 +30,6 @@ class Users::PhoneAuthController < ApplicationController
   end 
 
   def conf_num
-    before_path("POST", "users/phone_auth", "send_sms")
     if session[:conf_num] == params[:conf_num]
       redirect_to users_addresses_path
     else

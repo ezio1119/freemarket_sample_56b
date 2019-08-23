@@ -1,8 +1,9 @@
 class Users::CardsController < ApplicationController
+  include SessionCheck
   Payjp.api_key = Rails.application.credentials.payjp[:PRIVATE_KEY]
   before_action :set_card, only: [:destroy, :change]
   before_action :authenticate_user!, except: [:register, :register_create]
-  include CheckPath
+  before_action :session_exists?, only: [:register, :register_create]
 
   def index
     @cards = current_user.cards
@@ -13,11 +14,9 @@ class Users::CardsController < ApplicationController
   end
 
   def register
-    before_path("GET", "users/addresses", "index")
   end
 
   def register_create
-    before_path("GET", "users/cards", "register")
     payjp_cus = Card.create_customer
     payjp_token = Card.create_token(payjp_params.to_hash)
     payjp_car = Card.create_card(payjp_cus, payjp_token)

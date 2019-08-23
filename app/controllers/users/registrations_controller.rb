@@ -1,5 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  include CheckPath
+  before_action :session_exists?, only: :create
+  include SessionCheck
 
   def index
   end
@@ -13,9 +14,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def put_in
-    before_path("GET", "users/registrations", "new")
     @user = User.new(user_params)
-
+    
     if session[:omni]
       pass = Devise.friendly_token[0,20]
       @user.password = pass
@@ -35,14 +35,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    before_path("POST", "users/cards", "register_create")
     user = User.new(build_user)
-    if user.save
-      session.clear
-      sign_in(user)
-    else
-      redirect_to root_path
-    end
+    user.save!
+    session.clear
+    sign_in(user)
   end
 
   private
