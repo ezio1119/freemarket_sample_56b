@@ -8,10 +8,11 @@
       %section.buypage__main__container__item
         .buypage__main__container__item__inner
           %h3.buypage__main__container__item__inner__image
-            = image_tag @item.image, alt: "image", class:"buypage__main__container__item__inner__image"
+            - @item.images.each do |image|
+              = image_tag image, alt: "image", class:"buypage__main__container__item__inner__image"
           %p.buypage__main__container__item__inner__name
             = @item.name
-          = form_with url: item_order_path, class: :buypage__main__container__item__inner__content do |f|
+          = form_with url: item_order_path, class: :buypage__main__container__item__inner__content, local: true do |f|
             %p.buypage__main__container__item__inner__content__price
               = "¥ #{ @item.price }"
               %span.buypage__main__container__item__inner__content__price__fee
