@@ -59,22 +59,6 @@ workflows:
   test:
     jobs:
       - test
-      - aws-ecr/build-and-push-image:
-          repo: ${MY_REPO_PREFIX}
-          extra-build-args: --build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY}
-          tag: '${CIRCLE_SHA1}'
-          requires:
-            - test
-          filters:
-            branches:
-              only:
-                - master
-      - aws-ecs/deploy-service-update:
-          requires:
-            - aws-ecr/build-and-push-image
-          family: ${MY_APP_PREFIX}
-          cluster-name: ${MY_APP_PREFIX}
-          container-image-name-updates: 'container=${CONTAINER_NAME}, tag=${CIRCLE_SHA1}'
 
   build_and_deploy:
     triggers:
