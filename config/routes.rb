@@ -67,9 +67,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories, only: [:index, :show]
+  resources :categories, only: [:index, :show] do
+    collection do
+      get :search_children
+    end
+  end
   
-  get 'categories/search_children', to: 'categories#search_children'
   get 'sizes/shoes_size', to: 'sizes#shoes_size'
   get 'sizes/clothes_size', to: 'sizes#clothes_size'
 end
