@@ -40,4 +40,4 @@ RUN RAILS_ENV=production bundle exec rake assets:precompile
 VOLUME /app/public
 VOLUME /app/tmp
 
-CMD /bin/sh -c "bundle exec rails db:create db:migrate db:seed RAILS_ENV=production && bundle exec rails s puma -e production"
+CMD /bin/sh -c "bundle exec rails db:create RAILS_ENV=production && bundle exec db:migrate db:seed RAILS_ENV=production && bundle exec rails s puma -e production"
