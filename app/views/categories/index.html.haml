@@ -6,25 +6,25 @@
     .categories-wrapper__container__title
       %h2 カテゴリー一覧
     .categories-wrapper__container__nav
-      - Category.top_category.each do |category|
-        = link_to category.name, "#", class: "categories-wrapper__container__nav__name"
+      - Category.top_category.each do |parent|
+        = link_to parent.name, "#", class: "categories-wrapper__container__nav__name"
     .categories-wrapper__container__list
-      - Category.top_category.each do |category|
+      - Category.top_category.each do |parent|
         .categories-wrapper__container__list__box
           .categories-wrapper__container__list__box__title
-            %h3= category.name
+            %h3= parent.name
           .categories-wrapper__container__list__box__inner
             %p
               = link_to "すべて", "#"
-              - category.children.each do |category|
+              - parent.children.each do |child|
                 .categories-wrapper__container__list__box__inner__name
-                  %h4= category.name
+                  %h4= child.name
                   .categories-wrapper__container__list__box__inner__category
                     .categories-wrapper__container__list__box__inner__category__item
                       %p
                         = link_to "すべて", "#"
-                    - category.children.each do |category|
+                    - child.children.each do |grandchild|
                       .categories-wrapper__container__list__box__inner__category__item
                         %p
-                          = link_to category.name, "#"
+                          = link_to grandchild.name, "#"
 = render 'items/footer'
