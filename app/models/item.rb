@@ -2,7 +2,6 @@ class Item < ApplicationRecord
     has_many_attached :images, dependent: :destroy
     belongs_to :user
     belongs_to :category
-
     has_one :order
     has_one :bought, through: :order, source: :bought
     has_one :sold, through: :order, source: :sold
@@ -19,7 +18,8 @@ class Item < ApplicationRecord
         less_than_or_equal_to: 9999999
     }
     validates :category_id, presence: true
-
+    validates :images, presence: true
+    validate :image_type
     extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to_active_hash :prefecture
     belongs_to_active_hash :state
@@ -28,5 +28,15 @@ class Item < ApplicationRecord
     belongs_to_active_hash :day
     belongs_to_active_hash :brand, optional: true
     belongs_to_active_hash :size, optional: true
- 
+
+    private
+    def image_type
+      if images.attached?
+        self.images.each do |image|
+          errors.add(:image, '拡張子がJPEGまたはPNGを挿入してください') if !image.content_type.in?(%('image/jpec image/png'))
+        end
+      else
+        errors.add(:image, '画像を挿入してください')
+      end
+    end
 end
