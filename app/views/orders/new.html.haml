@@ -53,7 +53,7 @@
             %br
               ="#{@card_info[:month]}/#{@card_info[:year]}"
           %figure.buypage__main__container__user__inner__card
-            = image_tag "card/#{@card_info[:brand]}", class: "buypage__main__container__user__inner__card", alt: "#{@card_info[:brand]}"
+            = image_tag "card/#{@card_info[:brand]}.svg", class: "buypage__main__container__user__inner__card", alt: "#{@card_info[:brand]}"
           %p.buypage__main__container__user__inner__text
           = link_to change_item_order_path, class: "buypage__main__container__user__inner__link" do
             変更する
