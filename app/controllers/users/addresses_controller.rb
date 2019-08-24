@@ -11,7 +11,7 @@ class Users::AddressesController < ApplicationController
     @address.valid?
     if @address.errors.keys.count == 1
       session[:address] = @address
-      redirect_to register_users_cards_path, data: {"turbolinks" => false}
+      redirect_to register_users_cards_path
     else
       render 'index'
     end
