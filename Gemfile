@@ -51,6 +51,7 @@ gem 'omniauth-facebook'
 gem 'twilio-ruby', '~> 5.25.3'
 gem 'kaminari', '~> 0.17.0'
 gem 'ransack'
+gem 'rails-i18n'
 
 
 group :development, :test do

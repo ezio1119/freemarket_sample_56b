@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      item: 
+    attributes:
+      item:
+        name: 商品名
+        state_id: 状態
+        delivery_burden_id: 送料負担
+        delivery_method_id: 発送方法
+        prefecture_id: 発送元
+        day_id: 発送日時
+        info: 説明
+        price: 値段
+        category_id: カテゴリー
