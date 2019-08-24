@@ -4,7 +4,10 @@ require 'faker'
 RSpec.describe Item, type: :model do
   describe '#build' do
     context 'can save' do
-
+      before do
+        @user = FactoryBot.create(:user)
+        @category = FactoryBot.create(:category)
+      end
       it "is valid with all" do
         item = create(:item)
         expect(item).to be_valid
