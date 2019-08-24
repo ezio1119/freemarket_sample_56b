@@ -1,0 +1,15 @@
+.swiper-container.top-carousel
+  -# slide wrapper
+  .swiper-wrapper
+    -# slides
+    .swiper-slide
+      = image_tag 'https://www.mercari.com/jp/assets/img/common/jp/top/banner-camp.jpg', alt: 'swipe01'
+    .swiper-slide
+      = image_tag 'https://www.mercari.com/jp/assets/img/common/jp/top/banner-camp.jpg', alt: 'swipe02'
+  -# if need navigation button 
+  .swiper-button-prev.swiper-button-white
+  .swiper-button-next.swiper-button-white
+  -# if need pagination 
+  .swiper-pagination.swiper-pagination-black
+
+  = javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"
