@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       item: 
+      address:
     attributes:
       item:
         name: 商品名
@@ -13,3 +14,14 @@ ja:
         info: 説明
         price: 値段
         category_id: カテゴリー
+      address:
+        postcode: 郵便番号
+        city: 市区町村
+        block: 番地
+        building: 建物名
+        phone_number: 電話番号
+        first_name: 名
+        last_name: 姓
+        first_name_kana: 名カナ
+        last_name_kana: 姓カナ
+        prefecture_id: 都道府県
