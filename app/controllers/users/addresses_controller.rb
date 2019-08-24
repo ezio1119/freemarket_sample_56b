@@ -1,7 +1,7 @@
 class Users::AddressesController < ApplicationController
   before_action :session_exists?
   include SessionCheck
-
+  include AddressesHelper
   def index
     @address = Address.new
   end
