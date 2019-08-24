@@ -1,30 +1,18 @@
 class Address < ApplicationRecord
-  belongs_to :user
+
   extend ActiveHash::Associations::ActiveRecordExtensions
+  include NameValidators
+  belongs_to :user
   belongs_to_active_hash :prefecture
 
-  validates :postcode, presence: true, format: {
-    with: /\d{3}[-]\d{4}/
-  }
-
   validates :city, presence: true
-
-  validates :phone_number, presence: true, format: {
-    with: /(070|080|090)\d{4}\d{4}/
-  }
-
+  validates :prefecture_id, presence: true
   validates :block, presence: true
 
-  validates :first_name, presence: true, format: {
-    with: /[^ -~｡-ﾟ]+/
+  validates :postcode, format: {
+    with: /\d{3}[-]\d{4}/
   }
-  validates :first_name_kana, presence: true, format: {
-    with: /\A[\p{katakana} ー－&&[^ -~｡-ﾟ]]+\z/
-  }
-  validates :last_name, presence: true, format: {
-    with: /[^ -~｡-ﾟ]+/
-  }
-  validates :last_name_kana, presence: true, format: {
-    with: /\A[\p{katakana} ー－&&[^ -~｡-ﾟ]]+\z/
+  validates :phone_number, format: {
+    with: /(070|080|090)\d{4}\d{4}/
   }
 end

@@ -40,6 +40,8 @@
             %span.new_user__address__box__text
               必須
             = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, class:"new_user__address__field"
+            - @address.errors.full_messages_for(:prefecture_id).each do |error|
+              %p.error=error
             = f.label :city, class: "new_user__address__box__label"
             %span.new_user__address__box__text
               必須

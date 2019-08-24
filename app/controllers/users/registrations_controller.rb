@@ -9,7 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if session[:omni]
       @user = User.new(session[:omni])
     else
-      @user = User.new
+      super
     end
   end
 
@@ -30,6 +30,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       session[:pass_conf] = @user.password_confirmation
       redirect_to users_phone_auth_index_path
     else
+      binding.pry
       render 'new'
     end
   end
