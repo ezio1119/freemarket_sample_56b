@@ -6,6 +6,7 @@
         商品の情報を入力
       .newpage__box__form
         .newpage__box__upload
+          %p.error= @item.errors.full_messages_for(:image)[0] if @item.errors.any?
           %h3.newpage__box__upload__title
             出品画像
             .newpage__box__upload__title--req
