@@ -12,51 +12,47 @@
         %h2.mypage__right__side__credit__title
           支払い方法
         .card-wrapper__container__form__content
-        = form_with(id: "charge-form", url: "/users/cards", local: true) do |f|
-          .card-wrapper__container__form__content__box
-            = f.label :number, "カード番号", class: "card-wrapper__container__form__content__box__name"
-            %span.card-wrapper__container__form__content__box__require
-              必須
-            = f.text_field :number, class: "number card-wrapper__container__form__content__box__text", id: "payment_card_no", maxlength: "16", placeholder: "半角数字のみ"
-          %ul.card-wrapper__container__form__content__logo
-            %li.card-wrapper__container__form__content__logo__list
-              = image_tag "card/Visa.svg", alt: "visa", size: "49x20"
-            %li.card-wrapper__container__form__content__logo__list
-              = image_tag "card/MasterCard.svg", alt: "master", size: "34x20"
-            %li.card-wrapper__container__form__content__logo__list
-              = image_tag "card/saison.svg", alt: "saison", size: "30x20"
-            %li.card-wrapper__container__form__content__logo__list
-              = image_tag "card/JCB.svg", alt: "jcb", size: "32x20"
-            %li.card-wrapper__container__form__content__logo__list
-              = image_tag "card/American Express.svg", alt: "amex", size: "21x20"
-            %li.card-wrapper__container__form__content__logo__list
-              = image_tag "card/Diners Club.svg", alt: "dinersclub", size: "32x20"
-            %li.card-wrapper__container__form__content__logo__list
-              = image_tag "card/Discover.svg", alt: "discover", size: "32x20"
-          .card-wrapper__container__form__content__box
-            = f.label :exp_month, "有効期限", class: "card-wrapper__container__form__content__box__name"
-            %span.card-wrapper__container__form__content__box__require
-              必須
-            .card-wrapper__container__form__content__box__text__limit
-              = f.text_field :exp_month, class: "exp_month card-wrapper__container__form__content__box__text__limit__date", maxlength: "2", id: "payment_card_expire_mm"
-              %p
-                月
-              = f.text_field :exp_year, class: "exp_year card-wrapper__container__form__content__box__text__limit__date__right", maxlength: "4", id: "payment_card_expire_yy"
-              %p
-                年
-          .card-wrapper__container__form__content__box
-            = f.label :cvc, "セキュリティコード", class: "card-wrapper__container__form__content__box__name"
-            %span.card-wrapper__container__form__content__box__require
-              必須
-            = f.text_field :cvc, class: "cvc card-wrapper__container__form__content__box__text", id: "payment_card_security_code", maxlength: "3", placeholder: "カード背面4桁もしくは3桁の番号"
-            .card-wrapper__container__form__content__box__link
-              %p.card-wrapper__container__form__content__box__link__tag
-                = fa_icon "question-circle", class: "card-wrapper__container__form__content__box__link" 
-                = link_to "カード裏面の番号とは？", "#", class: "card-wrapper__container__form__content__box__link" 
-            = f.submit "次へ進む", class: "card-wrapper__container__form__content__box__btn"
+          = form_with(id: "charge-form", url: "/users/cards", local: true) do |f|
+            .card-wrapper__container__form__content__box
+              = f.label :number, "カード番号", class: "card-wrapper__container__form__content__box__name"
+              %span.card-wrapper__container__form__content__box__require
+                必須
+              = f.text_field :number, class: "number card-wrapper__container__form__content__box__text", id: "payment_card_no", maxlength: "16", placeholder: "半角数字のみ"
+            %ul.card-wrapper__container__form__content__logo
+              %li.card-wrapper__container__form__content__logo__list
+                = image_tag "card/Visa.svg", alt: "visa", size: "49x20"
+              %li.card-wrapper__container__form__content__logo__list
+                = image_tag "card/MasterCard.svg", alt: "master", size: "34x20"
+              %li.card-wrapper__container__form__content__logo__list
+                = image_tag "card/saison.svg", alt: "saison", size: "30x20"
+              %li.card-wrapper__container__form__content__logo__list
+                = image_tag "card/JCB.svg", alt: "jcb", size: "32x20"
+              %li.card-wrapper__container__form__content__logo__list
+                = image_tag "card/American Express.svg", alt: "amex", size: "21x20"
+              %li.card-wrapper__container__form__content__logo__list
+                = image_tag "card/Diners Club.svg", alt: "dinersclub", size: "32x20"
+              %li.card-wrapper__container__form__content__logo__list
+                = image_tag "card/Discover.svg", alt: "discover", size: "32x20"
+            .card-wrapper__container__form__content__box
+              = f.label :exp_month, "有効期限", class: "card-wrapper__container__form__content__box__name"
+              %span.card-wrapper__container__form__content__box__require
+                必須
+              .card-wrapper__container__form__content__box__text__limit
+                = f.text_field :exp_month, class: "exp_month card-wrapper__container__form__content__box__text__limit__date", maxlength: "2", id: "payment_card_expire_mm"
+                %p
+                  月
+                = f.text_field :exp_year, class: "exp_year card-wrapper__container__form__content__box__text__limit__date__right", maxlength: "4", id: "payment_card_expire_yy"
+                %p
+                  年
+            .card-wrapper__container__form__content__box
+              = f.label :cvc, "セキュリティコード", class: "card-wrapper__container__form__content__box__name"
+              %span.card-wrapper__container__form__content__box__require
+                必須
+              = f.text_field :cvc, class: "cvc card-wrapper__container__form__content__box__text", id: "payment_card_security_code", maxlength: "3", placeholder: "カード背面4桁もしくは3桁の番号"
+              .card-wrapper__container__form__content__box__link
+                %p.card-wrapper__container__form__content__box__link__tag
+                  = fa_icon "question-circle", class: "card-wrapper__container__form__content__box__link" 
+                  = link_to "カード裏面の番号とは？", "#", class: "card-wrapper__container__form__content__box__link" 
+              = f.submit "次へ進む", class: "card-wrapper__container__form__content__box__btn"
 
 = render 'items/footer'
-
-%script{src: "https://js.pay.jp/", type: "text/javascript"}
-:javascript
-  Payjp.setPublicKey('pk_test_f1a07accfdebeff66f46a7ba');

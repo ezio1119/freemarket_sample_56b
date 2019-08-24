@@ -9,6 +9,6 @@
       = "#{card_info[:month]}/#{card_info[:year]}"
     = link_to "削除する", users_card_path(card), method: :delete, class: "mypage__right__side__credit__container__top__list__content__btn"
     - if default == card.payjp_car
-      デフォルトです
+      %span.mypage__right__side__credit__container__top__list__content__btn--def デフォルトカード
     - else
-      = link_to "デフォルトに変更する", change_users_card_path(card)
+      = link_to "このカードで支払う", change_users_card_path(card), class: "mypage__right__side__credit__container__top__list__content__btn--changedef"
