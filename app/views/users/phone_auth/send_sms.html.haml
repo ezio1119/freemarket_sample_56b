@@ -9,7 +9,7 @@
         = flash[:notice]
       %p.tell_wrapper__contents__body__text
         認証番号
-      = f.text_field :conf_num, class: "tell_wrapper__contents__body__input", placeholder: "   認証番号を入力", id: "smsauth"
+      = f.text_field :conf_num, autofocus: true, class: "tell_wrapper__contents__body__input", placeholder: "   認証番号を入力", id: "smsauth"
       %p.tell_wrapper__contents__body__comment
         SMSで届いた認証番号を入力してください
       = f.submit "認証して完了", class: "tell_wrapper__contents__body__submit", id: "phonesubmit"

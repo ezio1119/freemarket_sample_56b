@@ -7,9 +7,9 @@
     = form_with url: send_sms_users_phone_auth_index_path, class: "tell_wrapper__contents__body", local: true do |f|
       %p.tell_wrapper__contents__body__text
         携帯電話の番号
-      = f.text_field :num, class: "tell_wrapper__contents__body__input", placeholder: "   携帯電話の番号を入力", id: "smsauth"
+      = f.text_field :num, autofocus: true, class: "tell_wrapper__contents__body__input", placeholder: "   携帯電話の番号を入力", id: "smsauth"
       %p.tell_wrapper__contents__body__notice
-        = flash[:notice]
+        
       %p.tell_wrapper__contents__body__comment
         本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
       = f.submit "SMSを送信する", class: "tell_wrapper__contents__body__submit", id: "phonesubmit"

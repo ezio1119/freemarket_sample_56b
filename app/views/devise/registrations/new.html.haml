@@ -11,14 +11,14 @@
             = f.label :nickname, class: "user_wrapper__contents__forms__body__form__label"
             %span.user_wrapper__contents__forms__body__form__logo
               必須
-            = f.text_field :nickname, placeholder: "   例）太郎忍者", class: "user_wrapper__contents__forms__body__form__field"
+            = f.text_field :nickname, autofocus: true, placeholder: "   例）太郎忍者", class: "user_wrapper__contents__forms__body__form__field"
             - @user.errors.full_messages_for(:nickname).each do |error|
               %p.error=error
           .user_wrapper__contents__forms__body__form
             = f.label :email, class: "user_wrapper__contents__forms__body__form__label"
             %span.user_wrapper__contents__forms__body__form__logo
               必須
-            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "   PC・携帯どちらでも可", class: "user_wrapper__contents__forms__body__form__field"
+            = f.email_field :email, autocomplete: "email", placeholder: "   PC・携帯どちらでも可", class: "user_wrapper__contents__forms__body__form__field"
             - @user.errors.full_messages_for(:email).each do |error|
               %p.error=error
           - if session[:omni].nil?

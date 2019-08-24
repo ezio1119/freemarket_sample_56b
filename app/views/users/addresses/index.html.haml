@@ -11,7 +11,7 @@
           %span.new_user__box__text
             必須
         .new_user__fbox
-          = f.text_field :first_name, class: "new_user__fbox__field"
+          = f.text_field :first_name, autofocus: true, class: "new_user__fbox__field"
           = f.text_field :last_name, class: "new_user__fbox__field"
           - @address.errors.full_messages_for(:first_name).each do |error|
             %p.error=error

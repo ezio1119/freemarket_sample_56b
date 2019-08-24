@@ -9,6 +9,7 @@ class Users::PhoneAuthController < ApplicationController
   end
 
   def send_sms
+    flash[:notice] = nil
     num = params[:num]
     reg = /(070|080|090)\d{4}\d{4}/
     unless num.match(reg) && num.length == 11

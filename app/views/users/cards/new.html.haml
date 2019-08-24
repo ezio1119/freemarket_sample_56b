@@ -14,7 +14,7 @@
         .card-wrapper__container__form__content
           = form_with(id: "charge-form", url: "/users/cards", local: true) do |f|
             .card-wrapper__container__form__content__box
-              = f.label :number, "カード番号", class: "card-wrapper__container__form__content__box__name"
+              = f.label :number, "カード番号", autofocus: true, class: "card-wrapper__container__form__content__box__name"
               %span.card-wrapper__container__form__content__box__require
                 必須
               = f.text_field :number, class: "number card-wrapper__container__form__content__box__text", id: "payment_card_no", maxlength: "16", placeholder: "半角数字のみ"
