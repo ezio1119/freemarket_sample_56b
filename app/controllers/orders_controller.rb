@@ -26,13 +26,13 @@ class OrdersController < ApplicationController
   def create
     charge = current_user.payment(params_order[:amount])
     item = Item.find(params[:item_id])
-    order = Order.new(
+    @order = Order.new(
       charge: charge,
       item_id: params[:item_id],
       sold_id: item.user_id,
       bought_id: current_user.id
     )
-    if order.save
+    if @order.save
     else
       redirect_to item_path(params[:item_id]), notice: "購入に失敗しました"
     end

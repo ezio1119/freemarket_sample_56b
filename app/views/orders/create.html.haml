@@ -1,2 +1,12 @@
-%h1 購入が完了しました。
-= link_to "トップページ", root_path
+= render 'users/shared/header_center'
+.completion-wrapper__contents
+  .completion-wrapper__contents__top
+    %p.completion-wrapper__contents__top__message
+      購入完了
+  .completion-wrapper__contents__body
+    %p.completion-wrapper__contents__body__message
+      ありがとうございます。
+    %p.completion-wrapper__contents__body__bottom-message
+      商品の購入が完了しました。
+    = link_to "購入詳細画面", order_path(@order), class: "completion-wrapper__contents__body__btn"
+= render 'users/shared/footer'
