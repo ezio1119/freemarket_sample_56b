@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
         items << item
       end
     end
-    @items = Kaminari.paginate_array(items).page(params[:page]).per(1)
+    @items = Kaminari.paginate_array(items).page(params[:page]).per(125)
   end
 
 end
