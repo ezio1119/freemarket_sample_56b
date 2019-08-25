@@ -8,9 +8,33 @@
     %h2.main__container__title
       ピックアップカテゴリー
     .main__container__box
-      = link_to "レディース新着アイテム", "", class: "main__container__box--title"
+      .main__container__box--title
+        = link_to "レディース新着アイテム", "", class: "main__container__box--title--link"
       %ul.main__container__box--content
         = render @items
+      .main__container__box--show
+        = link_to "すべての商品を見る", "",class: "main__container__box--show--link"
+    .main__container__box
+      .main__container__box--title
+        = link_to "メンズ新着アイテム", "", class: "main__container__box--title--link"
+      %ul.main__container__box--content
+        = render @items
+      .main__container__box--show
+        = link_to "すべての商品を見る", "",class: "main__container__box--show--link"
+    .main__container__box
+      .main__container__box--title
+        = link_to "ベビー・キッズ新着アイテム", "", class: "main__container__box--title--link"
+      %ul.main__container__box--content
+        = render @items
+      .main__container__box--show
+        = link_to "すべての商品を見る", "",class: "main__container__box--show--link"
+    .main__container__box
+      .main__container__box--title
+        = link_to "コスメ・香水・美容 新着アイテム", "", class: "main__container__box--title--link"
+      %ul.main__container__box--content
+        = render @items
+      .main__container__box--show
+        = link_to "すべての商品を見る", "",class: "main__container__box--show--link"
 
 = render 'footer'
 = render 'buybtn'
