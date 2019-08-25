@@ -13,10 +13,20 @@
         %h1.category-lists-wrapper__container__content__box__title
           #{@category.name}の商品一覧
         .category-lists-wrapper__container__content__box__list
-          
-          .category-lists-wrapper__container__content__box__list__item
-            = render partial: 'items/item', collection: @items
+          - @items.each do |item|
+            .category-lists-wrapper__container__content__box__list__item
+              = link_to item_path(item), class: "category-lists-wrapper__container__content__box__list__item__link" do
+                = image_tag item.images.first, size: "188x188" if item.images.attached?
+                - if item.order
+                  .category-lists-wrapper__container__content__box__list__item__soldtag
+                    %p SOLD
+                .category-lists-wrapper__container__content__box__list__item__bottom
+                  .category-lists-wrapper__container__content__box__list__item__bottom__name
+                    = item.name
+                  .category-lists-wrapper__container__content__box__list__item__bottom__price
+                    = "¥" + number_with_delimiter(item.price)
       .category-lists-wrapper__container__content__pager
+        = paginate @items
       .category-lists-wrapper__container__content__description
         .category-lists-wrapper__container__content__description__title
           %h3
