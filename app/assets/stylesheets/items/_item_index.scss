@@ -1,4 +1,5 @@
 .main{
+  background: #f5f5f5;
   &__slider{
     height: 400px;
     width: 100vw;
@@ -27,9 +28,10 @@
       &--content{
         display: flex;
         flex-wrap: wrap;
-
         &--items{
+          text-decoration: none;
           position: relative;
+
           &--soldtag {
             position: absolute;
             top: 0;
@@ -60,17 +62,29 @@
             height: 0;
             border-style: solid;
            }
-
           width: 213px;
           margin-left: 10px;
           background-color: aliceblue;
           cursor: pointer;
-          &--image{
-            width: 213px;
-            height: 220px;
-          }
           &--text{
             height: 110px;
+            background: white;
+            color: #000;
+            &--price {
+              font-size: 13px;
+              font-weight: bold;
+              position: absolute;
+              left: 10px;
+	            bottom: 20px;
+              text-align: left;
+            }
+            &--name {
+              font-size: 15px;
+              position: absolute;
+              left: 10px;
+              bottom: 80px;
+              text-align: left;
+            }
           }
         }
       }
