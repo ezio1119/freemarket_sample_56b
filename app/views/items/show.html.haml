@@ -39,7 +39,7 @@
         %tr
           %th.itempage__box__info--table--th ブランド
           %td.itempage__box__info--table--td
-            = link_to @item.brand.name, "#", class: "itempage__box__info--table--td--link"
+            = link_to @item.brand.name, "#", class: "itempage__box__info--table--td--link" if @item.brand.present?
         %tr
           %th.itempage__box__info--table--th 商品の状態
           %td.itempage__box__info--table--td
@@ -90,28 +90,32 @@
         = link_to "", class: "itempage__box__btn--right--link" do
           = fa_icon "lock", class: "itempage__box__btn--right--link--icon"
           %span あんしん・あんぜんへの取り組み
+    - if @item.comments.present?
+      - @item.comments.each do |comment|
+        - if comment.user_id == @item.user_id
+          .itempage__comment__box
+            .itempage__comment__box__current-user
+            %img.itempage__comment__box__current-user__current-icon{src:"https://static.mercdn.net/images/member_photo_noimage_thumb.png", width:"40", height:"40"}
+              %span.itempage__comment__box__current-user__current-comment
+                = comment.user.nickname
+            .itempage__comment__box__current-text
+              = comment.body
+        - else
+          .itempage__comment
+            .itempage__comment__box
+              .itempage__comment__box__user
+                %span.itempage__comment__box__user__comment
+                  = comment.user.nickname
+                %img.itempage__comment__box__user__icon{src:"https://static.mercdn.net/images/member_photo_noimage_thumb.png", width:"40", height:"40"}
+              .itempage__comment__box__text
+                = comment.body
 
-  .itempage__comment
-    .itempage__comment__box
-      .itempage__comment__box__user
-        %span.itempage__comment__box__user__comment
-          user_name
-        %img.itempage__comment__box__user__icon{src:"https://static.mercdn.net/images/member_photo_noimage_thumb.png", width:"40", height:"40"}
-      .itempage__comment__box__text
-        user-text
-
-    .itempage__comment__box
-      .itempage__comment__box__current-user
-      %img.itempage__comment__box__current-user__current-icon{src:"https://static.mercdn.net/images/member_photo_noimage_thumb.png", width:"40", height:"40"}
-        %span.itempage__comment__box__current-user__current-comment
-          current_name
-      .itempage__comment__box__current-text
-        current-text
     %p.itempage__comment__note
       相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-    %textarea{ name: "text", class: "itempage__comment__text", type: "textarea" }
-    = button_to "コメントする", "", class: "itempage__comment__btn"
-  
+    = form_for [@item, @comment] do |f|
+      = f.text_area :body, class: "itempage__comment__text"
+      = f.submit class: "itempage__comment__btn"
+
   .itempage__page
     .itempage__page__prev
       = link_to "", class: "itempage__page__prev--link" do

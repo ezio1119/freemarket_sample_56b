@@ -3,6 +3,7 @@ class Item < ApplicationRecord
     belongs_to :user
     belongs_to :category
     has_one :order
+    has_many :comments, dependent: :destroy
     has_one :bought, through: :order, source: :bought
     has_one :sold, through: :order, source: :sold
   

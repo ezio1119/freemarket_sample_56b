@@ -17,6 +17,8 @@ class User < ApplicationRecord
   has_many :sold_items, through: :sold_orders, source: :item
   has_many :items, dependent: :destroy
 
+  has_many :comments, dependent: :destroy
+
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :cards
   
