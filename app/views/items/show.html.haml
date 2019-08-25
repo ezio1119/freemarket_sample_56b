@@ -92,6 +92,21 @@
           %span あんしん・あんぜんへの取り組み
 
   .itempage__comment
+    .itempage__comment__box
+      .itempage__comment__box__user
+        %span.itempage__comment__box__user__comment
+          user_name
+        %img.itempage__comment__box__user__icon{src:"https://static.mercdn.net/images/member_photo_noimage_thumb.png", width:"40", height:"40"}
+      .itempage__comment__box__text
+        user-text
+
+    .itempage__comment__box
+      .itempage__comment__box__current-user
+      %img.itempage__comment__box__current-user__current-icon{src:"https://static.mercdn.net/images/member_photo_noimage_thumb.png", width:"40", height:"40"}
+        %span.itempage__comment__box__current-user__current-comment
+          current_name
+      .itempage__comment__box__current-text
+        current-text
     %p.itempage__comment__note
       相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
     %textarea{ name: "text", class: "itempage__comment__text", type: "textarea" }
