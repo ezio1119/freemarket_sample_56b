@@ -1,0 +1,121 @@
+.category-lists-wrapper {
+  background: rgb(245, 245, 245);
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  &__container {
+    margin: 40px auto 0;
+    padding: 0 0 40px;
+    width: 1020px;
+    &__content {
+      &__nav {
+        &:after {
+          content: '';
+          display: block;
+          clear: both;
+        }
+        & li {
+          float: left;
+          margin: 16px 16px 0 0;
+          & a {
+            color: #0099e8;
+            font-size: 13px;
+            text-decoration: none;
+          }
+        }
+      }
+      &__box {
+        &__title {
+          font-size: 21px;
+          font-weight: bold;
+          margin: 24px 0 8px;
+        }
+        &__list {
+          border-width: 0;
+          box-sizing: border-box;
+          margin: 0 auto;
+          width: auto;
+          &:after {
+            content: '';
+            display: block;
+            clear: both;
+          }
+          &__item {
+            box-sizing: border-box;
+            background-color: #fff;
+            float: left;
+            margin: 0 15px 20px 0;
+            position: relative;
+            width: 188px;
+            &__link {
+              color: #333;
+              display: block;
+              text-decoration: none;
+            }
+            &__soldtag:after {
+              border-width: 100px 100px 0 0;
+              border-color: #ea352d transparent transparent transparent;
+              display: block;
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              z-index: 1;
+              width: 0;
+              height: 0;
+              border-style: solid;
+            }
+            &__bottom {
+              box-sizing: border-box;
+              height: 110px;
+              padding: 16px;
+              &__name {
+                font-size: 14px;
+                overflow: hidden;
+                position: relative;
+                height: 3em;
+                line-height: 1.5;
+                word-break: break-word;
+                white-space: normal;
+              }
+              &__price {
+                font-size: 14px;
+                font-weight: bold;
+                margin: 8px 0 0;
+              }
+            }
+          }
+        }
+      }
+      &__pager {
+        margin: 40px 0 0;
+        text-align: center;
+
+      }
+      &__description {
+        overflow: hidden;
+        border-radius: 4px;
+        margin-top: 30px;
+        &__title {
+          background-color: #ea352d;
+          text-align: center;
+          & h3 {
+            color: #fff;
+            font-size: 21px;
+            font-weight: bold;
+            padding: 16px 8px;
+          }
+        }
+        &__text {
+          background-color: #fff;
+          padding: 30px;
+          & p {
+            font-size: 13px;
+            line-height: 1.6em;
+          }
+        }
+      }
+    }
+  }
+}
