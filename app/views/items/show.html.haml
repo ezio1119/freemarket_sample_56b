@@ -29,14 +29,17 @@
         %tr
           %th.itempage__box__info--table--th カテゴリー
           %td.itempage__box__info--table--td
-            = link_to "美容", "#", class: "itempage__box__info--table--td--link"
+            = link_to @item.category.parent.parent.name, "#", class: "itempage__box__info--table--td--link"
             = link_to "", class: "itempage__box__info--table--td--link" do
               = fa_icon "chevron-right", class: "itempage__box__info--table--td--link--sub"
-              %span コスメ
+              %span= @item.category.parent.name
+            = link_to "", class: "itempage__box__info--table--td--link" do
+              = fa_icon "chevron-right", class: "itempage__box__info--table--td--link--sub"
+              %span= @item.category.name
         %tr
           %th.itempage__box__info--table--th ブランド
           %td.itempage__box__info--table--td
-            = link_to "ソニー", "#", class: "itempage__box__info--table--td--link"
+            = link_to @item.brand.name, "#", class: "itempage__box__info--table--td--link"
         %tr
           %th.itempage__box__info--table--th 商品の状態
           %td.itempage__box__info--table--td
