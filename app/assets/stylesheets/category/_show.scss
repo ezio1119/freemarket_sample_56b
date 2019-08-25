@@ -32,17 +32,25 @@
           margin: 24px 0 8px;
         }
         &__list {
+          border-width: 0;
+          box-sizing: border-box;
+          margin: 0 auto;
+          width: auto;
           &:after {
             content: '';
             display: block;
             clear: both;
           }
           &__item {
+            box-sizing: border-box;
             background-color: #fff;
             float: left;
-            margin: 0 20px 20px 0;
+            margin: 0 15px 20px 0;
+            position: relative;
+            width: 188px;
             &__link {
               color: #333;
+              display: block;
               text-decoration: none;
             }
             &__soldtag:after {
@@ -74,6 +82,7 @@
               &__price {
                 font-size: 14px;
                 font-weight: bold;
+                margin: 8px 0 0;
               }
             }
           }
