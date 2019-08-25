@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'faker'
 
 RSpec.describe Item, type: :model do
-  describe '#create' do
+  describe '#build' do
     context 'can save' do
 
       it "is valid with all" do
@@ -11,30 +11,12 @@ RSpec.describe Item, type: :model do
       end
       
       it "is valid with a price that has more than 300 yen " do
-        item = create(:item)
+        item = create(:item, price: "300")
         expect(item).to be_valid
       end
 
       it "is valid with a price that less more than 9999999 yen " do
         item = create(:item, price: "9999999")
-        expect(item).to be_valid
-      end
-
-      it "is valid with a name that less more than 40 " do
-        test = "A"
-        while test.length < 40 do
-          test += "A"
-        end
-        item = create(:item, name: "#{test}")
-        expect(item).to be_valid
-      end
-
-      it "is valid with a info that less more than 1000 " do
-        test = "A"
-        while test.length < 1000 do
-          test += "A"
-        end
-        item = create(:item, info: "#{test}")
         expect(item).to be_valid
       end
 
