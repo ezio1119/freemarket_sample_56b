@@ -3,7 +3,7 @@ crumb :root do
 end
 
 crumb :item_show do |item|
-  link "#{item.name}"
+  link item.name
   parent :root
 end
 
@@ -52,7 +52,11 @@ crumb :categories do
   parent :root
 end
 
-crumb :category_list do
-  link "aaa", category_path
-  parent :categories
+crumb :category do |category|
+  link category.name, category_path(category)
+  if category.parent
+    parent category.parent
+  else
+    parent :categories
+  end
 end
