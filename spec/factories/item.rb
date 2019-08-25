@@ -10,6 +10,8 @@ FactoryBot.define do
     price                   {"500"}
     info                    {"aaaaaaaaaa"}
     brand_id                {"1"}
+    user
+    category
     after(:build) do |item|
       item.images.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'soy.png')), filename: 'soy.png', content_type: 'image/png')
     end

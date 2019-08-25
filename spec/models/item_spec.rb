@@ -4,33 +4,19 @@ require 'faker'
 RSpec.describe Item, type: :model do
   describe '#create' do
     context 'can save' do
-      before do
-        @user = FactoryBot.create(:user)
-        @category = FactoryBot.create(:category)
-      end
+
       it "is valid with all" do
-        user = @user
-        category = @category
-        item = build(:item)
-        item.category_id = category.id
-        item.user_id = user.id
+        item = create(:item)
         expect(item).to be_valid
       end
+      
       it "is valid with a price that has more than 300 yen " do
-        user = @user
-        category = @category
-        item = build(:item, price: "300")
-        item.category_id = category.id
-        item.user_id = user.id
+        item = create(:item)
         expect(item).to be_valid
       end
 
       it "is valid with a price that less more than 9999999 yen " do
-        user = @user
-        category = @category
-        item = build(:item, price: "9999999")
-        item.category_id = category.id
-        item.user_id = user.id
+        item = create(:item, price: "9999999")
         expect(item).to be_valid
       end
 
@@ -39,11 +25,7 @@ RSpec.describe Item, type: :model do
         while test.length < 40 do
           test += "A"
         end
-        user = @user
-        category = @category
-        item = build(:item, name: "#{test}")
-        item.category_id = category.id
-        item.user_id = user.id
+        item = create(:item, name: "#{test}")
         expect(item).to be_valid
       end
 
@@ -52,11 +34,7 @@ RSpec.describe Item, type: :model do
         while test.length < 1000 do
           test += "A"
         end
-        user = @user
-        category = @category
-        item = build(:item, info: "#{test}")
-        item.category_id = category.id
-        item.user_id = user.id
+        item = create(:item, info: "#{test}")
         expect(item).to be_valid
       end
 
