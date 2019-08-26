@@ -19,6 +19,9 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  has_many :favorites
+  has_many :favorite_items, through: :favorites, source: :item
+
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :cards
   
@@ -51,5 +54,9 @@ class User < ApplicationRecord
       currency: 'jpy'
     )
     charge.id
+  end
+
+  def favorited_by?(item)
+    favorites.where(item_id: item.id).exists?
   end
 end
