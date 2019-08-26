@@ -1,4 +1,4 @@
-= link_to "items/#{item.id}", class: "li main__container__box--content--items" do
+= link_to item_path(item), class: "li main__container__box--content--items" do
   = image_tag item.images.first, class: "main__container__box--content--items--image" if item.images.attached?
   - if item.order
     .main__container__box--content--items--soldtag
