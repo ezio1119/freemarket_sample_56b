@@ -62,7 +62,7 @@
             = @item.day.name
     .itempage__box__price
       .itempage__box__price--num
-        = "¥ #{ @item.price }" 
+        = "¥ #{ @item.price.to_s(:delimited) }" 
       .itempage__box__price--tax
         (税込)
       .itempage__box__price--post
