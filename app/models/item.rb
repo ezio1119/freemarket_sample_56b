@@ -6,6 +6,8 @@ class Item < ApplicationRecord
     has_many :comments, dependent: :destroy
     has_one :bought, through: :order, source: :bought
     has_one :sold, through: :order, source: :sold
+    has_many :favorites
+    has_many :favorite_users, through: :favorites, source: :user
   
     validates :name, length: { maximum: 40 }, presence: true
     validates :state_id, presence: true
@@ -30,6 +32,9 @@ class Item < ApplicationRecord
     belongs_to_active_hash :brand, optional: true
     belongs_to_active_hash :size, optional: true
 
+    def favorited_by?(user)
+        favorites.find_by(user_id: user.id)
+    end
     private
     def image_type
       if images.attached?
@@ -40,4 +45,5 @@ class Item < ApplicationRecord
         errors.add(:image, '画像を挿入してください')
       end
     end
+
 end

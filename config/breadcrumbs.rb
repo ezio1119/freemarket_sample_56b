@@ -17,6 +17,11 @@ crumb :exhibit_items_now do
   parent :mypage
 end
 
+crumb :favorite_lists do
+  link "いいね！ 一覧"
+  parent :mypage
+end
+
 crumb :profile do
   link "プロフィール"
   parent :mypage

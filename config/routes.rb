@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :items do
     resources :comments, only: [:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
     collection do
       get :search
     end
@@ -57,6 +58,7 @@ Rails.application.routes.draw do
       get :identification
       get :items_list
       get :logout
+      get :favorites_list
     end
     collection do
       resources :orders, only: [:index, :show] do

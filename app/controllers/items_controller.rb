@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @favorite = Favorite.new
   end
   
   def new

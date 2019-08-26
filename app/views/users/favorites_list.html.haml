@@ -1,0 +1,15 @@
+= render 'items/header'
+- breadcrumb :favorite_lists
+= render 'shared/breadcrumbs'
+.mypage
+  = render 'sidebar'
+  .mypage__right
+    .mypage__right__side
+      .mypage__right__side__top いいね！一覧
+      - @items.each do |item|
+        = link_to item_path(item) , class: "mypage__right__side__item" do
+          = image_tag item.images.first, size: "50x50",class: "mypage__right__side__item__img" 
+          %p.mypage__right__side__item__name= item.name
+          %span.mypage__right__side__item__price ¥
+          %span.mypage__right__side__item__price= item.price
+= render 'items/footer'
