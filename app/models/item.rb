@@ -33,7 +33,7 @@ class Item < ApplicationRecord
     belongs_to_active_hash :size, optional: true
 
     def favorited_by?(user)
-        favorites.where(user_id: user.id).exists?
+        favorites.find_by(user_id: user.id)
     end
     private
     def image_type

@@ -57,6 +57,6 @@ class User < ApplicationRecord
   end
 
   def favorited_by?(item)
-    favorites.where(item_id: item.id).exists?
+    favorites.find_by(item_id: item.id)
   end
 end
