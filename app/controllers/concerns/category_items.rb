@@ -1,11 +1,10 @@
 module CategoryItems
   extend ActiveSupport::Concern
 
-  def category_items(id)
-    category = Category.find(id)
-    if params[:id].to_i <= 13
+  def category_items(category)
+    if category.id <= 13
       categories = [category.children.map { |category| category.children }].flatten.compact
-    elsif params[:id].to_i <= 159
+    elsif category.id <= 159
       categories = [category.children].flatten.compact
     else
       categories = [category].flatten.compact
