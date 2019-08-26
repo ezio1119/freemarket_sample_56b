@@ -27,9 +27,6 @@ $(document).on('turbolinks:load', function() {
       preview.css({
         'width': `125px * ${images.length}`,
       });
-      // $('img').css({
-      //   'width': `115px`,
-      // });
       dropzone.css({
         'width': `calc(100% - (125px * ${images.length}))`
       })
