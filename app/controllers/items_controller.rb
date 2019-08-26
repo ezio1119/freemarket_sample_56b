@@ -6,10 +6,8 @@ class ItemsController < ApplicationController
   def index
     @categories = Category.top_category
     @items = {}
-    category_ids = 1..13
-    category_ids.each do |category_id|
-      category_name = Category.find(category_id).name
-      @items.store(category_name, category_items(category_id).first(8))
+    @categories.each do |category|
+      @items.store(category.name, category_items(category).first(8))
     end
   end
 
