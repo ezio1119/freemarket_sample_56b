@@ -1,9 +1,16 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_items, only: [:show, :edit, :update, :destroy]
+  include CategoryItems
+
   def index
     @categories = Category.top_category
-    @items = Item.limit(8).includes(:order)
+    @items = {}
+    category_ids = 1..13
+    category_ids.each do |category_id|
+      category_name = Category.find(category_id).name
+      @items.store(category_name, category_items(category_id).first(8))
+    end
   end
 
   def show

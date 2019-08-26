@@ -1,13 +1,13 @@
 .main{
   background: #f5f5f5;
   &__slider{
-    height: 400px;
+    height: 100%;
     width: 100vw;
   }
   &__container{
     width: 100vw;
-    margin: 24px auto 0;
-    padding-bottom: 40px;
+    margin: 0 auto;
+    padding: 24px 0 40px;
     text-align: center;
     &__title{
       font-size: 28px;
@@ -17,13 +17,14 @@
       font-size: 22px;
       width: 900px;
       margin: 0 auto;
+      height: 100%;
       &--title{
-        text-decoration: none;
-        color: rgb(0, 153, 232);
-        font-weight: bold; 
-      }
-      &--title:hover{
-        text-decoration: underline;
+        padding: 15px 0;
+        &--link{
+          @include link;
+          font-size: 22px;
+          font-weight: bold; 
+        }
       }
       &--content{
         display: flex;
@@ -31,7 +32,12 @@
         &--items{
           text-decoration: none;
           position: relative;
-
+          width: 213px;
+          margin-left: 10px;
+          background-color: #fff;
+          cursor: pointer;
+          text-decoration: none;
+          color: #333;
           &--soldtag {
             position: absolute;
             top: 0;
@@ -48,8 +54,8 @@
               top : 15px;
               right: 2px;
             }
-           }
-           &--soldtag:after {
+          }
+          &--soldtag:after {
             border-width: 100px 100px 0 0;
             border-color: #ea352d transparent transparent transparent;
             display: block;
@@ -61,31 +67,53 @@
             width: 0;
             height: 0;
             border-style: solid;
-           }
-          width: 213px;
-          margin-left: 10px;
-          background-color: aliceblue;
-          cursor: pointer;
+          }
+          &--image{
+            width: 213px;
+            height: 213px;
+            margin: 0 auto;
+          }
           &--text{
-            height: 110px;
-            background: white;
-            color: #000;
-            &--price {
-              font-size: 13px;
-              font-weight: bold;
-              position: absolute;
-              left: 10px;
-	            bottom: 20px;
+            height: 88px;
+            padding:16px;
+            &--top{
+              font-size: 16px;
+              text-decoration: none;
               text-align: left;
+              height: 50px;
+              overflow: hidden;
             }
-            &--name {
-              font-size: 15px;
-              position: absolute;
-              left: 10px;
-              bottom: 80px;
-              text-align: left;
+            &--bottom{
+              display: flex;
+              justify-content: space-between;
+              align-items: baseline;
+              margin-top: 10px; 
+              &--left{
+                font-size: 16px;
+                font-weight: bold;
+              }
+              &--right{
+                display: flex;
+                font-size: 16px;
+                align-items: baseline;
+                &--icon{
+                  text-decoration: none;
+                }
+                &--count{
+                  margin-left: 5px;   
+                }
+              }
             }
           }
+        }
+      }
+      &--show{
+        text-align: right;
+        padding: 20px 0 30px;
+        &--link{
+          font-size: 16px;
+          @include link;
+          margin-right: 5px;
         }
       }
     }

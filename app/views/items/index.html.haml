@@ -1,6 +1,6 @@
 = render 'header'
 = render partial:'categories/category-top', locals: {categories: @categories}
-.main
+.main 
 
   .main__slider
     = render "slider"
@@ -8,9 +8,33 @@
     %h2.main__container__title
       ピックアップカテゴリー
     .main__container__box
-      = link_to "レディース新着アイテム", "", class: "main__container__box--title"
+      .main__container__box--title
+        = link_to "レディース 新着アイテム", category_path(1), class: "main__container__box--title--link"
       %ul.main__container__box--content
-        = render @items
+        = render @items['レディース']
+      .main__container__box--show
+        = link_to "すべての商品を見る", category_path(1),class: "main__container__box--show--link"
+    .main__container__box
+      .main__container__box--title
+        = link_to "メンズ 新着アイテム", category_path(2), class: "main__container__box--title--link"
+      %ul.main__container__box--content
+        = render @items['メンズ']
+      .main__container__box--show
+        = link_to "すべての商品を見る", category_path(2),class: "main__container__box--show--link"
+    .main__container__box
+      .main__container__box--title
+        = link_to "ベビー・キッズ 新着アイテム", category_path(3), class: "main__container__box--title--link"
+      %ul.main__container__box--content
+        = render @items['ベビー・キッズ']
+      .main__container__box--show
+        = link_to "すべての商品を見る", category_path(3),class: "main__container__box--show--link"
+    .main__container__box
+      .main__container__box--title
+        = link_to "#コスメ・香水・美容 新着アイテム", category_path(7), class: "main__container__box--title--link"
+      %ul.main__container__box--content
+        = render @items['コスメ・香水・美容']
+      .main__container__box--show
+        = link_to "すべての商品を見る", category_path(7), class: "main__container__box--show--link"
 
 = render 'footer'
 = render 'buybtn'
