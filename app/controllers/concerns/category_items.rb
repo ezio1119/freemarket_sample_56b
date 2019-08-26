@@ -10,10 +10,7 @@ module CategoryItems
     else
       @categories = [@category].flatten.compact
     end
-    ids = []
-    @categories.each do |category|
-      ids << category.id
-    end
+    ids = @categories.pluck(:id)
     items = Item.where(category_id: ids).order("created_at DESC")
   end
 end
