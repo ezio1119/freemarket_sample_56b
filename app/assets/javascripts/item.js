@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', function() {
     var file = $(this).prop('files')[0];
     var reader = new FileReader();
     inputs.push($(this));
-    var img = $(`<div class= "img_view"><img></div>`);
+    var img = $(`<div class= "img_view"><img class="img"></div>`);
     reader.onload = function(e) {
       var btn_wrapper = $('<div class="btn_wrapper"><div class="btn edit">編集</div><div class="btn delete">削除</div></div>');
       img.append(btn_wrapper);
@@ -27,9 +27,9 @@ $(document).on('turbolinks:load', function() {
       preview.css({
         'width': `125px * ${images.length}`,
       });
-      $('img').css({
-        'width': `115px`,
-      });
+      // $('img').css({
+      //   'width': `115px`,
+      // });
       dropzone.css({
         'width': `calc(100% - (125px * ${images.length}))`
       })
