@@ -7,6 +7,9 @@
     .itempage__box__info
       .itempage__box__info--photo
         = image_tag @item.images.first,class: "itempage__box__info--photo--main" if @item.images.attached? 
+        - if @item.order
+          .main__container__box--content--items--soldtag
+            %p SOLD
         .itempage__box__info--photo--sub
           - @item.images.offset(1).each do |image|
             = image_tag image, size: "60x60", class: "itempage__box__info--photo--sub--sel"
@@ -68,7 +71,7 @@
       .itempage__box__price--post
         送料込み
     - if @item.order
-      .itempage__edit__btn 売り切れました
+      .itempage__edit__btn--sold 売り切れました
     - elsif user_signed_in? && @item.user_id == current_user.id
       .itempage__edit
       = button_to "編集する",  edit_item_path(@item.id), class: "itempage__edit__btn", method: :get
