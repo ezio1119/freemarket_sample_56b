@@ -120,17 +120,15 @@
                 価格
                 .newpage__box__form__price__right__count__title--req
                   必須
-              = f.text_field :price, placeholder: "---", class: 'newpage__box__form__price__right__count__input'
+              = f.text_field :price, placeholder: "---", class: 'newpage__box__form__price__right__count__input', id: "selling_price"
             .newpage__box__form__price__right__tax
               %h3.newpage__box__form__price__right__tax__str
                 販売手数料 (10%)
-              %p.newpage__box__form__price__right__tax__str
-                ***
+              #fee.newpage__box__form__price__right__tax__str
             .newpage__box__form__price__right__total
               %h3.newpage__box__form__price__right__total__title
                 販売利益
-              %p.newpage__box__form__price__right__total__title
-                ***
+              #sales_profit.newpage__box__form__price__right__total__title
       
       .newpage__box__btn
         .newpage__box__btn__group

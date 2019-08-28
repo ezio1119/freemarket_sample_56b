@@ -7,7 +7,7 @@
       %h2 カテゴリー一覧
     .categories-wrapper__container__nav
       - Category.top_category.each do |category|
-        = link_to category.name, "#", class: "categories-wrapper__container__nav__name"
+        = link_to category.name, category_path(category), class: "categories-wrapper__container__nav__name"
     .categories-wrapper__container__list
       - Category.top_category.each do |category|
         .categories-wrapper__container__list__box
@@ -15,16 +15,16 @@
             %h3= category.name
           .categories-wrapper__container__list__box__inner
             %p
-              = link_to "すべて", "#"
+              = link_to "すべて", category_path(category)
               - category.children.each do |category|
                 .categories-wrapper__container__list__box__inner__name
                   %h4= category.name
                   .categories-wrapper__container__list__box__inner__category
                     .categories-wrapper__container__list__box__inner__category__item
                       %p
-                        = link_to "すべて", "#"
+                        = link_to "すべて", category_path(category)
                     - category.children.each do |category|
                       .categories-wrapper__container__list__box__inner__category__item
                         %p
-                          = link_to category.name, "#"
+                          = link_to category.name, category_path(category)
 = render 'items/footer'

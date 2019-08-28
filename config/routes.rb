@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :items do
+    resources :comments, only: [:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
     collection do
       get :search
     end
@@ -56,6 +58,7 @@ Rails.application.routes.draw do
       get :identification
       get :items_list
       get :logout
+      get :favorites_list
     end
     collection do
       resources :orders, only: [:index, :show] do
@@ -67,12 +70,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories, only: :index
+  resources :categories, only: [:index, :show] do
+    collection do
+      get :search_children
+    end
+  end
   
-  get 'categories/search_children', to: 'categories#search_children'
   get 'sizes/shoes_size', to: 'sizes#shoes_size'
   get 'sizes/clothes_size', to: 'sizes#clothes_size'
 end
-
-  
-

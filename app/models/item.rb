@@ -3,8 +3,11 @@ class Item < ApplicationRecord
     belongs_to :user
     belongs_to :category
     has_one :order
+    has_many :comments, dependent: :destroy
     has_one :bought, through: :order, source: :bought
     has_one :sold, through: :order, source: :sold
+    has_many :favorites
+    has_many :favorite_users, through: :favorites, source: :user
   
     validates :name, length: { maximum: 40 }, presence: true
     validates :state_id, presence: true
@@ -29,14 +32,18 @@ class Item < ApplicationRecord
     belongs_to_active_hash :brand, optional: true
     belongs_to_active_hash :size, optional: true
 
+    def favorited_by?(user)
+        favorites.find_by(user_id: user.id)
+    end
     private
     def image_type
       if images.attached?
         self.images.each do |image|
-          errors.add(:image, '拡張子がJPEGまたはPNGを挿入してください') if !image.content_type.in?(%('image/jpec image/png'))
+          errors.add(:image, '拡張子がJPEGまたはPNGを挿入してください') if !image.content_type.in?(%('image/jpeg image/png'))
         end
       else
         errors.add(:image, '画像を挿入してください')
       end
     end
+
 end

@@ -3,7 +3,7 @@ crumb :root do
 end
 
 crumb :item_show do |item|
-  link "#{item.name}"
+  link item.name
   parent :root
 end
 
@@ -14,6 +14,11 @@ end
 
 crumb :exhibit_items_now do
   link "出品した商品 - 出品中"
+  parent :mypage
+end
+
+crumb :favorite_lists do
+  link "いいね！ 一覧"
   parent :mypage
 end
 
@@ -37,11 +42,6 @@ crumb :logout do
   parent :mypage
 end
 
-crumb :categories do
-  link "カテゴリー一覧", categories_path
-  parent :root
-end
-
 crumb :bought do
   link "購入した商品-過去の取引", bought_orders_path
   parent :mypage
@@ -52,3 +52,16 @@ crumb :dealing do
   parent :bought
 end
 
+crumb :categories do
+  link "カテゴリー一覧", categories_path
+  parent :root
+end
+
+crumb :category do |category|
+  link category.name, category_path(category)
+  if category.parent
+    parent category.parent
+  else
+    parent :categories
+  end
+end

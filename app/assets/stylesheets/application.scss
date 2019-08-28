@@ -26,6 +26,9 @@
 @import "cards/cards_new";
 @import "category/category";
 @import "category/index";
+@import "category/show";
+@import "kaminari/kaminari";
+@import "users/favorites_list";
 
 /*
 *= require dropzone/basic

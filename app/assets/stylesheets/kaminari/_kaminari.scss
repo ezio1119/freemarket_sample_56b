@@ -1,0 +1,60 @@
+.pagination {
+  .page {
+    font-size: 13px;
+    line-height: 42px;
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    & a {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      color: #333;
+      display: block;
+      text-decoration: none;
+    }
+  }
+  & .current {
+    background: #ea352d;
+    color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  & .first,.prev {
+    float: left;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 42px;
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    & a {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      color: #333;
+      display: block;
+      text-decoration: none;
+    }
+  }
+  & .next,.last {
+    float: right;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 42px;
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    & a {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      color: #333;
+      display: block;
+      text-decoration: none;
+    }
+  }
+}
+
+
+
