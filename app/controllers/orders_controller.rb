@@ -6,6 +6,12 @@ class OrdersController < ApplicationController
   def index
   end
 
+  def show
+    @item = @order.item
+    @address = current_user.address
+    @sellar = User.find(@order.sold_id)
+  end
+
   def new
     @address = current_user.address
     @item = Item.find(params[:item_id])
@@ -49,12 +55,6 @@ class OrdersController < ApplicationController
   def sold
   end
 
-  def show
-    @item = @order.item
-    @address = current_user.address
-    @sellar = User.find(@order.sold_id)
-  end
-  
   private
   def params_order
     params.permit(:item_id, :amount)
