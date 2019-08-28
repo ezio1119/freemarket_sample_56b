@@ -9,5 +9,8 @@ FactoryBot.define do
     birth_date              {"2019-11-11"}
     first_name_kana         {"タナカ"}
     last_name_kana          {"タロウ"}
+    trait :invalid do
+      nickname {nil}
+    end
   end
 end

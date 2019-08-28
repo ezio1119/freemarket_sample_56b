@@ -15,6 +15,8 @@ module SessionCheck
       if not session[:user] && session[:pass] && session[:pass_conf] && session[:address] && session[:payjp_cus] && session[:payjp_car]
         redirect_to users_index_path
       end
+    else
+      raise
     end
   end
 end

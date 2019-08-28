@@ -26,7 +26,6 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :cards
   
   validates :nickname, presence: true, length: { maximum: 20 }
-  validates :password, length: { minimum: 7 }
   validates :birth_date, presence: true
 
   def self.from_omniauth(auth)
