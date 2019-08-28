@@ -5,6 +5,7 @@
     %h1.itempage__box__title
       = @item.name
     .itempage__box__info
+      
       .itempage__box__info--photo
         = image_tag @item.images.first,class: "itempage__box__info--photo--main" if @item.images.attached? 
         - if @item.order

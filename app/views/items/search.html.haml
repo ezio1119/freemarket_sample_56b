@@ -69,6 +69,9 @@
             .search-container__content__items__box__detail
               = link_to "/items/#{item.id}", class: "search-container__content__items__box__detail__link" do
                 .search-container__content__items__box__detail__figure
+                  - if item.order
+                    .main__container__box--content--items--soldtag
+                      %p SOLD
                   = image_tag item.images.first, size: "160x160"
 
                 .search-container__content__items__box__detail__bottom
