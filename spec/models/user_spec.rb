@@ -68,8 +68,8 @@ describe User do
     end
 
     it "is invalid with a duplicate email address" do
-      user = create(:user)
-      another_user = build(:user)
+      user = create(:user, email: "test@example.com")
+      another_user = build(:user, email: "test@example.com")
       another_user.valid?
       expect(another_user.errors[:email]).to include("はすでに存在します")
     end
