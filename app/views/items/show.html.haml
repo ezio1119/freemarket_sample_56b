@@ -83,16 +83,17 @@
       = @item.info
     .itempage__box__btn
       .itempage__box__btn--left
-        - if @item.favorited_by?(current_user)
-          = link_to item_favorite_path(@item), method: :delete, class: "itempage__box__btn--left--do-like" do
-            = fa_icon "heart", class: "itempage__box__btn--left--do-like--do-icon"
-            .itempage__box__btn--left--do-like--do-str いいね!
-            .itempage__box__btn--left--do-like--do-str= @item.favorites.count
-        - else
-          = link_to item_favorites_path(@item), method: :post, class: "itempage__box__btn--left--like" do
-            = fa_icon "heart", class: "itempage__box__btn--left--like--icon"
-            .itempage__box__btn--left--like--str いいね!
-            .itempage__box__btn--left--like--str= @item.favorites.count
+        - if user_signed_in?
+          - if @item.favorited_by?(current_user)
+            = link_to item_favorite_path(@item), method: :delete, class: "itempage__box__btn--left--do-like" do
+              = fa_icon "heart", class: "itempage__box__btn--left--do-like--do-icon"
+              .itempage__box__btn--left--do-like--do-str いいね!
+              .itempage__box__btn--left--do-like--do-str= @item.favorites.count
+          - else
+            = link_to item_favorites_path(@item), method: :post, class: "itempage__box__btn--left--like" do
+              = fa_icon "heart", class: "itempage__box__btn--left--like--icon"
+              .itempage__box__btn--left--like--str いいね!
+              .itempage__box__btn--left--like--str= @item.favorites.count
 
         = button_to "", class: "itempage__box__btn--left--flag" do
           = fa_icon "flag", class: "itempage__box__btn--left--flag--icon"
