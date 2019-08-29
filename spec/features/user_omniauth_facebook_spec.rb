@@ -6,13 +6,11 @@ feature "omniauth-facebook signin/signout" do
     Rails.application.env_config["devise.mapping"] = Devise.mappings[:user]
     OmniAuth.config.mock_auth[:facebook] = nil
     Rails.application.env_config['omniauth.auth'] = facebook_mock
-    visit root_path
-    click_on "ログイン"
   end
 
   scenario "can signin" do
+    visit new_user_session_path
     click_link "Facebookでログイン"
-    # expect(current_path).to eq root_path
     expect(page).not_to have_link('signin')
   end
 
@@ -26,6 +24,5 @@ feature "omniauth-facebook signin/signout" do
   scenario "signout" do
     logout(:user) 
     expect(page).not_to have_link('signout')
-    expect(page).to have_http_status(200)
   end
 end
