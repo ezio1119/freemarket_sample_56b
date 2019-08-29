@@ -26,7 +26,12 @@
                   .category-lists-wrapper__container__content__box__list__item__bottom__price
                     = "¥" + number_with_delimiter(item.price)
       .category-lists-wrapper__container__content__pager
-        = paginate @items
+        - if @items.current_page == 1 || @items.current_page == @items.total_pages
+          = paginate @items, window: 4
+        - elsif @items.current_page == 2 || @items.current_page == @items.total_pages - 1
+          = paginate @items, window: 3
+        - else
+          = paginate @items, window: 2
       .category-lists-wrapper__container__content__description
         .category-lists-wrapper__container__content__description__title
           %h3

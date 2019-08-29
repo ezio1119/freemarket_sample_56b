@@ -1,4 +1,5 @@
 .pagination {
+  text-align: center;
   .page {
     font-size: 13px;
     line-height: 42px;
@@ -22,10 +23,9 @@
   }
   & .first,.prev {
     float: left;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 35px;
     line-height: 42px;
-    display: inline-block;
+    display: block;
     width: 44px;
     height: 44px;
     & a {
@@ -39,10 +39,9 @@
   }
   & .next,.last {
     float: right;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 35px;
     line-height: 42px;
-    display: inline-block;
+    display: block;
     width: 44px;
     height: 44px;
     & a {

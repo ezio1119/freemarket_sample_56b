@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
   
   def show
     items = category_items(@category)
-    @items = Kaminari.paginate_array(items).page(params[:page]).per(1)
+    @items = Kaminari.paginate_array(items).page(params[:page]).per(125)
   end
   private
   def set_category
