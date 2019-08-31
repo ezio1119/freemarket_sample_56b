@@ -127,9 +127,9 @@ ActiveRecord::Schema.define(version: 2019_08_26_081719) do
     t.datetime "updated_at", null: false
     t.string "first_name_kana", null: false
     t.string "last_name_kana", null: false
+    t.string "payjp_cus"
     t.string "provider"
     t.string "uid"
-    t.string "payjp_cus"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
