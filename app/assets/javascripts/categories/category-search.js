@@ -2,10 +2,10 @@ $(document).on('turbolinks:load', function(){
 
   function appendChild(child) {
     var linkschild = `
-                <a data-id="${child.id}" class="contents-bar__point__category__links-child" href="">${child.name}</a>
+                <a data-id="${child.id}" class="contents-bar__point__category__links-child" href="/categories/${child.id}">${child.name}</a>
                 `
     var linksgrand  = `
-                      <a data-id="${child.id}" class="contents-bar__point__category__links-grand" href="">${child.name}</a>
+                      <a data-id="${child.id}" class="contents-bar__point__category__links-grand" href="/categories/${child.id}">${child.name}</a>
                       `
     if (child.parent_id < 14) {
       var childHtml = $('#child-category')
