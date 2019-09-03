@@ -66,9 +66,9 @@ workflows:
           requires:
             - test
           filters:
-          branches:
-            only:
-              - master
+            branches:
+              only:
+                - master
       - aws-ecs/deploy-service-update:
           requires:
             - aws-ecr/build-and-push-image
