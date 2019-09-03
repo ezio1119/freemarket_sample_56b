@@ -74,4 +74,4 @@ workflows:
             - aws-ecr/build-and-push-image
           family: ${MY_APP_PREFIX}
           cluster-name: ${MY_APP_PREFIX}
-          container-image-name-updates: 'container=${CONTAINER_NAME}, tag=latest'
+          container-image-name-updates: 'container=app, tag=latest'
