@@ -68,10 +68,10 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - terraform-setting
       - aws-ecs/deploy-service-update:
           requires:
             - aws-ecr/build-and-push-image
-          family: ${MY_APP_PREFIX}
-          cluster-name: ${MY_APP_PREFIX}
+          family: "freemarket-terra"
+          cluster-name: "freemarket-terra"
           container-image-name-updates: 'container=app, tag=latest'
