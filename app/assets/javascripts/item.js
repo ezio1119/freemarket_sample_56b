@@ -23,7 +23,6 @@ $(document).on('turbolinks:load', function() {
     $.each(images, function(index, image){
       image.attr('data-image', index);
       preview.append(image);
-
       preview.css({
         'width': `125px * ${images.length}`,
       });
@@ -49,13 +48,11 @@ $(document).on('turbolinks:load', function() {
           target_image.remove();
           var num = $(this).data('image');
           images.splice(num, 1);
-          inputs.splice(num, 1);
-
+          inputs.splice(num, 1)
           dropzone.css({
             'display': 'block',
             'width': `calc(100% - (125px * ${images.length}))`
-          });
-
+          })
           if(inputs.length == 0){
             $('input[type="file"].newpage__box__upload__drop--span').attr({
               'data-image': 0
