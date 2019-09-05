@@ -66,7 +66,7 @@
               %p.error=error
           .user_wrapper__contents__forms__body__form
             .user_wrapper__contents__forms__body__form__items
-              = f.label :name, "お名前カナ(全角)", class: "user_wrapper__contents__forms__body__form__items__namelabel"
+              = f.label :birth_date, class: "user_wrapper__contents__forms__body__form__items__namelabel"
               %span.user_wrapper__contents__forms__body__form__items__name-logo
                 必須
             != sprintf(f.date_select(:birth_date, start_year: 1950, end_year: (Time.now.year), use_month_numbers: true, date_separator: '%s'), '年', '月') + '日'

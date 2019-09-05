@@ -9,7 +9,7 @@ local:
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 amazon:
   service: S3
-  bucket: freemarket-sample-56b-private
+  bucket: Rails.application.credentials.aws[:s3_bucket_name]
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:

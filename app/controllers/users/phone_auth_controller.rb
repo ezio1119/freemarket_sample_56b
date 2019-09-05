@@ -28,7 +28,7 @@ class Users::PhoneAuthController < ApplicationController
       to: to,
       body: "認証番号は「#{conf_num}」です。"
     )
-  end 
+  end
 
   def conf_num
     if session[:conf_num] == params[:conf_num]

@@ -24,32 +24,15 @@
             = f.password_field :password, autocomplete: "current-password", placeholder: "　パスワード", class: "log_wrapper__logcontents__forms__contents__bottom__input__formpath"
             = recaptcha_tags
             = f.submit "ログイン", class: "log_wrapper__logcontents__forms__contents__bottom__input__btn"
+          = form_for(resource, as: resource_name, url: user_session_path) do |f|
+            = f.hidden_field :email, {value: 'testc@gmail.com'}
+            = f.hidden_field :password, {value: '11111111'}
+            = f.submit "出品者用テストログイン", class: "log_wrapper__logcontents__forms__contents__bottom__input__btn"
+          = form_for(resource, as: resource_name, url: user_session_path) do |f|
+            = f.hidden_field :email, {value: 'testa@gmail.com'}
+            = f.hidden_field :password, {value: '11111111'}
+            = f.submit "購入者用テストログイン", class: "log_wrapper__logcontents__forms__contents__bottom__input__btn"
           = link_to "", class: "log_wrapper__logcontents__forms__contents__bottom__message" do
             %p.log_wrapper__logcontents__forms__contents__bottom__message__text
               パスワードをお忘れの方
   = render 'users/shared/footer'
-
-
-
-
-
-
-
-
--# %h2 Log in
--# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
--#   .field
--#     = f.label :email
--#     %br/
--#     = f.email_field :email, autofocus: true, autocomplete: "email"
--#   .field
--#     = f.label :password
--#     %br/
--#     = f.password_field :password, autocomplete: "current-password"
--#   - if devise_mapping.rememberable?
--#     .field
--#       = f.check_box :remember_me
--#       = f.label :remember_me
--#   .actions
--#     = f.submit "Log in"
--# = render "devise/shared/links"
