@@ -31,3 +31,4 @@ RUN apk add --no-cache alpine-sdk \
 COPY --from=builder /usr/local/bundle /usr/local/bundle
 
 WORKDIR /app
+ADD . /app

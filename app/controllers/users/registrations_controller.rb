@@ -28,7 +28,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       session[:user] = @user
       session[:pass] = @user.password
       session[:pass_conf] = @user.password_confirmation
-      redirect_to users_phone_auth_index_path
+      #MEMO: 認証制限のため、SMS認証をオフ
+      # redirect_to users_phone_auth_index_path
+      redirect_to users_addresses_path
     else
       render 'new'
     end

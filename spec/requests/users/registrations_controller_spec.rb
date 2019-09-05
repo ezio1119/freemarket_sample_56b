@@ -18,7 +18,7 @@ describe Users::RegistrationsController, type: :request do
       end
       it 'リダイレクトすること' do
         post users_put_in_url, params: { user: attributes_for(:user) }
-        expect(response).to redirect_to users_phone_auth_index_path
+        expect(response).to redirect_to users_addresses_path
       end
     end
     context 'パラメータが不正な場合' do

@@ -18,7 +18,7 @@ feature "Email signin/signout" do
     visit new_user_session_path
     fill_in "user_email", with: 'other@example.com'
     fill_in "user_password", with: 'other'
-    find('input[name="commit"]').click
+    find('input[id="rspec_submit"]').click
     expect(current_path).to eq new_user_session_path
   end
 
