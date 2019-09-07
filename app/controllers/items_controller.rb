@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      render action: 'new'
+      render 'new'
     end
   end
   
@@ -56,6 +56,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
+    binding.pry
     params.require(:item).permit(:name, :state_id, :delivery_burden_id, :prefecture_id,:delivery_method_id, :day_id, :price, :info, :category_id, :brand_id, :size_id, images:[]).merge(user_id: current_user.id)
   end
 
