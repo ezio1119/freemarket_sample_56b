@@ -1,4 +1,4 @@
-= form_for [current_user, @item],class: 'dropzone', id: 'item-dropzone', url: "/items" do |f|
+= form_with model:[current_user, @item], class: 'dropzone', id: 'item-dropzone', url: "/items", local: true do |f|
   .newpage
     = render 'users/shared/header_center'
     .newpage__box
@@ -19,7 +19,7 @@
             = f.label :images, class: "dropzone-box", for: "upload-image" do
               .input_area
                 = f.file_field :images, multiple: true, class: "newpage__box__upload__drop--span input-default", id: "upload-image0", 'data-image': 0
-                
+
       .newpage__box__form
         .newpage__box__form__group
           %p.error= @item.errors.full_messages_for(:name)[0] if @item.errors.any?
@@ -45,8 +45,8 @@
               カテゴリー
               .newpage__box__form__block__right__title--req
                 必須
-            = f.collection_select :category_id, Category.limit(13), :id, :name, { prompt: "---"}
-            = f.collection_select :category_id, [], :id, :name, {prompt: "---"}, {id: "child_id"}
+            = f.collection_select :top_category_id, Category.limit(13), :id, :name 
+            = f.collection_select :child_category_id, [], :id, :name, {prompt: "---"}, {id: "child_id"}
             = f.collection_select :category_id, [], :id, :name, {prompt: "---"}, {id: "grandchild_id"}
             .newpage__box__form__block__right__input.size-field
               %p.error= @item.errors.full_messages_for(:size_id)[0] if @item.errors.any?
@@ -157,6 +157,3 @@
             = button_to "戻る", root_path, class: "newpage__box__btn__group__return--click"
 
     = render 'users/shared/footer'
-
-
-          

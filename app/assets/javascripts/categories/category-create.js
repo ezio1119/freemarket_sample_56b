@@ -18,8 +18,8 @@ $(document).on('turbolinks:load', function(){
     select.append(option)
   }
 
-  $('#item_category_id').change(function(){
-    var select = $('#item_category_id').val()
+  $('#item_top_category_id').change(function(){
+    var select = $('#item_top_category_id').val()
     $('#grandchild_id').hide()
     $.ajax({
       url: '/categories/search_children',
